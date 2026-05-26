@@ -30,9 +30,9 @@ Plan a premium golf/putting brand website before implementation. The site should
 - Build trust before final product photography exists.
 - Present the three product categories in a coherent structure: putter, mat, rangefinder.
 - Support the initial Polvert golf glove sales path without making GreenPutt's long-term putting/putter positioning feel secondary.
-- Replace the current Imweb site with a custom website that Codex can maintain from the repository.
-- Include the basic commerce/support structure needed for operation: home, product pages, FAQ, 1:1 inquiry, notice/customer support, product data, orders, and payment integration.
-- Keep the first custom build scoped as a commerce MVP rather than a full mature shopping mall.
+- Build a custom front-end website that Codex can maintain from the repository while using Imweb as the operational commerce backend.
+- Keep payment, order, member, shipping, and fulfillment operations in Imweb for the first phase.
+- Use the custom site for premium brand storytelling, product presentation, prototype inquiry/reservation, and polished navigation into Imweb purchase flows.
 
 ## Brand And Design Direction
 
@@ -51,7 +51,7 @@ Plan a premium golf/putting brand website before implementation. The site should
 - Home: premium hero, product category highlights, featured product story, video/image section, brand promise, support entry points.
 - Zero Head-Up: core campaign/technology story explaining the putting problem, head-up prevention, distance feedback, and why GreenPutt exists.
 - Products listing: product-card structure for putter, putting mat, rangefinder, and Polvert.
-- Polvert golf glove product page: first commerce-ready product page with purchase CTA, product images, options, shipping/return guidance, and credibility copy.
+- Polvert golf glove product page: first commerce-ready product story page with purchase CTA that bridges to the Imweb product/checkout flow.
 - Putter page: product concept, visual showcase, technology/design story, specs placeholder, reservation/inquiry CTA.
 - Putting mat page: practice scenario, surface/roll/value story, size/spec placeholder, reservation/inquiry CTA.
 - Rangefinder page: use case, feature story, specs placeholder, reservation/inquiry CTA.
@@ -79,7 +79,7 @@ Suggested support subpages:
 
 Products should be structured so all four products can appear in one catalog-like system, while purchase behavior differs by product readiness:
 
-- Polvert: visible as a `Selected Product` and available for actual purchase.
+- Polvert: visible as a `Selected Product` and available for actual purchase through Imweb.
 - Putter, putting mat, rangefinder: visible as GreenPutt product concepts with reservation, inquiry, or waitlist CTA instead of immediate checkout.
 
 ## Homepage Section Wireframe
@@ -99,8 +99,9 @@ Working section order:
 4. Featured technology/use scene
    - Show the projected distance feedback concept, indoor putting practice scenario, or reflective product presentation inspired by Crossputt.
 5. Polvert selected product band
-   - Present Polvert as a curated golf glove product that can be purchased now.
+   - Present Polvert as a curated golf glove product that can be purchased now through Imweb.
    - Keep it visually connected to the golf performance story without making it look like GreenPutt's core invention.
+   - Purchase CTA should make the transition to Imweb feel intentional, and users should be able to return to the custom site without losing context.
 6. Trust/support entry
    - FAQ, Notice, 1:1 Inquiry, shipping/returns, and support links.
    - Useful because prototypes and AI-generated visuals require extra trust-building.
@@ -123,7 +124,7 @@ Working section order:
   - `GreenPutt Website/02_Product_Putter`
   - `GreenPutt Website/03_Product_Mat`
   - `GreenPutt Website/04_Product_Rangefinder`
-  - `GreenPutt Website/05_Product_Paulver_Glove` (existing legacy folder name; public English spelling is `Polvert`)
+  - `GreenPutt Website/05_Product_Polvert_Glove`
   - `GreenPutt Website/06_References`
   - `GreenPutt Website/07_AI_Image_Work`
   - `GreenPutt Website/08_Imweb_Current_Site`
@@ -155,7 +156,7 @@ Working section order:
 - Figma is useful for professional visual design, especially once the homepage structure, product hierarchy, and brand mood are clearer.
 - Recommended sequence for this project:
   - First: define sitemap, section order, copy needs, and asset list in this brief.
-  - Second: create a low-maintenance custom web prototype with content structure, product behavior, and basic commerce flows.
+- Second: create a low-maintenance custom web prototype with content structure, product behavior, and Imweb bridge purchase flows.
   - Third: use Figma if high-fidelity homepage/product-page design, designer collaboration, or exact visual rhythm becomes important.
   - Fourth: manage AI image generation as a separate asset track with prompts, selected outputs, source references, and replacement status.
 - Figma is not required before deciding content structure. It becomes valuable when choosing exact layouts, visual rhythm, typography, image crops, and responsive variants.
@@ -163,17 +164,20 @@ Working section order:
 
 ## Platform Direction
 
-- Direction changed: plan to replace the current Imweb site with a custom website that can be maintained through this repository and Codex.
-- Imweb remains useful as a reference for existing structure, screenshots, page copy, and operational expectations, but it should no longer be treated as the target long-term platform.
-- First custom build should be a commerce MVP:
-  - Product database for Polvert and GreenPutt prototype products.
-  - Polvert purchase flow with payment integration.
+- Direction changed: use a custom GreenPutt front-end site with Imweb as the bridge/backend for commerce operations.
+- Imweb should remain the system of record for first-phase payment, order, member, shipping, cancellation/refund, and fulfillment workflows.
+- The custom site should own the premium brand experience:
+  - Home, Zero Head-Up story, product storytelling, campaign imagery, and prototype product inquiry/reservation.
+  - Polvert selected product story page and strong purchase CTA.
+  - Smooth handoff into Imweb for Polvert product purchase, cart, login, and checkout.
+- First custom build should be an Imweb Bridge MVP:
+  - Custom product presentation for Polvert and GreenPutt prototype products.
+  - Purchase links or embedded bridge flows into the existing Imweb Polvert commerce path.
   - Prototype product pages for putter, putting mat, and rangefinder with inquiry/reservation CTA.
-  - FAQ, Notice, and 1:1 Inquiry content stored in a maintainable data system.
-  - Customer-facing pages, payment flow, and inquiry/reservation flow first.
-  - Minimal administration should follow gradually, starting with the smallest way to review orders, inquiries, and product/content records.
-- Payment integration candidates should be evaluated during implementation planning, with Korean commerce requirements in mind. Likely candidates include Toss Payments, PortOne, or another domestic PG-friendly option.
-- Do not plan a full mature commerce system in the first release unless explicitly required. Coupons, complex membership benefits, advanced refunds, multi-vendor operations, subscriptions, and app-based coaching should be deferred.
+  - FAQ, Notice, and support content may live in the custom site, Imweb, or both, but the user path should not feel fragmented.
+  - No separate custom payment provider, custom order database, or full admin dashboard should be built in the first phase unless Imweb bridge testing proves insufficient.
+- Back/return UX is a first-class requirement: when users enter Imweb checkout or product pages from the custom site, browser back behavior, return links, and post-purchase/support navigation should bring them back to a sensible GreenPutt context.
+- Custom commerce replacement can be reconsidered later only after Imweb bridge limitations are proven through real user flow testing.
 
 ## Current Site Context
 
@@ -184,6 +188,16 @@ Working section order:
 - The current homepage already uses the `Heads Down. Data On` direction and a laser/putting hero image, so the next version should refine rather than discard this concept.
 - Admin screen capture could not be saved via macOS `screencapture` because desktop capture was blocked, but the logged-in structure was inspected without changing settings.
 
+## Imweb Bridge Test Notes
+
+- Tested on 2026-05-27 against `greenputt.kr` and `greenputt.imweb.me`.
+- Public Polvert product detail URLs are stable enough for first bridge testing, for example `https://greenputt.kr/shop_view/?idx=50`.
+- The cart URL is `https://greenputt.kr/shop_cart`.
+- Current Polvert products are marked `SOLDOUT`, so full add-to-cart and direct-purchase checkout behavior could not be verified yet.
+- The visible product-page purchase controls are Imweb JavaScript actions tied to required option selection and stock state, not simple public direct-checkout URLs.
+- Bridge default for the custom site should be same-tab navigation to the Imweb product detail page first, with a clear pre-handoff message and a custom-site return path.
+- Direct cart or direct checkout CTAs should remain provisional until at least one Polvert product has testable stock/options and the flow is retested end to end.
+
 ## Open Decisions
 
 - Primary customer segment and brand tone.
@@ -193,8 +207,10 @@ Working section order:
 - Whether Figma should be introduced after the first wireframe/prototype or only when high-fidelity design handoff is needed.
 - Exact AI image style per track: golf-brand campaign imagery, GreenPutt concept/use imagery, and Polvert wearing/use imagery.
 - Whether video should be a generated brand/product motion piece, a future prototype shoot, or a lightweight web animation in the first phase.
-- Which payment provider and database/admin approach should be used for the first custom commerce MVP.
-- Exact minimum admin workflow for launch: direct DB/CMS management, a small internal dashboard, or a staged combination.
+- Which exact Polvert product detail URL should be the primary CTA target once active variants are confirmed.
+- Whether a direct cart or direct checkout bridge is possible after Imweb stock/options are enabled and retested.
+- Which support and inquiry flows should live on the custom site versus remain in Imweb.
+- Whether future custom commerce replacement is still needed after the Imweb Bridge MVP is tested.
 
 ## Maintenance Notes
 

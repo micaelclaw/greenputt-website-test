@@ -10,7 +10,7 @@ Original source folder:
 Current status:
 
 - `99_Inbox_To_Sort` has been cleared after sorting.
-- Public website assets are now grouped under `01_Brand`, `02_Product_Putter`, `03_Product_Mat`, `04_Product_Rangefinder`, `05_Product_Paulver_Glove`, `06_References`, and `07_AI_Image_Work`.
+- Public website assets are now grouped under `01_Brand`, `02_Product_Putter`, `03_Product_Mat`, `04_Product_Rangefinder`, `05_Product_Polvert_Glove`, `06_References`, and `07_AI_Image_Work`.
 - Private/admin materials are intentionally excluded from the working website asset folder.
 
 ## Review Scope
@@ -59,12 +59,12 @@ Important extracted product claims to reuse carefully:
 
 ### Polvert Golf Glove
 
-- `05_Product_Paulver_Glove/000.폴베르자료실/001.극세사_장갑/`
+- `05_Product_Polvert_Glove/000.폴베르자료실/001.극세사_장갑/`
   - Product detail images for microfiber gloves.
   - Includes men/women, right/left/both-hand variants and category thumbnails.
-- `05_Product_Paulver_Glove/000.폴베르자료실/002.메쉬_장갑/`
+- `05_Product_Polvert_Glove/000.폴베르자료실/002.메쉬_장갑/`
   - Mesh glove product images and long-form detail pages.
-- `05_Product_Paulver_Glove/000.폴베르자료실/005.가격단가/★폴베르상품리스트_가격단가★_(1).pdf`
+- `05_Product_Polvert_Glove/000.폴베르자료실/005.가격단가/★폴베르상품리스트_가격단가★_(1).pdf`
   - Price source.
   - Extracted pricing:
     - 양손-양피: supply 21,000 / minimum sale 31,900 / consumer 40,000
@@ -72,13 +72,13 @@ Important extracted product claims to reuse carefully:
     - 극세사-왼손: supply 7,700 / minimum sale 10,900 / consumer 15,000
     - 극세사-양손: supply 16,000 / minimum sale 24,900 / consumer 35,000
     - 양손-겨울장갑: supply 22,000 / minimum sale 33,900 / consumer 40,000
-- `05_Product_Paulver_Glove/000.폴베르자료실/007.폴베르_광고용_동영상제작본/`
+- `05_Product_Polvert_Glove/000.폴베르자료실/007.폴베르_광고용_동영상제작본/`
   - Existing MP4 ad assets: male 15s, female 15s, combined 15s, 45s, SBS news version.
-- `05_Product_Paulver_Glove/000.폴베르자료실/003.특허권/`
+- `05_Product_Polvert_Glove/000.폴베르자료실/003.특허권/`
   - Patent/IP material for the golf glove.
-- `05_Product_Paulver_Glove/000.폴베르자료실/004.디자인상표권/`
+- `05_Product_Polvert_Glove/000.폴베르자료실/004.디자인상표권/`
   - Design/trademark material.
-- `05_Product_Paulver_Glove/000.폴베르자료실/logo.png`
+- `05_Product_Polvert_Glove/000.폴베르자료실/logo.png`
   - Polvert logo asset.
 
 Polvert website use:
@@ -125,7 +125,7 @@ Move or copy public website-use assets into:
   - Mat renders, mat product descriptions, generated mat scenes.
 - `04_Product_Rangefinder`
   - Distance/projection/rangefinder device renders and drawings.
-- `05_Product_Paulver_Glove`
+- `05_Product_Polvert_Glove`
   - Polvert product images, price list, product videos, logo, public IP proof if needed.
 - `06_References`
   - Titleist/Crossputt references, website builder comparison, competitor screenshots.
