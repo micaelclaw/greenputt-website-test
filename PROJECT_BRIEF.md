@@ -13,7 +13,7 @@ Plan a premium golf/putting brand website before implementation. The site should
 
 ## Product Line
 
-- Initial sale product: Paulver golf glove. This can be the first real commerce item while GreenPutt's own products are still in prototype development.
+- Initial sale product: Polvert golf glove. This can be the first real commerce item while GreenPutt's own products are still in prototype development.
 - Putter / smart putting assistant: prototype/concept materials exist. Core story is projection-based distance feedback that helps prevent head-up during putting practice.
 - Putting mat: concept/render materials exist. Should communicate indoor practice value, distance feedback, and putting improvement.
 - Rangefinder / distance-measurement device: prototype drawings and render materials exist. Should sit naturally within the same golf performance brand without making the website feel unfocused.
@@ -29,9 +29,10 @@ Plan a premium golf/putting brand website before implementation. The site should
 - Make the first viewport clearly signal a golf/putting brand, not a generic commerce site.
 - Build trust before final product photography exists.
 - Present the three product categories in a coherent structure: putter, mat, rangefinder.
-- Support the initial Paulver golf glove sales path without making GreenPutt's long-term putting/putter positioning feel secondary.
-- Prepare a basic commerce/support structure similar to the current Imweb site: home, product pages, FAQ, 1:1 inquiry, notice/customer support.
-- Use the website as a content and design foundation that can later move into a more custom implementation if needed.
+- Support the initial Polvert golf glove sales path without making GreenPutt's long-term putting/putter positioning feel secondary.
+- Replace the current Imweb site with a custom website that Codex can maintain from the repository.
+- Include the basic commerce/support structure needed for operation: home, product pages, FAQ, 1:1 inquiry, notice/customer support, product data, orders, and payment integration.
+- Keep the first custom build scoped as a commerce MVP rather than a full mature shopping mall.
 
 ## Brand And Design Direction
 
@@ -48,20 +49,67 @@ Plan a premium golf/putting brand website before implementation. The site should
 ## Core Pages Or Features
 
 - Home: premium hero, product category highlights, featured product story, video/image section, brand promise, support entry points.
-- Paulver golf glove product page: first commerce-ready product page with purchase CTA, product images, size/options, shipping/return guidance, and credibility copy.
-- Putter page: product concept, visual showcase, technology/design story, specs placeholder, inquiry or waitlist CTA.
-- Putting mat page: practice scenario, surface/roll/value story, size/spec placeholder, inquiry or waitlist CTA.
-- Rangefinder page: use case, feature story, specs placeholder, inquiry or waitlist CTA.
-- Shop/product listing: can start as category/product cards while prototypes are not yet ready for full purchase flow.
+- Zero Head-Up: core campaign/technology story explaining the putting problem, head-up prevention, distance feedback, and why GreenPutt exists.
+- Products listing: product-card structure for putter, putting mat, rangefinder, and Polvert.
+- Polvert golf glove product page: first commerce-ready product page with purchase CTA, product images, options, shipping/return guidance, and credibility copy.
+- Putter page: product concept, visual showcase, technology/design story, specs placeholder, reservation/inquiry CTA.
+- Putting mat page: practice scenario, surface/roll/value story, size/spec placeholder, reservation/inquiry CTA.
+- Rangefinder page: use case, feature story, specs placeholder, reservation/inquiry CTA.
 - FAQ: shipping, launch timing, product readiness, support, A/S, purchase questions.
 - Notice: launch updates, prototype progress, preorder announcements if used.
 - 1:1 inquiry: customer questions and early lead capture.
 - About/Brand story: optional, but useful if GreenPutt needs credibility before product photos and reviews exist.
 
+## Sitemap And Navigation Direction
+
+Primary navigation:
+
+- `Home`
+- `Zero Head-Up`
+- `Products`
+- `Polvert`
+- `Support`
+
+Suggested support subpages:
+
+- `FAQ`
+- `Notice`
+- `1:1 Inquiry`
+- `Shipping / Returns`
+
+Products should be structured so all four products can appear in one catalog-like system, while purchase behavior differs by product readiness:
+
+- Polvert: visible as a `Selected Product` and available for actual purchase.
+- Putter, putting mat, rangefinder: visible as GreenPutt product concepts with reservation, inquiry, or waitlist CTA instead of immediate checkout.
+
+## Homepage Section Wireframe
+
+Working section order:
+
+1. Hero campaign
+   - Message: `Heads Down. Data On.`
+   - Role: instantly signal a premium golf/putting brand.
+   - Visual direction: Titleist-like large photographic golf scene or generated image, not a generic product grid.
+2. Zero Head-Up problem/solution
+   - Explain the head-up putting problem and the value of checking distance feedback without lifting the head.
+   - Use concise benefit copy backed by the existing product narrative.
+3. Product system overview
+   - Cards or campaign bands for putter, putting mat, rangefinder, and Polvert.
+   - GreenPutt prototype products should feel like a coherent performance system.
+4. Featured technology/use scene
+   - Show the projected distance feedback concept, indoor putting practice scenario, or reflective product presentation inspired by Crossputt.
+5. Polvert selected product band
+   - Present Polvert as a curated golf glove product that can be purchased now.
+   - Keep it visually connected to the golf performance story without making it look like GreenPutt's core invention.
+6. Trust/support entry
+   - FAQ, Notice, 1:1 Inquiry, shipping/returns, and support links.
+   - Useful because prototypes and AI-generated visuals require extra trust-building.
+
 ## Content And Assets
 
 - Real product photos are not available yet because all three products are still in prototype development.
 - Use existing AI-generated or rendered product visuals for the first version, with clear internal tracking so they can be replaced later.
+- Use `Polvert` as the English spelling for 폴베르.
 - Asset inventory: see `ASSET_INVENTORY.md`.
 - Needed assets:
   - Product concept descriptions for putter, mat, and rangefinder.
@@ -75,11 +123,30 @@ Plan a premium golf/putting brand website before implementation. The site should
   - `GreenPutt Website/02_Product_Putter`
   - `GreenPutt Website/03_Product_Mat`
   - `GreenPutt Website/04_Product_Rangefinder`
-  - `GreenPutt Website/05_Product_Paulver_Glove`
+  - `GreenPutt Website/05_Product_Paulver_Glove` (existing legacy folder name; public English spelling is `Polvert`)
   - `GreenPutt Website/06_References`
   - `GreenPutt Website/07_AI_Image_Work`
   - `GreenPutt Website/08_Imweb_Current_Site`
+  - `GreenPutt Website/09_Selected_For_Website`
+  - `GreenPutt Website/10_AI_Image_Prompts`
+  - `GreenPutt Website/11_Final_Web_Exports`
+  - `GreenPutt Website/12_To_Review`
   - `GreenPutt Website/99_Inbox_To_Sort`
+- Recommended AI image workflow:
+  - Track 1: golf-brand atmosphere images that make the homepage feel like a premium golf website, similar in role to Titleist's large campaign photography.
+  - Track 2: GreenPutt product concept/use images for the putting mat, rangefinder/distance feedback device, projected-number scene, and indoor practice situations.
+  - Polvert track: use existing glove assets as references, then generate additional wearing shots, grip shots, and golf-use lifestyle shots.
+  - Keep prompts, reference inputs, generated candidates, selected outputs, and final web exports in separate folders so replacement with real photography remains manageable.
+- Newly created working folders:
+  - `GreenPutt Website/09_Selected_For_Website`
+  - `GreenPutt Website/10_AI_Image_Prompts/01_Golf_Brand_Atmosphere`
+  - `GreenPutt Website/10_AI_Image_Prompts/02_GreenPutt_Product_Concepts`
+  - `GreenPutt Website/10_AI_Image_Prompts/03_Polvert_Glove_Use_Shots`
+  - `GreenPutt Website/11_Final_Web_Exports/Home`
+  - `GreenPutt Website/11_Final_Web_Exports/Products`
+  - `GreenPutt Website/11_Final_Web_Exports/Polvert`
+  - `GreenPutt Website/12_To_Review/01_User_Uploads`
+  - `GreenPutt Website/12_To_Review/02_AI_Candidates`
 - Do not modify unrelated existing folders named `micaelclaw_monitoring`, `micaelclaw_scripts`, `micaelclaw_ballmark`, or `전문편성채널 모니터링`.
 - Uploaded assets have been sorted out of `99_Inbox_To_Sort`. The working Drive folder should stay focused on public website planning and assets; private/admin materials are intentionally excluded from this project folder.
 
@@ -88,21 +155,25 @@ Plan a premium golf/putting brand website before implementation. The site should
 - Figma is useful for professional visual design, especially once the homepage structure, product hierarchy, and brand mood are clearer.
 - Recommended sequence for this project:
   - First: define sitemap, section order, copy needs, and asset list in this brief.
-  - Second: create a low-maintenance web prototype or Imweb-informed wireframe so the structure is testable.
-  - Third: use Figma for high-fidelity homepage/product-page design if precise visual direction, handoff, or designer collaboration becomes important.
+  - Second: create a low-maintenance custom web prototype with content structure, product behavior, and basic commerce flows.
+  - Third: use Figma if high-fidelity homepage/product-page design, designer collaboration, or exact visual rhythm becomes important.
   - Fourth: manage AI image generation as a separate asset track with prompts, selected outputs, source references, and replacement status.
 - Figma is not required before deciding content structure. It becomes valuable when choosing exact layouts, visual rhythm, typography, image crops, and responsive variants.
-- If the website will remain mostly inside Imweb, Figma should be light and section-focused rather than a full design system. If the website will be custom-built, Figma can become the main design source.
+- Since the direction is now a custom website, Figma can become useful after the sitemap and wireframe-level section structure are clear. It should not block the first requirements and prototype work.
 
 ## Platform Direction
 
-- Imweb has already been paid for three years, so it should be treated as a useful operating asset unless its limitations block the product direction.
-- Near-term option: keep Imweb for checkout, payment, order management, customer support pages, and basic product sales while using a separate custom site for premium brand storytelling.
-- Mid-term option: build a custom GreenPutt site for brand, content, member experience, articles/notices, lead capture, and product storytelling, then link purchase CTAs to Imweb checkout/product pages.
-- Long-term option: replace Imweb with a custom commerce platform only after the requirements for membership, payments, order management, 게시글/notice/FAQ databases, admin workflows, coupons, shipping, refunds, and analytics are clear.
-- Recommended current path: do not fully replace Imweb immediately. Use it for Paulver glove sales and operational reliability first, while planning the custom site architecture in parallel.
-- Key reason: custom membership, payment, order, customer support, and database administration is a full product system, not only a visual website. It should be planned deliberately before replacing a paid working platform.
-- Uploaded platform reference document also frames Imweb as a strong Korean all-rounder for homepage + shopping mall, domestic PG, and Naver SEO. This supports keeping Imweb for near-term checkout/order operations.
+- Direction changed: plan to replace the current Imweb site with a custom website that can be maintained through this repository and Codex.
+- Imweb remains useful as a reference for existing structure, screenshots, page copy, and operational expectations, but it should no longer be treated as the target long-term platform.
+- First custom build should be a commerce MVP:
+  - Product database for Polvert and GreenPutt prototype products.
+  - Polvert purchase flow with payment integration.
+  - Prototype product pages for putter, putting mat, and rangefinder with inquiry/reservation CTA.
+  - FAQ, Notice, and 1:1 Inquiry content stored in a maintainable data system.
+  - Customer-facing pages, payment flow, and inquiry/reservation flow first.
+  - Minimal administration should follow gradually, starting with the smallest way to review orders, inquiries, and product/content records.
+- Payment integration candidates should be evaluated during implementation planning, with Korean commerce requirements in mind. Likely candidates include Toss Payments, PortOne, or another domestic PG-friendly option.
+- Do not plan a full mature commerce system in the first release unless explicitly required. Coupons, complex membership benefits, advanced refunds, multi-vendor operations, subscriptions, and app-based coaching should be deferred.
 
 ## Current Site Context
 
@@ -116,13 +187,14 @@ Plan a premium golf/putting brand website before implementation. The site should
 ## Open Decisions
 
 - Primary customer segment and brand tone.
-- Whether the first launch should sell products, collect leads/waitlist interest, or mainly build brand credibility before prototypes are finished.
-- Whether Paulver golf glove should be presented as a GreenPutt store product, a partner/import product, or a separate early commerce test product.
+- Exact balance between brand trust, Polvert sales conversion, and GreenPutt prototype reservations on the homepage.
+- Exact Polvert product variants, sizes, options, and launch pricing.
 - Whether `Heads Down. Data On.` should become the main homepage campaign line.
-- Whether Figma should be introduced now, after wireframes, or only if custom implementation becomes likely.
-- Exact AI image style: realistic studio product render, dark premium reflection, lifestyle putting scene, or a mixed system.
+- Whether Figma should be introduced after the first wireframe/prototype or only when high-fidelity design handoff is needed.
+- Exact AI image style per track: golf-brand campaign imagery, GreenPutt concept/use imagery, and Polvert wearing/use imagery.
 - Whether video should be a generated brand/product motion piece, a future prototype shoot, or a lightweight web animation in the first phase.
-- Scope of custom platform replacement: brand site only, member/content site, or full commerce/admin platform.
+- Which payment provider and database/admin approach should be used for the first custom commerce MVP.
+- Exact minimum admin workflow for launch: direct DB/CMS management, a small internal dashboard, or a staged combination.
 
 ## Maintenance Notes
 

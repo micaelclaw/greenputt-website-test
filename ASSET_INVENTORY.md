@@ -57,7 +57,7 @@ Important extracted product claims to reuse carefully:
 - Survey evidence from planning docs: 238 respondents; 92.1% reported head-up affects score, 62.9% were dissatisfied that distance cannot be checked numerically, 92.6% wanted quantitative distance data.
 - Product roadmap from planning docs: hardware first, app subscription later, AI coaching platform later.
 
-### Paulver Golf Glove
+### Polvert Golf Glove
 
 - `05_Product_Paulver_Glove/000.폴베르자료실/001.극세사_장갑/`
   - Product detail images for microfiber gloves.
@@ -79,14 +79,14 @@ Important extracted product claims to reuse carefully:
 - `05_Product_Paulver_Glove/000.폴베르자료실/004.디자인상표권/`
   - Design/trademark material.
 - `05_Product_Paulver_Glove/000.폴베르자료실/logo.png`
-  - Paulver logo asset.
+  - Polvert logo asset.
 
-Paulver website use:
+Polvert website use:
 
 - This is the most commerce-ready asset set.
 - It can support a product detail page immediately.
 - Long vertical detail images may need slicing/compression for page speed and mobile readability.
-- Paulver should be presented as an initial store product or partner product so it does not dilute GreenPutt's long-term putting/putter identity.
+- Polvert should be presented as an initial store product or partner product so it does not dilute GreenPutt's long-term putting/putter identity.
 
 ## Supporting Business/Admin Materials
 
@@ -126,7 +126,7 @@ Move or copy public website-use assets into:
 - `04_Product_Rangefinder`
   - Distance/projection/rangefinder device renders and drawings.
 - `05_Product_Paulver_Glove`
-  - Paulver product images, price list, product videos, logo, public IP proof if needed.
+  - Polvert product images, price list, product videos, logo, public IP proof if needed.
 - `06_References`
   - Titleist/Crossputt references, website builder comparison, competitor screenshots.
 - `07_AI_Image_Work`
@@ -149,16 +149,16 @@ Keep private/admin files outside the public website asset flow:
 - The GreenPutt homepage can be product-led now, even before final production photography, because there are usable concept visuals and a clear technical story.
 - The strongest homepage line currently visible in assets is `Heads Down. Data On.`
 - The core promise should be about keeping the golfer's eyes down while giving immediate distance feedback.
-- Paulver gloves can be the first live sales item, but the main site should still feel like GreenPutt is a putting performance brand.
+- Polvert gloves can be the first live sales item, but the main site should still feel like GreenPutt is a putting performance brand.
 - The initial store architecture should support:
   - GreenPutt product story and waitlist/inquiry for prototype products.
-  - Paulver glove sales through Imweb checkout or product page.
+  - Polvert glove sales through Imweb checkout or product page.
   - FAQ/Notice/1:1 inquiry for operational trust.
 
 ## Next Useful Work
 
 - Select 10-20 public-safe images as the first website asset set.
-- Compress and crop Paulver long detail pages for mobile commerce.
+- Compress and crop Polvert long detail pages for mobile commerce.
 - Create public-facing GreenPutt product copy from the business-plan language.
-- Decide whether Paulver is labeled as "Partner Product", "Selected Store Product", or "GreenPutt Store First Product".
+- Decide whether Polvert is labeled as "Partner Product", "Selected Store Product", or "GreenPutt Store First Product".
 - Inspect the current Imweb site and map existing pages to the new content structure.
