@@ -48,7 +48,7 @@ window.GREENPUTT_HOME_CONTENT = {
       description: "지금 구매 가능한 첫 번째 골프 기어. 색상과 사이즈 선택 후 공식 스토어로 이어집니다.",
       state: "구매 가능",
       stage: "그립을 잡는 손의 감각부터 GreenPutt의 기준으로 고른 프리미엄 장갑입니다.",
-      image: "./assets/polvert/logo-locked-v8/polvert-storepick-logo-locked-10-homepage-hero.jpg",
+      image: "./assets/polvert/logo-locked-v10/polvert-storepick-logo-locked-10-homepage-hero.jpg",
       imageAlt: "실제 Polvert 로고를 회전 합성한 극세사 오른손 골프 장갑 착용샷",
       imagePosition: "70% 50%",
       focus: "그립감",

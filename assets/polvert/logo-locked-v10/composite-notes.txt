@@ -1,0 +1,12 @@
+v10 compositing: official Polvert logo is converted to white alpha. The black patch is isolated as the largest dark connected component, wrapped by a minimum-area rotated bounding box, and the logo is centered on that rotated box crosshair. The logo angle follows the patch box horizontal axis with logo_angle = 180 - horizontal_axis_angle. Logo size is set from the rotated box long side in local logo space, so tilted logos do not shrink because of screen-axis bounding-box height. Outputs are mirrored into one Google Drive export folder.
+google_drive_export=/Users/micaelclaw/Library/CloudStorage/GoogleDrive-micaelclaw@gmail.com/내 드라이브/GreenPutt Website/11_Final_Web_Exports/Polvert/StorePick_Logo_Locked
+1: rotated_box_center=(1051.0,351.8), rotated_box_size=240.5x216.4, horizontal_axis_angle=19.3, logo_angle=160.7, target_local_width=163.5, rotated_logo_screen_bbox=156x74
+2: rotated_box_center=(1121.2,346.5), rotated_box_size=217.0x187.8, horizontal_axis_angle=25.9, logo_angle=154.1, target_local_width=147.5, rotated_logo_screen_bbox=136x77
+3: rotated_box_center=(1119.7,246.2), rotated_box_size=339.9x287.8, horizontal_axis_angle=36.6, logo_angle=143.4, target_local_width=231.1, rotated_logo_screen_bbox=187x145
+4: rotated_box_center=(1130.4,397.6), rotated_box_size=160.3x146.5, horizontal_axis_angle=10.4, logo_angle=169.6, target_local_width=109.0, rotated_logo_screen_bbox=111x44
+5: rotated_box_center=(1085.6,312.3), rotated_box_size=193.9x172.1, horizontal_axis_angle=17.6, logo_angle=162.4, target_local_width=131.9, rotated_logo_screen_bbox=129x59
+6: rotated_box_center=(1115.0,353.2), rotated_box_size=199.3x193.0, horizontal_axis_angle=19.1, logo_angle=160.9, target_local_width=135.5, rotated_logo_screen_bbox=132x62
+7: rotated_box_center=(1092.6,335.7), rotated_box_size=218.3x196.4, horizontal_axis_angle=19.7, logo_angle=160.3, target_local_width=148.5, rotated_logo_screen_bbox=142x69
+8: rotated_box_center=(960.9,378.7), rotated_box_size=200.8x117.6, horizontal_axis_angle=26.6, logo_angle=153.4, target_local_width=136.5, rotated_logo_screen_bbox=126x73
+9: rotated_box_center=(1154.0,336.5), rotated_box_size=231.9x208.2, horizontal_axis_angle=36.9, logo_angle=143.1, target_local_width=157.7, rotated_logo_screen_bbox=129x103
+11: rotated_box_center=(1164.5,376.5), rotated_box_size=249.3x224.0, horizontal_axis_angle=19.8, logo_angle=160.2, target_local_width=169.5, rotated_logo_screen_bbox=162x77
