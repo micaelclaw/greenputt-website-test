@@ -13,7 +13,7 @@ function bindViewportUnit() {
   };
 
   setViewportUnit(true);
-  window.addEventListener("resize", setViewportUnit);
+  window.addEventListener("resize", () => setViewportUnit());
   window.addEventListener("orientationchange", () => setViewportUnit(true));
 }
 
