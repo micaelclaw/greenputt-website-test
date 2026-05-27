@@ -52,29 +52,33 @@
             GreenPutt는 임팩트 뒤에도 필요한 거리 피드백을 공 가까이에 남겨,
             시선과 루틴이 끝까지 흐트러지지 않게 합니다.
           </p>
-          <div class="hero-actions">
-            <a class="button primary" href="#zero-head-up">루틴 살펴보기</a>
-            <a class="button ghost" href="#system">라인업 보기</a>
+          <div class="hero-lower">
+            <div class="hero-actions">
+              <a class="button primary" href="#zero-head-up">루틴 살펴보기</a>
+              <a class="button ghost" href="#system">라인업 보기</a>
+            </div>
+            <div class="hero-dashboard">
+              <div class="hero-caption" aria-label="현재 퍼팅 거리 신호">
+                <span>퍼팅 거리 신호</span>
+                <strong id="hero-distance">2.3m</strong>
+                <small id="hero-tempo">리듬 유지</small>
+              </div>
+              <dl class="hero-metrics" aria-label="GreenPutt 핵심 루틴">
+                <div>
+                  <dt>신호</dt>
+                  <dd>공 가까운 피드백</dd>
+                </div>
+                <div>
+                  <dt>루틴</dt>
+                  <dd>고개를 들지 않는 연습</dd>
+                </div>
+                <div>
+                  <dt>라인업</dt>
+                  <dd>매트 · 디바이스 · 기어</dd>
+                </div>
+              </dl>
+            </div>
           </div>
-          <dl class="hero-metrics" aria-label="GreenPutt 핵심 루틴">
-            <div>
-              <dt>신호</dt>
-              <dd>공 가까운 피드백</dd>
-            </div>
-            <div>
-              <dt>루틴</dt>
-              <dd>고개를 들지 않는 연습</dd>
-            </div>
-            <div>
-              <dt>라인업</dt>
-              <dd>매트 · 디바이스 · 기어</dd>
-            </div>
-          </dl>
-        </div>
-        <div class="hero-caption" aria-hidden="true">
-          <span>퍼팅 거리 신호</span>
-          <strong id="hero-distance">2.3m</strong>
-          <small id="hero-tempo">리듬 유지</small>
         </div>
         <a class="scroll-cue" href="#zero-head-up" aria-label="제로 헤드업 이야기로 이동">
           <span></span>
@@ -188,7 +192,12 @@
 
       <section id="system" class="system-section">
         <div class="system-copy">
-          <p class="eyebrow">GreenPutt 라인업</p>
+          <div>
+            <p class="eyebrow">GreenPutt 라인업</p>
+            <p class="system-intent">
+              제품을 나열하기보다, 퍼팅 한 번의 루틴 안에서 각 장비가 맡는 역할을 보여줍니다.
+            </p>
+          </div>
           <h2>퍼터, 매트, 피드백 장치가 하나의 루틴으로 이어집니다.</h2>
         </div>
         <div class="system-stage" aria-live="polite">
@@ -200,8 +209,7 @@
               height="1028"
               alt="GreenPutt 퍼팅 시스템 클로즈업"
             />
-            <span class="stage-pulse"></span>
-            <span class="stage-scanline"></span>
+            <span class="stage-hotspot" aria-hidden="true"><i></i></span>
           </div>
           <div class="system-stage-copy">
             <p class="eyebrow" id="stage-label">핵심 루틴</p>
@@ -219,9 +227,15 @@
                 <dd id="stage-signal">2.3m</dd>
               </div>
             </dl>
+            <a id="stage-cta" class="button stage-button" href="#bridge">자세히 보기</a>
           </div>
         </div>
-        <div id="product-grid" class="product-lineup" aria-live="polite"></div>
+        <div class="product-carousel" aria-label="GreenPutt 제품 슬라이드">
+          <button id="lineup-prev" class="lineup-control" type="button" aria-label="이전 제품 보기">‹</button>
+          <div id="product-grid" class="product-lineup" aria-live="polite"></div>
+          <button id="lineup-next" class="lineup-control" type="button" aria-label="다음 제품 보기">›</button>
+        </div>
+        <div id="lineup-dots" class="lineup-dots" aria-label="제품 슬라이드 위치"></div>
       </section>
 
       <section class="cinema-band">
@@ -244,10 +258,10 @@
       <section id="storepick" class="storepick-section">
         <div class="storepick-media">
           <img
-            src="./assets/greenputt-polvert-showcase.jpg"
-            width="2200"
-            height="942"
-            alt="Polvert 골프 장갑과 GreenPutt 골프공"
+            src="./assets/polvert/logo-locked-v8/polvert-storepick-logo-locked-10-homepage-hero.jpg"
+            width="1672"
+            height="941"
+            alt="실제 Polvert 로고를 회전 합성한 극세사 오른손 골프 장갑 착용샷"
           />
         </div>
         <div class="storepick-copy">

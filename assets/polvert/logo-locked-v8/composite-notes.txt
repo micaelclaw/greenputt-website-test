@@ -1,0 +1,11 @@
+v8 compositing: official Polvert logo is converted to white alpha and rotated like the real glove reference. The black patch is isolated as the largest dark connected component inside the patch ROI. A minimum-area rotated bounding box is calculated from that patch component, and the logo is centered on the rotated box crosshair. Logo size is scaled from the rotated box long/short sides.
+1: rotated_box_center=(1051.0,351.8), rotated_box_size=240.5x216.4, box_angle=109.3, target_width=163.5, rotated_logo_size=163x65, logo_angle=192
+2: rotated_box_center=(1121.2,346.5), rotated_box_size=217.0x187.8, box_angle=115.9, target_width=147.5, rotated_logo_size=147x58, logo_angle=192
+3: rotated_box_center=(1119.7,246.2), rotated_box_size=339.9x287.8, box_angle=-143.4, target_width=231.1, rotated_logo_size=231x98, logo_angle=195
+4: rotated_box_center=(1130.4,397.6), rotated_box_size=160.3x146.5, box_angle=100.4, target_width=109.0, rotated_logo_size=106x46, logo_angle=192
+5: rotated_box_center=(1085.6,312.3), rotated_box_size=193.9x172.1, box_angle=107.6, target_width=131.9, rotated_logo_size=131x54, logo_angle=192
+6: rotated_box_center=(1115.0,353.2), rotated_box_size=199.3x193.0, box_angle=109.1, target_width=135.5, rotated_logo_size=135x55, logo_angle=192
+7: rotated_box_center=(1092.6,335.7), rotated_box_size=218.3x196.4, box_angle=109.7, target_width=148.5, rotated_logo_size=148x58, logo_angle=192
+8: rotated_box_center=(960.9,378.7), rotated_box_size=200.8x117.6, box_angle=26.6, target_width=136.5, rotated_logo_size=136x44, logo_angle=185
+9: rotated_box_center=(1154.0,336.5), rotated_box_size=231.9x208.2, box_angle=126.9, target_width=157.7, rotated_logo_size=157x58, logo_angle=190
+11: rotated_box_center=(1164.5,376.5), rotated_box_size=249.3x224.0, box_angle=109.8, target_width=169.5, rotated_logo_size=169x72, logo_angle=195
