@@ -461,8 +461,9 @@ h3 {
   }
 
   .hero {
-    min-height: 760px;
-    padding: 96px 20px 64px;
+    min-height: calc(100vh - 96px);
+    align-items: center;
+    padding: 64px 20px;
   }
 
   .green-plane {
@@ -471,13 +472,26 @@ h3 {
   }
 
   .projected-data {
-    right: 24px;
-    bottom: 270px;
+    right: auto;
+    left: 238px;
+    top: 172px;
+    bottom: auto;
+    font-size: 34px;
   }
 
   .putting-line {
     right: 0;
+    bottom: 230px;
     width: 72vw;
+  }
+
+  h1 {
+    max-width: 7ch;
+    font-size: clamp(48px, 17vw, 68px);
+  }
+
+  .lead {
+    max-width: 25ch;
   }
 
   .story,
