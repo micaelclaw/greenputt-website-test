@@ -106,9 +106,10 @@ Premium golf glove product photograph, golfer gripping a club with a clean white
 - `prototype/assets/greenputt-lineup-showcase.jpg`: local AI 후보 `greenputt_product_showcase_3_accessories.png`를 웹용으로 리사이즈한 전체 라인업 이미지. GreenPutt identity band와 putting mat stage에 사용.
 - `prototype/assets/greenputt-polvert-showcase.jpg`: local AI 후보 `greenputt_product_showcase.png`를 웹용으로 리사이즈한 Polvert/볼 쇼케이스 이미지. StorePick과 Polvert stage에 사용.
 - `prototype/assets/greenputt-putter-macro.jpg`: local AI 후보 `greenputt_hero_section.png`를 웹용으로 리사이즈한 putter macro 이미지. Data Layer stage에 사용.
-- `prototype/assets/polvert/logo-locked-v8/polvert-storepick-logo-locked-10-homepage-hero.jpg`: StorePick 대표 이미지. AI에는 빈 검은 패치만 생성하게 하고, 05 폴더의 실제 `폴베르_로고.jpg`를 흰색 투명 로고로 변환해 실제 장갑처럼 회전 합성했다. v8은 가장 큰 검은 패치 컴포넌트를 분리한 뒤 최소 면적 회전 박스를 만들고, 그 회전 박스의 수직/수평 중앙 교차점에 로고를 맞춘 버전이다.
-- `prototype/assets/polvert/logo-locked-v8/polvert-storepick-logo-locked-contact-sheet.jpg`: 실제 로고 회전 합성 후보 10장 검토용 시트.
-- `prototype/assets/polvert/logo-locked-v8/polvert-storepick-logo-locked-centerline-check.jpg`: 검은 패치 회전 박스와 회전된 중앙 십자선을 확인하기 위한 검수 이미지.
+- `prototype/assets/polvert/logo-locked-v10/polvert-storepick-logo-locked-10-homepage-hero.jpg`: StorePick 대표 이미지. AI에는 빈 검은 패치만 생성하게 하고, 05 폴더의 실제 `폴베르_로고.jpg`를 흰색 투명 로고로 변환해 실제 장갑처럼 회전 합성했다. v10은 가장 큰 검은 패치 컴포넌트를 분리한 뒤 최소 면적 회전 박스를 만들고, 그 회전 박스의 수직/수평 중앙 교차점에 로고를 맞췄다. 로고 각도는 회전 박스의 가로축을 따르며, 크기는 회전 박스의 긴 변 기준으로 산정한다.
+- `prototype/assets/polvert/logo-locked-v10/polvert-storepick-logo-locked-contact-sheet.jpg`: 실제 로고 회전 합성 후보 10장 검토용 시트.
+- `prototype/assets/polvert/logo-locked-v10/polvert-storepick-logo-locked-centerline-check.jpg`: 검은 패치 회전 박스와 회전된 중앙 십자선을 확인하기 위한 검수 이미지.
+- Google Drive export: `GreenPutt Website/11_Final_Web_Exports/Polvert/StorePick_Logo_Locked`
 
 ### 2026-05-27 후보 1
 
@@ -206,8 +207,9 @@ Premium golf glove product photograph, golfer gripping a club with a clean white
 
 - 트랙: Polvert StorePick
 - 원본/참조: `05_Product_Polvert_Glove/폴베르_로고.jpg`, `05_Product_Polvert_Glove/000.폴베르자료실/001.극세사_장갑/카테고리_라인업_남양(3).jpg`
-- 저장 위치: `prototype/assets/polvert/logo-locked-v8/`
-- 프롬프트: Polvert 극세사 오른손 장갑 착용/그립/필드 라이프스타일 이미지를 생성하되, 손등 검은 패치는 완전히 빈 상태로 남기도록 요청. 이후 실제 로고 파일을 흰색 투명 로고로 변환해 패치 위에 190도 전후로 회전 합성했다. v8에서는 주변 검은 물체를 제외하고 가장 큰 검은 패치 컴포넌트만 분리한 다음, 패치가 차지하는 공간을 따라 도는 최소 면적 회전 박스를 만들고 그 박스의 중앙 십자점에 로고 중심을 맞췄다.
+- 저장 위치: `prototype/assets/polvert/logo-locked-v10/`
+- Google Drive 저장 위치: `GreenPutt Website/11_Final_Web_Exports/Polvert/StorePick_Logo_Locked`
+- 프롬프트: Polvert 극세사 오른손 장갑 착용/그립/필드 라이프스타일 이미지를 생성하되, 손등 검은 패치는 완전히 빈 상태로 남기도록 요청. 이후 실제 로고 파일을 흰색 투명 로고로 변환해 패치 위에 합성했다. v10에서는 주변 검은 물체를 제외하고 가장 큰 검은 패치 컴포넌트만 분리한 다음, 패치가 차지하는 공간을 따라 도는 최소 면적 회전 박스를 만들고 그 박스의 중앙 십자점에 로고 중심을 맞췄다. 로고도 박스의 가로축과 같은 기울기를 따르게 했고, 크기는 화면 기준 박스가 아니라 회전 박스의 긴 변 길이를 기준으로 잡았다.
 - 장점: AI가 만든 제각각의 가짜 로고를 제거하고, 실제 Polvert 로고 형태와 원본 장갑의 회전 패턴을 유지한다. 홈쇼핑 제품 컷과 필드/연습장 라이프스타일 컷이 함께 있다.
 - 보완점: 최종 상업 광고물에서는 실물 촬영 또는 패치 표면 원근 왜곡을 더 정교하게 맞춘 합성본이 가장 안전하다.
 - 사용 후보 위치: StorePick campaign band, Polvert product card, Polvert detail page 후보.
