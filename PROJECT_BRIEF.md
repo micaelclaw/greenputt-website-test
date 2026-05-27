@@ -42,6 +42,7 @@ Plan a premium golf/putting brand website before implementation. The site should
 - Visual reference: Crossputt emphasizes putter identity, product close-ups, video, reflection-style product presentation, and a focused putter/category navigation.
 - GreenPutt direction: use a campaign-led first impression inspired by Titleist's trust and scale, then structure the homepage as modular exportable sections inspired by a product system. Crossputt's product focus should inform close-up product and technology storytelling without making GreenPutt feel limited to only putters.
 - Current selected homepage concept: an A+B hybrid, with `Campaign-Led Home` as the main emotional direction and `Exportable System Home` as the structure. Each major section should be usable later as an Imweb image, video, or content block.
+- Updated prototype direction: `Premium Putting Film`. Use actual GreenPutt system render and Polvert assets first, with Titleist-scale campaign framing and Crossputt-style product immersion. The homepage should feel like a premium golf product film rather than a generic landing page.
 - Existing asset candidate: `홈페이지 제작/1.메인/메인(Heads Down. Data On).jpeg` is a strong first homepage hero direction.
 - Existing message candidate: `Heads Down. Data On.`
 - Avoid generic golf-stock imagery, decorative gradients, and filler landing-page copy.
@@ -110,6 +111,7 @@ Working section order:
 Design specification:
 
 - The approved planning direction is documented in `docs/superpowers/specs/2026-05-27-greenputt-hybrid-home-design.md`.
+- The updated premium visual direction is documented in `docs/superpowers/specs/2026-05-27-greenputt-premium-putting-film-design.md`.
 - The homepage should be treated as a custom prototype and content laboratory, while database-backed operational surfaces can remain in Imweb.
 - Every homepage section should have a clear export path so it can later become an Imweb content block, image, video, or reference for a production design.
 
@@ -225,4 +227,5 @@ Design specification:
 - Keep decisions in this file when they affect future development.
 - Update this brief before or during major design, content, or architecture changes.
 - Keep generated image prompts and final selected assets organized so future real product photography can replace them cleanly.
+- The first custom homepage implementation artifact lives in `prototype/`. It is a static experimental prototype for campaign direction, section rhythm, and Imweb-exportable content structure.
 - Do not rewrite unrelated files.
