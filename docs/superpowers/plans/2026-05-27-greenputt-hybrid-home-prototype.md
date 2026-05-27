@@ -763,7 +763,7 @@ Open:
 
 - Polvert product: `https://greenputt.kr/all_products/?idx=77`
 - Cart: `https://greenputt.kr/shop_cart`
-- Inquiry fallback: `https://greenputt.kr/contact`
+- Inquiry fallback: `#support` until the exact Imweb inquiry URL is confirmed. `https://greenputt.kr/contact` currently redirects to `/`.
 ```
 
 - [ ] **Step 2: Add a brief note**
