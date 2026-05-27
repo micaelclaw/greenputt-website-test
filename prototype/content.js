@@ -10,6 +10,8 @@ window.GREENPUTT_HOME_CONTENT = {
       imageAlt: "GreenPutt 퍼팅 어시스턴트와 매트 클로즈업",
       focus: "임팩트 라인",
       signal: "2.3m",
+      hotspot: { x: "48%", y: "64%" },
+      cta: "문의 연결",
       href: "#bridge"
     },
     {
@@ -22,6 +24,8 @@ window.GREENPUTT_HOME_CONTENT = {
       imageAlt: "GreenPutt 퍼팅 매트와 액세서리 라인업",
       focus: "롤 표면",
       signal: "120cm",
+      hotspot: { x: "35%", y: "70%" },
+      cta: "라인업 문의",
       href: "#bridge"
     },
     {
@@ -34,6 +38,8 @@ window.GREENPUTT_HOME_CONTENT = {
       imageAlt: "GreenPutt 퍼터 매크로 제품 이미지",
       focus: "공 가까운 데이터",
       signal: "실시간",
+      hotspot: { x: "52%", y: "56%" },
+      cta: "출시 소식 보기",
       href: "#bridge"
     },
     {
@@ -42,10 +48,13 @@ window.GREENPUTT_HOME_CONTENT = {
       description: "지금 구매 가능한 첫 번째 골프 기어. 색상과 사이즈 선택 후 공식 스토어로 이어집니다.",
       state: "구매 가능",
       stage: "그립을 잡는 손의 감각부터 GreenPutt의 기준으로 고른 프리미엄 장갑입니다.",
-      image: "./assets/greenputt-polvert-showcase.jpg",
-      imageAlt: "Polvert 장갑과 GreenPutt 골프공 제품 쇼케이스",
+      image: "./assets/polvert/logo-locked-v8/polvert-storepick-logo-locked-10-homepage-hero.jpg",
+      imageAlt: "실제 Polvert 로고를 회전 합성한 극세사 오른손 골프 장갑 착용샷",
+      imagePosition: "70% 50%",
       focus: "그립감",
       signal: "구매 가능",
+      hotspot: { x: "76%", y: "34%" },
+      cta: "Polvert 상품 보기",
       href: "https://greenputt.kr/all_products/?idx=77"
     }
   ],
