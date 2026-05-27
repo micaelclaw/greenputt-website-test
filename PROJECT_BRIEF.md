@@ -40,7 +40,8 @@ Plan a premium golf/putting brand website before implementation. The site should
 - Positioning: putting practice/improvement brand plus putter-centered premium brand.
 - Visual reference: Titleist Korea homepage uses large photographic campaign sections, strong product/category navigation, product recommendations, stories, and support links.
 - Visual reference: Crossputt emphasizes putter identity, product close-ups, video, reflection-style product presentation, and a focused putter/category navigation.
-- GreenPutt direction: combine a premium first-viewport hero with polished product renders or AI-generated hero assets, then support it with practical product/category sections.
+- GreenPutt direction: use a campaign-led first impression inspired by Titleist's trust and scale, then structure the homepage as modular exportable sections inspired by a product system. Crossputt's product focus should inform close-up product and technology storytelling without making GreenPutt feel limited to only putters.
+- Current selected homepage concept: an A+B hybrid, with `Campaign-Led Home` as the main emotional direction and `Exportable System Home` as the structure. Each major section should be usable later as an Imweb image, video, or content block.
 - Existing asset candidate: `홈페이지 제작/1.메인/메인(Heads Down. Data On).jpeg` is a strong first homepage hero direction.
 - Existing message candidate: `Heads Down. Data On.`
 - Avoid generic golf-stock imagery, decorative gradients, and filler landing-page copy.
@@ -106,6 +107,12 @@ Working section order:
    - FAQ, Notice, 1:1 Inquiry, shipping/returns, and support links.
    - Useful because prototypes and AI-generated visuals require extra trust-building.
 
+Design specification:
+
+- The approved planning direction is documented in `docs/superpowers/specs/2026-05-27-greenputt-hybrid-home-design.md`.
+- The homepage should be treated as a custom prototype and content laboratory, while database-backed operational surfaces can remain in Imweb.
+- Every homepage section should have a clear export path so it can later become an Imweb content block, image, video, or reference for a production design.
+
 ## Content And Assets
 
 - Real product photos are not available yet because all three products are still in prototype development.
@@ -165,6 +172,7 @@ Working section order:
 ## Platform Direction
 
 - Direction changed: use a custom GreenPutt front-end site with Imweb as the bridge/backend for commerce operations.
+- Updated direction: keep Imweb as the operational system for commerce and database-backed content, and use the custom homepage as an experimental premium front door and exportable content source.
 - Imweb should remain the system of record for first-phase payment, order, member, shipping, cancellation/refund, and fulfillment workflows.
 - The custom site should own the premium brand experience:
   - Home, Zero Head-Up story, product storytelling, campaign imagery, and prototype product inquiry/reservation.
