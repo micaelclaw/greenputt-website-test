@@ -10,6 +10,12 @@ GreenPutt 홈페이지가 일반 쇼핑몰처럼 보이지 않고, premium golf 
 
 ## 이미지 트랙
 
+공통 생성 원칙:
+
+- 제품에 이미 새겨져 있거나 부착된 로고, 패치, 상표, 시그니처 마크는 훼손하지 않는다.
+- Polvert처럼 로고가 구매 판단과 상품 식별의 핵심인 경우, 생성 프롬프트에 `로고 보존`을 명시하고 결과 검수 때 가장 먼저 확인한다.
+- AI가 로고를 정확히 재현하지 못하면 최종 후보로 바로 쓰지 않고, 실제 로고 합성 또는 원본 촬영본 사용 대상으로 표시한다.
+
 ### 1. GreenPutt System Film
 
 목적:
@@ -95,10 +101,107 @@ Premium golf glove product photograph, golfer gripping a club with a clean white
 - `prototype/assets/greenputt-system-render.png`: 현재 hero와 system stage에 사용 중인 GreenPutt 시스템 render.
 - `prototype/assets/polvert-glove-grip.png`: 현재 StorePick 섹션에 사용 중인 Polvert glove grip 이미지.
 - `prototype/assets/greenputt-logo.png`: 현재 header에 사용 중인 GreenPutt logo.
+- `prototype/assets/greenputt-hero-signal.jpg`: local AI 후보 `greenputt_hero_2_user_experience.png`를 웹용으로 리사이즈한 hero 이미지. 골퍼, 매트, 거리 신호가 한 장면에 보여 첫 화면에 사용.
+- `prototype/assets/greenputt-system-closeup.jpg`: local AI 후보 `greenputt_product_showcase_2_putter.png`를 웹용으로 리사이즈한 제품 close-up 이미지. Zero Head-Up film과 product stage 기본 이미지로 사용.
+- `prototype/assets/greenputt-lineup-showcase.jpg`: local AI 후보 `greenputt_product_showcase_3_accessories.png`를 웹용으로 리사이즈한 전체 라인업 이미지. GreenPutt identity band와 putting mat stage에 사용.
+- `prototype/assets/greenputt-polvert-showcase.jpg`: local AI 후보 `greenputt_product_showcase.png`를 웹용으로 리사이즈한 Polvert/볼 쇼케이스 이미지. StorePick과 Polvert stage에 사용.
+- `prototype/assets/greenputt-putter-macro.jpg`: local AI 후보 `greenputt_hero_section.png`를 웹용으로 리사이즈한 putter macro 이미지. Data Layer stage에 사용.
+
+### 2026-05-27 후보 1
+
+- 트랙: GreenPutt System Film
+- 원본/참조: `GreenPutt Website/07_AI_Image_Work/Generated_Images_And_Photoshop/사진첩/20260526/greenputt_hero_2_user_experience.png`
+- 프롬프트: 기존 local AI candidate 사용. 웹에서는 canvas signal overlay와 함께 재구성.
+- 장점: 실제 퍼팅 자세, 매트, 거리 신호, 장치가 한 화면에 보여 GreenPutt homepage identity가 즉시 읽힌다.
+- 보완점: 이미지 안의 로고와 장치 디테일은 최종 실물 촬영으로 교체 필요.
+- 사용 후보 위치: Home hero
+- Art Director 판단: 선택
+- 최종 상태: 선택
+
+### 2026-05-27 후보 2
+
+- 트랙: Product Close-Up
+- 원본/참조: `greenputt_product_showcase_2_putter.png`, `greenputt_product_showcase_3_accessories.png`, `greenputt_hero_section.png`
+- 프롬프트: 기존 local AI candidate 사용. 제품 stage hover/focus 전환 이미지로 재배치.
+- 장점: 제품 단품보다 GreenPutt lineup이 하나의 퍼팅 시스템으로 보인다.
+- 보완점: 실제 제품과 다를 수 있는 로고, 소재, 비율은 prototype label 또는 내부 검수 필요.
+- 사용 후보 위치: Zero Head-Up film, System stage, Identity band
+- Art Director 판단: 선택
+- 최종 상태: 선택
+
+### 2026-05-27 후보 3
+
+- 트랙: Polvert StorePick
+- 원본/참조: `greenputt_product_showcase.png`
+- 프롬프트: 기존 local AI candidate 사용. Polvert를 GreenPutt 세계관 안의 구매 가능 gear로 배치.
+- 장점: 장갑과 볼이 선명하고 검은 배경이라 프리미엄 제품 band에 적합하다.
+- 보완점: 실상품 로고/디테일과 일치 여부는 판매 전 확인 필요.
+- 사용 후보 위치: StorePick, Polvert product stage
+- Art Director 판단: 선택
+- 최종 상태: 선택
+
+### 2026-05-27 작동 원리 reference
+
+- 트랙: GreenPutt System Film
+- 원본/참조: `GreenPutt Website/99_Inbox_To_Sort/그린펏 시현 예상도.mp4`
+- 프롬프트: 해당 없음. 사용자가 업로드한 시현 예상도 영상을 제품 원리 reference로 확인.
+- 장점: "공을 따라 고개를 드는 순간을 막고, 시선이 머무는 자리의 숫자 포인트로 거리감을 확인한다"는 작동 원리가 명확하다.
+- 보완점: 영상 자체는 prototype asset으로 복사하지 않고, 원리만 UI 인터랙션에 반영한다.
+- 사용 후보 위치: Zero Head-Up 작동 원리 섹션
+- Art Director 판단: 반영
+- 최종 상태: reference 반영
+
+### 2026-05-27 후보 4
+
+- 트랙: GreenPutt System Film
+- 원본/참조: `prototype/assets/greenputt-system-render.png`
+- 저장 위치: Google Drive `GreenPutt Website/12_To_Review/02_AI_Candidates/2026-05-27_reference-based_generation/greenputt-system-hero-render-ai-candidate.png`
+- 프롬프트: 기존 GreenPutt 시스템 렌더를 기반으로 어두운 실내 스튜디오, 프리미엄 제품 필름, 왼쪽 headline-safe 여백, 공 근처 lime 거리 피드백을 요청.
+- 장점: 기존 제품 구조를 유지하면서 hero용 어두운 여백과 캠페인 무드가 생김.
+- 보완점: 최종 공개 전 실제 제품 형상, 로고 노출, 거리 숫자 표현 정확도를 재확인해야 함.
+- 사용 후보 위치: homepage hero 또는 첫 product film band.
+- Art Director 판단: 후보.
+- 최종 상태: 후보
+
+### 2026-05-27 후보 5
+
+- 트랙: Product Close-Up
+- 원본/참조: `prototype/assets/greenputt-system-render.png`
+- 저장 위치: Google Drive `GreenPutt Website/12_To_Review/02_AI_Candidates/2026-05-27_reference-based_generation/greenputt-system-closeup-ai-candidate.png`
+- 프롬프트: 기존 렌더 기반으로 매트, 공, 퍼터, 거리 피드백 장치를 낮은 카메라 시점의 studio close-up으로 요청.
+- 장점: Spline/WebGL 섹션을 만들 때 참고하기 좋은 제품 거리감과 조명 분위기가 있음.
+- 보완점: 프로젝션 숫자와 장치 세부 형상이 실제 제품 사양과 맞는지 확인 필요.
+- 사용 후보 위치: system section, technology close-up, 3D section visual reference.
+- Art Director 판단: 후보.
+- 최종 상태: 후보
+
+### 2026-05-27 후보 6
+
+- 트랙: Polvert StorePick
+- 원본/참조: `prototype/assets/polvert-glove-grip.png`
+- 저장 위치: Google Drive `GreenPutt Website/12_To_Review/02_AI_Candidates/2026-05-27_reference-based_generation/polvert-glove-grip-ai-candidate.png`
+- 프롬프트: Polvert 장갑 착용/그립 사진 기반으로 프리미엄 실내 골프 연습장 배경, 장갑 중심 close-up을 요청. 초기 프롬프트에 읽히는 브랜드 텍스트/로고 금지를 포함함.
+- 장점: 착용샷, 소재감, 그립 자세는 자연스러움.
+- 보완점: 원본에 있던 Polvert 로고가 사라져 상품 식별력이 약함.
+- 사용 후보 위치: 착용감 참고.
+- Art Director 판단: 로고 없는 버전은 최종 후보로 부적합.
+- 최종 상태: 보류
+
+### 2026-05-27 후보 7
+
+- 트랙: Polvert StorePick
+- 원본/참조: `prototype/assets/polvert-glove-grip.png`
+- 저장 위치: Google Drive `GreenPutt Website/12_To_Review/02_AI_Candidates/2026-05-27_reference-based_generation/polvert-glove-grip-logo-preserved-ai-candidate.png`
+- 프롬프트: 후보 6의 문제를 수정해 검은 패치와 흰색 Polvert 스타일 스크립트 로고를 반드시 보존하도록 재생성.
+- 장점: 장갑 착용샷의 자연스러움과 Polvert 상품 식별력이 함께 살아남.
+- 보완점: AI가 만든 로고는 실제 벡터 로고와 100% 동일하지 않을 수 있으므로 최종 광고/상세페이지용은 실제 로고 합성 또는 원본 촬영본 사용이 안전함.
+- 사용 후보 위치: StorePick campaign band, Polvert product section.
+- Art Director 판단: 후보 6보다 우선 검토.
+- 최종 상태: 후보
 
 ## 다음 보완
 
 - [ ] Polvert 실제 제품군별 reference를 더 모아 착용/그립 후보를 생성한다.
-- [ ] 매트와 거리 피드백 장치의 실물/렌더 reference를 추가 확인한다.
-- [ ] 최종 후보는 source, prompt, 생성일, 사용 위치를 남긴다.
-- [ ] private/admin 자료가 public asset으로 들어오지 않았는지 CSO 체크리스트와 함께 확인한다.
+- [x] 매트와 거리 피드백 장치의 실물/렌더 reference를 추가 확인한다.
+- [x] 최종 후보는 source, prompt, 생성일, 사용 위치를 남긴다.
+- [x] private/admin 자료가 public asset으로 들어오지 않았는지 CSO 체크리스트와 함께 확인한다.

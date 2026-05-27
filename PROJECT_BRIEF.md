@@ -43,10 +43,12 @@ Plan a premium golf/putting brand website before implementation. The site should
 - GreenPutt direction: use a campaign-led first impression inspired by Titleist's trust and scale, then structure the homepage as modular exportable sections inspired by a product system. Crossputt's product focus should inform close-up product and technology storytelling without making GreenPutt feel limited to only putters.
 - Current selected homepage concept: an A+B hybrid, with `Campaign-Led Home` as the main emotional direction and `Exportable System Home` as the structure. Each major section should be usable later as an Imweb image, video, or content block.
 - Updated prototype direction: `Premium Putting Film`. Use actual GreenPutt system render and Polvert assets first, with Titleist-scale campaign framing and Crossputt-style product immersion. The homepage should feel like a premium golf product film rather than a generic landing page.
+- Identity refresh direction: `GreenPutt Signal System`. The homepage should feel interactive through distance signals, scan lines, hover-responsive product stages, and canvas-based putting trajectory overlays. References like Titleist, Crossputt, Spline, or AI-generated 3D examples are inputs only; the GreenPutt identity is the near-ball data signal and zero-head-up routine.
+- 3D section exploration: the frontend team should consider one restrained Spline-style or WebGL/Three.js-style section for the GreenPutt system, focused on the distance feedback device, projected number, putter, ball, and mat relationship. It should clarify one product-story moment rather than replace the first hero image.
 - Existing asset candidate: `홈페이지 제작/1.메인/메인(Heads Down. Data On).jpeg` is a strong first homepage hero direction.
 - Existing message candidate: `Heads Down. Data On.`
 - Avoid generic golf-stock imagery, decorative gradients, and filler landing-page copy.
-- Copy should be concise and confidence-building; final tone is still to be decided.
+- Copy direction selected: write primary homepage copy in natural Korean with a concise, premium rhythm. Keep English only for brand/product names where it helps recognition; avoid literal translation, internal design commentary, and mixed Korean/English filler.
 
 ## Core Pages Or Features
 
@@ -146,6 +148,7 @@ Design specification:
   - Track 1: golf-brand atmosphere images that make the homepage feel like a premium golf website, similar in role to Titleist's large campaign photography.
   - Track 2: GreenPutt product concept/use images for the putting mat, rangefinder/distance feedback device, projected-number scene, and indoor practice situations.
   - Polvert track: use existing glove assets as references, then generate additional wearing shots, grip shots, and golf-use lifestyle shots.
+  - Preserve product logos, patches, engraved marks, and signature brand details when they are already present on reference products. For Polvert especially, the glove logo is a key product signal and must be checked before accepting a candidate.
   - Keep prompts, reference inputs, generated candidates, selected outputs, and final web exports in separate folders so replacement with real photography remains manageable.
 - Newly created working folders:
   - `GreenPutt Website/09_Selected_For_Website`
@@ -159,6 +162,9 @@ Design specification:
   - `GreenPutt Website/12_To_Review/02_AI_Candidates`
 - Do not modify unrelated existing folders named `micaelclaw_monitoring`, `micaelclaw_scripts`, `micaelclaw_ballmark`, or `전문편성채널 모니터링`.
 - Uploaded assets have been sorted out of `99_Inbox_To_Sort`. The working Drive folder should stay focused on public website planning and assets; private/admin materials are intentionally excluded from this project folder.
+- Current prototype-selected web assets are documented in `docs/agent-studio/image-lab-log.md`. Local AI candidates were resized into `prototype/assets/greenputt-hero-signal.jpg`, `greenputt-system-closeup.jpg`, `greenputt-lineup-showcase.jpg`, `greenputt-polvert-showcase.jpg`, and `greenputt-putter-macro.jpg` for performance.
+- User-uploaded reference video `GreenPutt Website/99_Inbox_To_Sort/그린펏 시현 예상도.mp4` clarifies the core interaction: after the putt, the ball can roll away while the golfer keeps their gaze near the address/display point and reads a digital distance number there. The homepage interaction should show this principle directly rather than abstract steps like stroke/measure/display/repeat.
+- Zero Head-Up principle demos should run as an autonomous loop rather than scroll-triggered state changes, so the gaze-fixed / ball-moving / number-display / correction sequence remains understandable even when scrolling stops.
 
 ## Tooling Direction
 
@@ -170,6 +176,7 @@ Design specification:
   - Fourth: manage AI image generation as a separate asset track with prompts, selected outputs, source references, and replacement status.
 - Figma is not required before deciding content structure. It becomes valuable when choosing exact layouts, visual rhythm, typography, image crops, and responsive variants.
 - Since the direction is now a custom website, Figma can become useful after the sitemap and wireframe-level section structure are clear. It should not block the first requirements and prototype work.
+- Spline or similar 3D design tools can be evaluated after the static prototype proves the story flow. Keep a static image fallback for Imweb export, mobile performance, accessibility, and slower devices.
 
 ## Platform Direction
 

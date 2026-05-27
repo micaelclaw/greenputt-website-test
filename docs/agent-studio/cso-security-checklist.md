@@ -86,9 +86,9 @@ CSO 역할은 이 Markdown 파일을 계속 갱신한다. 다른 에이전트는
 - [x] public website asset folder 구조는 `ASSET_INVENTORY.md`에 정리되어 있다.
 - [x] private/admin 자료는 public website asset flow에서 제외한다고 명시되어 있다.
 - [~] AI-generated image는 prototype에 사용할 수 있지만, 최종 선택본은 provenance note가 필요하다.
-- [ ] 새 생성 이미지를 PR에 사용하기 전에 Image Lab log를 만들거나 갱신한다.
-- [ ] 신분증, 계약서, 민감 번호가 있는 인증서, private business file이 commit/export되지 않았는지 확인한다.
-- [ ] production 사용 전 큰 이미지는 압축하고 crop한다.
+- [x] 새 생성 이미지를 PR에 사용하기 전에 Image Lab log를 만들거나 갱신한다.
+- [x] 신분증, 계약서, 민감 번호가 있는 인증서, private business file이 commit/export되지 않았는지 확인한다.
+- [x] production 사용 전 큰 이미지는 압축하고 crop한다.
 
 ### 6. Dependencies와 build
 
@@ -123,10 +123,13 @@ CSO 역할은 이 Markdown 파일을 계속 갱신한다. 다른 에이전트는
 - 향후 세션에서 `/cso`를 사용할 수 있도록 Codex용 gstack을 설치했다.
 - 현재 정적 prototype과 planning 문서를 기준으로 최초 체크리스트를 만들었다.
 - 전문 에이전트는 PR까지만 만들고, Release Manager가 merge queue를 관리하는 규칙을 추가했다.
+- identity refresh PR에서 추가된 public prototype 이미지 5개를 Image Lab log에 기록하고, private/admin 키워드와 민감 파일명 혼입 여부를 확인했다.
+- 추가 이미지들은 224KB-444KB JPG로 리사이즈했고, EXIF make/model/software 값이 비어 있음을 확인했다.
+- `99_Inbox_To_Sort/그린펏 시현 예상도.mp4`는 작동 원리 reference로만 확인했고, repository asset으로 복사하지 않았다.
 
 남은 보완:
 
 - Polvert stock/options가 활성화된 뒤 Imweb 구매 흐름을 다시 테스트한다.
 - 고객 데이터를 받기 전에 문의/예약 form provider를 결정한다.
 - launch 전 production hosting과 security headers를 정의한다.
-- 생성 이미지를 public final asset으로 쓰기 전에 Image Lab provenance note를 남긴다.
+- 생성 이미지를 public final asset으로 쓰기 전에 실제 제품과 다른 로고, 소재, 비율을 다시 검수한다.
