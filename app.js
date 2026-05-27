@@ -1,11 +1,16 @@
 const content = window.GREENPUTT_HOME_CONTENT;
 
-function createProductCard(product) {
-  const card = document.createElement("article");
-  card.className = "product-card";
+function createProductItem(product, index) {
+  const item = document.createElement("a");
+  item.className = "lineup-item";
+  item.href = product.href;
+
+  const number = document.createElement("span");
+  number.className = "lineup-number";
+  number.textContent = String(index + 1).padStart(2, "0");
 
   const label = document.createElement("p");
-  label.className = "card-label";
+  label.className = "lineup-label";
   label.textContent = product.label;
 
   const title = document.createElement("h3");
@@ -14,13 +19,12 @@ function createProductCard(product) {
   const description = document.createElement("p");
   description.textContent = product.description;
 
-  const link = document.createElement("a");
-  link.className = "text-link";
-  link.href = product.href;
-  link.textContent = product.cta;
+  const state = document.createElement("span");
+  state.className = "lineup-state";
+  state.textContent = product.state;
 
-  card.append(label, title, description, link);
-  return card;
+  item.append(number, label, title, description, state);
+  return item;
 }
 
 function createSupportLink(item) {
@@ -32,16 +36,13 @@ function createSupportLink(item) {
 }
 
 function renderHome() {
-  const productGrid = document.querySelector("#product-grid");
-  const supportLinks = document.querySelector("#support-links");
+  document.querySelector("#product-grid").append(
+    ...content.products.map((product, index) => createProductItem(product, index))
+  );
 
-  content.products.forEach((product) => {
-    productGrid.appendChild(createProductCard(product));
-  });
-
-  content.supportLinks.forEach((item) => {
-    supportLinks.appendChild(createSupportLink(item));
-  });
+  document.querySelector("#support-links").append(
+    ...content.supportLinks.map((item) => createSupportLink(item))
+  );
 }
 
 renderHome();
