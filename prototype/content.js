@@ -1,38 +1,38 @@
 window.GREENPUTT_HOME_CONTENT = {
   products: [
     {
-      name: "Smart Putter Assistant",
-      label: "Prototype",
-      description: "퍼팅 거리 피드백을 가까이 보여주는 제로 헤드업 연습 흐름.",
-      cta: "예약 문의",
-      href: "#support"
+      name: "Zero Head-Up Assistant",
+      label: "Core System",
+      description: "공 가까이에 거리 피드백을 남겨 시선이 위로 튀지 않도록 돕는 GreenPutt의 중심 장치.",
+      state: "Prototype",
+      href: "#bridge"
     },
     {
       name: "Putting Mat",
-      label: "Prototype",
-      description: "실내에서도 반복 가능한 거리 감각과 스트로크 루틴을 만드는 매트.",
-      cta: "매트 문의",
-      href: "#support"
+      label: "Practice Surface",
+      description: "거리 눈금과 피드백 장치를 하나의 연습 루틴으로 묶는 실내 퍼팅 베이스.",
+      state: "Prototype",
+      href: "#bridge"
     },
     {
-      name: "Range Feedback Device",
-      label: "Concept",
-      description: "거리 측정과 피드백을 GreenPutt 시스템 안으로 연결하는 장치.",
-      cta: "개발 소식 받기",
-      href: "#support"
+      name: "Distance Feedback",
+      label: "Data Layer",
+      description: "초기 볼 스피드와 예상 거리를 수치화해 공 근처에서 확인하는 피드백 레이어.",
+      state: "Concept",
+      href: "#bridge"
     },
     {
       name: "Polvert Golf Glove",
       label: "GreenPutt StorePick",
-      description: "현재 구매 가능한 GreenPutt 큐레이션 제품. 색상과 사이즈 선택 후 구매합니다.",
-      cta: "상품 보기",
+      description: "지금 구매 가능한 첫 번째 스토어 픽. 색상과 사이즈 선택 후 아임웹에서 구매합니다.",
+      state: "Available",
       href: "https://greenputt.kr/all_products/?idx=77"
     }
   ],
   supportLinks: [
+    { label: "Polvert 상품", href: "https://greenputt.kr/all_products/?idx=77" },
+    { label: "장바구니", href: "https://greenputt.kr/shop_cart" },
     { label: "FAQ", href: "https://greenputt.kr/faq" },
-    { label: "Notice", href: "https://greenputt.kr/notice" },
-    { label: "1:1 Inquiry", href: "#support" },
-    { label: "Cart", href: "https://greenputt.kr/shop_cart" }
+    { label: "Notice", href: "https://greenputt.kr/notice" }
   ]
 };

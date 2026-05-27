@@ -6,106 +6,130 @@
     <title>GreenPutt | Heads Down. Data On.</title>
     <meta
       name="description"
-      content="GreenPutt는 헤드업을 줄이고 퍼팅 거리 피드백을 가까이 보여주는 프리미엄 퍼팅 시스템 브랜드입니다."
+      content="GreenPutt는 고개를 들지 않고도 퍼팅 거리 피드백을 확인하는 프리미엄 퍼팅 시스템 브랜드입니다."
     />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <header class="site-header" aria-label="GreenPutt primary navigation">
       <a class="brand" href="#top" aria-label="GreenPutt home">
-        <span class="brand-mark">GP</span>
-        <span class="brand-name">GreenPutt</span>
+        <img src="./assets/greenputt-logo.png" alt="GreenPutt" />
       </a>
       <nav class="primary-nav" aria-label="주요 메뉴">
         <a href="#zero-head-up">Zero Head-Up</a>
-        <a href="#products">Products</a>
-        <a href="#polvert">StorePick</a>
-        <a href="#support">Support</a>
+        <a href="#system">System</a>
+        <a href="#storepick">StorePick</a>
+        <a href="#bridge">Bridge</a>
       </nav>
     </header>
 
     <main id="top">
-      <section class="hero section-export" data-export-name="campaign-hero">
-        <div class="hero-media" aria-hidden="true">
-          <div class="green-plane"></div>
-          <div class="ball"></div>
-          <div class="putting-line"></div>
-          <div class="projected-data">7.2m</div>
-        </div>
+      <section class="hero film-frame" aria-labelledby="hero-title">
+        <img
+          class="hero-image"
+          src="./assets/greenputt-system-render.png"
+          alt="GreenPutt putting mat, putter, distance feedback device, and projected distance data"
+        />
+        <div class="hero-overlay"></div>
         <div class="hero-copy">
-          <p class="eyebrow">Premium Putting System</p>
-          <h1>Heads Down. Data On.</h1>
+          <p class="eyebrow">Premium Putting Film</p>
+          <h1 id="hero-title">
+            <span>Heads</span>
+            <span>Down.</span>
+            <span>Data On.</span>
+          </h1>
           <p class="lead">
-            고개를 들지 않고도 퍼팅 거리 피드백을 확인하는 GreenPutt의 제로 헤드업 시스템.
+            공 가까이 뜨는 거리 피드백. 고개를 들지 않는 퍼팅 루틴. GreenPutt는 연습의 시선을
+            다시 아래로 돌립니다.
           </p>
           <div class="hero-actions">
             <a class="button primary" href="#zero-head-up">제로 헤드업 보기</a>
-            <a class="button secondary" href="#polvert">GreenPutt StorePick</a>
+            <a class="button ghost" href="#storepick">GreenPutt StorePick</a>
+          </div>
+        </div>
+        <div class="hero-caption" aria-hidden="true">
+          <span>Projected distance</span>
+          <strong>2.3m</strong>
+        </div>
+      </section>
+
+      <section id="zero-head-up" class="editorial-section">
+        <div class="section-kicker">Zero Head-Up</div>
+        <div class="editorial-grid">
+          <div class="editorial-copy">
+            <h2>결과를 보려고 고개를 드는 습관을, 데이터 위치로 바꿉니다.</h2>
+            <p>
+              GreenPutt의 핵심은 공이 출발한 뒤 멀리 있는 결과를 보러 가는 대신, 공 근처에서
+              퍼팅 거리 피드백을 확인하도록 만드는 것입니다.
+            </p>
+          </div>
+          <div class="proof-strip" aria-label="Zero Head-Up process">
+            <article>
+              <span>01</span>
+              <strong>Stroke</strong>
+              <p>시선은 공과 퍼터 헤드에 머무릅니다.</p>
+            </article>
+            <article>
+              <span>02</span>
+              <strong>Measure</strong>
+              <p>초기 속도와 거리 감각을 수치로 전환합니다.</p>
+            </article>
+            <article>
+              <span>03</span>
+              <strong>Project</strong>
+              <p>피드백은 공 가까이에 남습니다.</p>
+            </article>
           </div>
         </div>
       </section>
 
-      <section id="zero-head-up" class="story section-export" data-export-name="zero-head-up-story">
-        <div class="section-heading">
-          <p class="eyebrow">Zero Head-Up</p>
-          <h2>결과를 보려고 고개를 드는 순간, 스트로크는 흔들립니다.</h2>
+      <section id="system" class="system-section">
+        <div class="system-copy">
+          <p class="eyebrow">GreenPutt System</p>
+          <h2>퍼터, 매트, 거리 피드백 장치가 하나의 연습 장면이 됩니다.</h2>
         </div>
-        <div class="story-grid">
-          <article>
-            <span class="step">01</span>
-            <h3>거리 확인 욕구</h3>
-            <p>아마추어 골퍼는 공이 출발한 뒤 결과를 확인하려고 시선을 빨리 들어 올립니다.</p>
-          </article>
-          <article>
-            <span class="step">02</span>
-            <h3>가까운 피드백</h3>
-            <p>GreenPutt는 퍼팅 데이터가 공 근처에서 보이도록 설계된 연습 흐름을 제안합니다.</p>
-          </article>
-          <article>
-            <span class="step">03</span>
-            <h3>반복 가능한 루틴</h3>
-            <p>시선과 리듬을 유지한 채 거리 감각을 쌓는 것이 GreenPutt의 핵심 약속입니다.</p>
-          </article>
-        </div>
+        <div id="product-grid" class="product-lineup" aria-live="polite"></div>
       </section>
 
-      <section id="products" class="products section-export" data-export-name="product-system">
-        <div class="section-heading">
-          <p class="eyebrow">Product System</p>
-          <h2>하나의 퍼팅 루틴으로 연결되는 제품들.</h2>
-        </div>
-        <div id="product-grid" class="product-grid" aria-live="polite"></div>
-      </section>
-
-      <section id="polvert" class="bridge section-export" data-export-name="polvert-bridge">
+      <section class="cinema-band">
+        <img
+          src="./assets/greenputt-system-render.png"
+          alt="GreenPutt product system close-up"
+        />
         <div>
-          <p class="eyebrow">GreenPutt StorePick</p>
-          <h2>Polvert는 아임웹 구매 플로우로 연결됩니다.</h2>
+          <p class="eyebrow">Product Focus</p>
+          <h2>Crossputt처럼 제품에 가까이, Titleist처럼 브랜드는 넓게.</h2>
           <p>
-            색상과 사이즈를 선택한 뒤 장바구니 또는 구매하기를 진행합니다. 결제, 회원, 주문, 배송,
-            취소와 환불은 GreenPutt 아임웹에서 처리됩니다.
+            첫인상은 큰 캠페인으로 열고, 이후 섹션은 제품의 각도와 기능을 가까이 보여줍니다.
+            그래서 GreenPutt는 단순한 쇼핑몰이 아니라 퍼팅 시스템 브랜드로 보입니다.
           </p>
         </div>
-        <a
-          class="button primary bridge-cta"
-          href="https://greenputt.kr/all_products/?idx=77"
-          data-bridge-target="imweb-polvert"
-        >
-          Polvert 상품 보기
-        </a>
       </section>
 
-      <section id="support" class="support section-export" data-export-name="support-entry">
-        <div class="section-heading">
-          <p class="eyebrow">Support</p>
-          <h2>운영과 문의는 검증된 경로로.</h2>
+      <section id="storepick" class="storepick-section">
+        <div class="storepick-media">
+          <img src="./assets/polvert-glove-grip.png" alt="Polvert golf glove gripping a club" />
         </div>
+        <div class="storepick-copy">
+          <p class="eyebrow">GreenPutt StorePick</p>
+          <h2>Polvert는 지금 구매 가능한 첫 번째 스토어 픽입니다.</h2>
+          <p>
+            GreenPutt의 핵심 발명품은 제로 헤드업 퍼팅 시스템입니다. Polvert는 그 흐름 안에서
+            먼저 판매 가능한 골프 장갑으로, 색상과 사이즈 선택 후 아임웹 구매 플로우로 연결됩니다.
+          </p>
+          <a class="button dark" href="https://greenputt.kr/all_products/?idx=77">Polvert 상품 보기</a>
+        </div>
+      </section>
+
+      <section id="bridge" class="bridge-section">
+        <p class="eyebrow">Imweb Bridge</p>
+        <h2>디자인은 커스텀으로, 운영은 아임웹으로.</h2>
         <div id="support-links" class="support-links"></div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <p>GreenPutt custom home prototype. Commerce and database-backed flows remain on Imweb.</p>
+      <p>GreenPutt prototype. Links and commerce behavior will be finalized after Imweb flow review.</p>
     </footer>
 
     <script src="./content.js"></script>
