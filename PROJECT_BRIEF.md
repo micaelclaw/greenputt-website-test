@@ -225,4 +225,5 @@ Design specification:
 - Keep decisions in this file when they affect future development.
 - Update this brief before or during major design, content, or architecture changes.
 - Keep generated image prompts and final selected assets organized so future real product photography can replace them cleanly.
+- The first custom homepage implementation artifact lives in `prototype/`. It is a static experimental prototype for campaign direction, section rhythm, and Imweb-exportable content structure.
 - Do not rewrite unrelated files.
