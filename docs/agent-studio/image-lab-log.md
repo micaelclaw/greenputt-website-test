@@ -225,7 +225,43 @@ Premium golf glove product photograph, golfer gripping a club with a clean white
 - 장점: PV01의 가장 중요한 오픈팜 구조, 노출 손끝, 검은 손가락 밴드가 선명하게 재현됐다. 로고를 AI가 임의로 만들지 않았다.
 - 보완점: 손목 라벨은 실제 제품처럼 가로형 검은 라벨에 더 가깝게 유도해야 한다. 손목 원단의 퀼팅/주름이 실제 극세사 레퍼런스보다 조금 장식적으로 보인다.
 - 사용 후보 위치: PV01 오른손 극세사 생성 프롬프트 검증, 다음 `PALM` 컷 후보 생성 기준.
-- Art Director 판단: 구조 학습 테스트 후보.
+- Art Director 판단: 사용자가 손바닥 부분은 거의 비슷하다고 확인. 손바닥 구조 기준으로 유지.
+- 최종 상태: 구조 기준 채택
+
+### 2026-05-28 후보 10
+
+- 트랙: Polvert PV01 side profile test
+- 원본/참조: `docs/agent-studio/polvert-pv01-rh-microfiber-feature-analysis.md`, `PV_PV01_RH_MEN_WEAR_BALL_WHITE_LOGO_NONE_LABEL_NONE_001.jpg`
+- 저장 위치: Google Drive `GreenPutt Website/05_Product_Polvert_Glove/02_AI_Work/PV01_MICROFIBER/TEST_RH_MEN_001/PV_PV01_RH_MEN_WEAR_BALL_WHITE_LOGO_NONE_LABEL_NONE_DRAFT_001.jpg`
+- 프롬프트: 오른손 남성 극세사 장갑의 측면/손바닥 쪽 `WEAR_BALL` 컷. 핵심 조건은 오픈팜 측면, 엄지 주변 흰색 파이핑, 검은 Y자 인서트, 손끝 노출, 검은 손가락 밴드, 작은 손목 라벨이다.
+- 장점: 측면에서 오픈팜 가장자리와 엄지 주변 검은 Y자 인서트가 잘 보인다. 손가락 끝 밴드와 손바닥 피부 노출도 PV01 구조를 잘 전달한다.
+- 보완점: 손목 라벨은 아직 실제 라벨처럼 가로형으로 선명하게 보이지 않고, 골프공 위치가 레퍼런스보다 조금 크고 전면적이다.
+- 사용 후보 위치: PV01 오른손 측면 구조 프롬프트 검증, `WEAR_BALL` 후보 생성 기준.
+- Art Director 판단: 사용자가 측면은 잘 만들었다고 확인. 측면 구조 기준으로 유지.
+- 최종 상태: 구조 기준 채택
+
+### 2026-05-28 후보 11
+
+- 트랙: Polvert PV01 back patch test
+- 원본/참조: `docs/agent-studio/polvert-pv01-rh-microfiber-feature-analysis.md`, `PV_PV01_RH_MEN_BACK_PATCH_WHITE_LOGO_OLD_LABEL_NONE_001.jpg`
+- 저장 위치: Google Drive `GreenPutt Website/05_Product_Polvert_Glove/02_AI_Work/PV01_MICROFIBER/TEST_RH_MEN_001/PV_PV01_RH_MEN_BACK_PATCH_WHITE_BLANK_PATCH_LABEL_NONE_DRAFT_002.jpg`
+- 프롬프트: 오른손 남성 극세사 장갑의 손등 정면 `BACK_PATCH` 컷. 핵심 조건은 노출 손끝, 검은 손가락 밴드, 세로 타공, 손등 곡선 라인, 흰색 테두리 안쪽의 빈 검은 패치, 얇은 극세사 손목 주름이다.
+- 장점: 패치의 검은 면과 흰색 테두리가 분리되어 보여 이전 테스트보다 로고 합성 전 패치 구조가 명확하다. 손등 곡선 라인과 손가락 타공도 읽힌다.
+- 보완점: 사용자가 손등뷰는 아니라고 판단했다. 착용 손과 제품 구조가 섞여 손등 오른손 방향, 패치 위치/비율, 소재 해석을 다시 잡아야 한다.
+- 사용 후보 위치: 폐기 기준 참고. 다음 손등 테스트는 착용 손보다 제품 단독 `BACK_PATCH` 컷으로 먼저 맞춘다.
+- Art Director 판단: 손등 기준으로 부적합.
+- 최종 상태: 폐기
+
+### 2026-05-28 후보 12
+
+- 트랙: Polvert PV03 sheepskin RH_MEN back patch structure test
+- 원본/참조: `docs/agent-studio/polvert-pv01-rh-microfiber-feature-analysis.md`, `PV_PV01_RH_MEN_BACK_PATCH_WHITE_LOGO_OLD_LABEL_NONE_001.jpg`, PV03 양피 기준
+- 저장 위치: Google Drive `GreenPutt Website/05_Product_Polvert_Glove/02_AI_Work/PV03_SHEEPSKIN/TEST_RH_MEN_001/PV_PV03_RH_MEN_BACK_PATCH_WHITE_BLANK_PATCH_LABEL_NONE_DRAFT_002.jpg`
+- 프롬프트: PV03 양피 소재지만 PV01 극세사 오른손과 같은 형태의 제품 단독 손등 `BACK_PATCH` 컷. 핵심 조건은 오른손 손등 방향(엄지 사이드가 화면 왼쪽), 반손가락 오프닝, 검은 손가락 밴드, 세로 타공, 손등 위쪽 검은 곡선 라인, 하단 오른쪽의 빈 검은 손등 패치, 흰색 파이핑/스티칭, 부드러운 양피 가죽 결이다. 로고와 읽히는 글자는 금지했다.
+- 장점: 이전 손등 착샷보다 오른손 손등 방향이 명확하고, 제품 단독 컷이라 엄지/피부/패치 비율이 덜 섞인다. 검은 패치가 흰 테두리 안쪽에 들어가고, 로고 합성 전 blank patch 상태를 유지한다.
+- 보완점: 손등 중앙의 주름/가죽 결이 실제 제품 대비 약간 장식적으로 보일 수 있다. 다음 후보에서는 패치의 오른쪽 직선 경계와 하단 넓이를 더 실제 레퍼런스처럼 미세 조정한다.
+- 사용 후보 위치: PV03 양피 오른손 손등 구조 재테스트 기준, 로고 합성 전 blank patch 후보.
+- Art Director 판단: 이전 손등 후보보다 방향과 패치 게이트가 개선된 재테스트 후보.
 - 최종 상태: 후보
 
 ## 다음 보완
