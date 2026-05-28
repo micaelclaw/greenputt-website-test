@@ -216,6 +216,18 @@ Premium golf glove product photograph, golfer gripping a club with a clean white
 - Art Director 판단: 대표 컷 `polvert-storepick-logo-locked-10-homepage-hero.jpg` 선택.
 - 최종 상태: 선택
 
+### 2026-05-28 후보 9
+
+- 트랙: Polvert PV01 structure test
+- 원본/참조: `docs/agent-studio/polvert-pv01-rh-microfiber-feature-analysis.md`, `05_Product_Polvert_Glove/01_Reference_Source/PV01_MICROFIBER/RH_MEN/`
+- 저장 위치: Google Drive `GreenPutt Website/05_Product_Polvert_Glove/02_AI_Work/PV01_MICROFIBER/TEST_RH_MEN_001/PV_PV01_RH_MEN_PALM_WHITE_LOGO_NONE_LABEL_NONE_DRAFT_001.jpg`
+- 프롬프트: 오른손 남성 흰색 극세사 장갑의 `PALM` 컷을 요청했다. 핵심 조건은 오른손 방향, 오픈팜, 반손가락, 노출 손끝, 검은 손가락 밴드, 흰색 파이핑, 매끈한 극세사 질감, 빈 검은 손목 라벨 영역이다. 로고와 읽히는 글자는 금지했다.
+- 장점: PV01의 가장 중요한 오픈팜 구조, 노출 손끝, 검은 손가락 밴드가 선명하게 재현됐다. 로고를 AI가 임의로 만들지 않았다.
+- 보완점: 손목 라벨은 실제 제품처럼 가로형 검은 라벨에 더 가깝게 유도해야 한다. 손목 원단의 퀼팅/주름이 실제 극세사 레퍼런스보다 조금 장식적으로 보인다.
+- 사용 후보 위치: PV01 오른손 극세사 생성 프롬프트 검증, 다음 `PALM` 컷 후보 생성 기준.
+- Art Director 판단: 구조 학습 테스트 후보.
+- 최종 상태: 후보
+
 ## 다음 보완
 
 - [ ] Polvert 실제 제품군별 reference를 더 모아 착용/그립 후보를 생성한다.
