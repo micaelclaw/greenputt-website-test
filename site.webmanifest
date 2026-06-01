@@ -1,0 +1,22 @@
+{
+  "name": "GreenPutt",
+  "short_name": "GreenPutt",
+  "description": "Premium putting system brand with near-ball distance feedback.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#061b12",
+  "theme_color": "#061b12",
+  "icons": [
+    {
+      "src": "android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

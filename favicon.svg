@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="GreenPutt">
+  <rect width="512" height="512" fill="#061b12"/>
+  <text
+    x="252"
+    y="388"
+    fill="#00ab4b"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="388"
+    font-weight="900"
+    text-anchor="middle"
+  >G</text>
+  <path
+    d="M82 352 C178 270 328 235 430 112"
+    fill="none"
+    stroke="#000000"
+    stroke-opacity=".42"
+    stroke-linecap="round"
+    stroke-width="34"
+  />
+  <path
+    d="M82 352 C178 270 328 235 430 112"
+    fill="none"
+    stroke="#d51325"
+    stroke-linecap="round"
+    stroke-width="24"
+  />
+  <path
+    d="M82 352 C178 270 328 235 430 112"
+    fill="none"
+    stroke="#ff5460"
+    stroke-linecap="round"
+    stroke-width="7"
+  />
+  <circle cx="398" cy="142" r="92" fill="none" stroke="#b8ff3d" stroke-width="8"/>
+  <circle cx="398" cy="142" r="28" fill="#b8ff3d"/>
+  <path d="M78 405 L426 358" fill="none" stroke="#b8ff3d" stroke-opacity=".65" stroke-width="8"/>
+</svg>
