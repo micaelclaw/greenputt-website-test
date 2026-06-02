@@ -8,7 +8,7 @@ This guide helps another AI image-generation session reproduce the best PV02 mes
 - Hand/gender: `RH_WOMEN`
 - Work folder: `05_Product_Polvert_Glove/02_AI_Work/PV02_MESH/TEST_RH_WOMEN_004/`
 - Reference folder: `05_Product_Polvert_Glove/01_Reference_Source/PV02_MESH/RH_WOMEN/`
-- Logo source: `05_Product_Polvert_Glove/00_Brand/02_Logo_Work/POLVERT_LOGO_OLD_BLACK_BG-TRANSPARENT_ORIGINAL.png`
+- Logo source: `05_Product_Polvert_Glove/00_Brand/02_Logo_Work/POLVERT_LOGO_NEW_BLACK_BG-TRANSPARENT_ORIGINAL.png`
 
 Read these first:
 
@@ -25,7 +25,33 @@ Use these as the quality target before creating new images:
 - `PV_PV02_RH_WOMEN_WEAR_BALL_WHITE_LOGO_OLD_LABEL_NONE_DRAFT_001.png`
 - `PV_PV02_RH_WOMEN_WEAR_BALL_WHITE_LOGO_OLD_LABEL_NONE_DRAFT_002.png`
 - `PV_PV02_RH_WOMEN_WEAR_BALL_WHITE_LOGO_OLD_LABEL_DBK_DRAFT_036.png`
-- `PV_PV02_RH_WOMEN_WEAR_GRIP_WHITE_LOGO_OLD_LABEL_DBK_DRAFT_001.png`
+- `PV_PV02_RH_WOMEN_WEAR_GRIP_WHITE_LOGO_NEW_LABEL_DBK_DRAFT_020.png`
+
+## Final Export Set
+
+Approved PV02 mesh RH women images are mirrored into:
+
+```text
+05_Product_Polvert_Glove/03_Final_Exports/PV02_MESH/RH_WOMEN/
+```
+
+Current folder split:
+
+```text
+01_NO_LOGO/
+02_WITH_LOGO/
+  01_OLD_LOGO/
+  02_NEW_LOGO/
+03_ALIGNMENT_CHECK/
+```
+
+Current exported set:
+
+- `01_NO_LOGO`: 5 approved blank/logo-free bases.
+- `02_WITH_LOGO/01_OLD_LOGO`: 6 approved old-logo versions.
+- `02_WITH_LOGO/02_NEW_LOGO`: 6 approved new-logo versions.
+- `PV_PV02_RH_WOMEN_FINAL_EXPORT_CONTACT_SHEET.png`: quick visual index for the full export set.
+- `PV_PV02_RH_WOMEN_FINAL_EXPORT_MANIFEST.md`: file-level export manifest.
 
 ## Reproduction Workflow
 
@@ -73,13 +99,18 @@ For AI work, use `DRAFT` until the user approves. Use `LABEL_NONE` when the wris
 
 ### `WEAR_GRIP` Palm-Side Diagonal Grip
 
-- For `PV_PV02_RH_WOMEN_WEAR_GRIP_WHITE_LOGO_OLD_LABEL_MIK_001.png`, the current anchor is `PV_PV02_RH_WOMEN_WEAR_GRIP_WHITE_LOGO_OLD_LABEL_DBK_DRAFT_001.png`.
+- For `PV_PV02_RH_WOMEN_WEAR_GRIP_WHITE_LOGO_OLD_LABEL_MIK_001.png`, the current anchor is `PV_PV02_RH_WOMEN_WEAR_GRIP_WHITE_LOGO_NEW_LABEL_DBK_DRAFT_020.png`.
 - Use the `MIK_001` reference for pose and product structure, but keep `LABEL_DBK` when following the newer `Design by KOREA` working standard.
 - The no-logo base is `02_NO_LOGO/PV_PV02_RH_WOMEN_WEAR_GRIP_WHITE_LOGO_NONE_LABEL_NONE_DRAFT_001.png`.
-- The with-logo version is `01_WITH_LOGO/PV_PV02_RH_WOMEN_WEAR_GRIP_WHITE_LOGO_OLD_LABEL_DBK_DRAFT_001.png`.
+- The with-logo version is `01_WITH_LOGO/PV_PV02_RH_WOMEN_WEAR_GRIP_WHITE_LOGO_NEW_LABEL_DBK_DRAFT_020.png`.
+- The transparent label asset is `03_LABEL_ASSETS_TRANSPARENT/PV_PV02_NA_DETAIL_PALM_LABEL_WHITE_LOGO_NEW_LABEL_DBK_TRANSPARENT_4X_002.png`.
 - Forearm enters from the upper right, palm faces camera, and the black grip runs diagonally from lower left to upper right.
 - Preserve the large open palm/thenar area, exposed thumb, visible nails, and fingerless stalls wrapping around the grip.
-- The blue wrist label should follow the wrist angle. Do not force it to be front-facing or perfectly rectangular.
+- The blue wrist label should follow the wrist patch plane. Do not force it to align to the image frame or become perfectly rectangular.
+- For this palm-side grip scene, use the patch-local X/Y axis method from `docs/agent-studio/polvert-file-organization-guide.md`. The red X axis is the patch top-border / `Polvert` word horizontal axis. The green Y axis is exactly 90 degrees from the red axis.
+- Do not judge the logo with screen-axis bounding boxes. Draw the yellow patch box and pink logo box as oriented rectangles projected onto the same red/green axes.
+- Center the logo/label oriented rectangle on the patch oriented rectangle. Then verify that the `Polvert` word's horizontal stroke follows the red X axis. A centered logo with the word sloping along the wrong diagonal is still a failed alignment.
+- `DRAFT_019` fixed the `Polvert` word-axis direction. `DRAFT_020` keeps that axis and center, then improves the `Design by KOREA` size and spacing.
 
 ### `WEAR_BALL` Horizontal Palm Tray
 
@@ -119,21 +150,23 @@ Use this prompt at the start of a new session:
 /Users/micaelclaw/Library/CloudStorage/GoogleDrive-micaelclaw@gmail.com/내 드라이브/GreenPutt Website/05_Product_Polvert_Glove
 
 제품 범위는 PV02_MESH, RH_WOMEN이야.
-잘 나온 기준 이미지는 아래 4개야.
+잘 나온 기준 이미지는 아래 5개야.
 
 02_AI_Work/PV02_MESH/TEST_RH_WOMEN_004/PV_PV02_RH_WOMEN_BACK_PATCH_WHITE_LOGO_OLD_LABEL_NONE_DRAFT_001.png
 02_AI_Work/PV02_MESH/TEST_RH_WOMEN_004/PV_PV02_RH_WOMEN_PALM_WHITE_LOGO_OLD_LABEL_DBK_DRAFT_002.png
 02_AI_Work/PV02_MESH/TEST_RH_WOMEN_004/PV_PV02_RH_WOMEN_WEAR_BALL_WHITE_LOGO_OLD_LABEL_NONE_DRAFT_001.png
 02_AI_Work/PV02_MESH/TEST_RH_WOMEN_004/PV_PV02_RH_WOMEN_WEAR_BALL_WHITE_LOGO_OLD_LABEL_NONE_DRAFT_002.png
+02_AI_Work/PV02_MESH/TEST_RH_WOMEN_004/PV_PV02_RH_WOMEN_WEAR_GRIP_WHITE_LOGO_NEW_LABEL_DBK_DRAFT_020.png
 
 중요:
 - 실제 PV02 메쉬 장갑 구조를 따라줘.
 - 파란 패치, 손등의 촘촘한 메쉬, 노출된 손끝, 열린 엄지 구조를 유지해줘.
 - AI가 Polvert 글자나 라벨 문구를 새로 만들면 안 돼.
 - 이미지는 먼저 빈 파란 패치/빈 공으로 생성하고, 실제 로고 파일을 후처리로 합성해줘.
-- 로고 파일은 00_Brand/02_Logo_Work/POLVERT_LOGO_OLD_BLACK_BG-TRANSPARENT_ORIGINAL.png를 사용해줘.
+- 로고 파일은 00_Brand/02_Logo_Work/POLVERT_LOGO_NEW_BLACK_BG-TRANSPARENT_ORIGINAL.png를 사용해줘.
 - 파란 패치에는 흰색 로고, 골프공에는 검정/차콜 로고를 합성해줘.
 - 패치 로고는 패치의 회전 박스 중앙에 맞추고 패치 각도와 같이 기울여줘.
+- 로고 정렬은 화면 기준 bbox가 아니라 패치 로컬 X/Y축 기준으로 해줘. 빨간선은 Polvert 가로축, 초록선은 그 90도 Y축, 노랑/핑크 박스는 같은 축에 투영한 회전 직사각형이어야 해.
 - 라벨 문구가 잘 안 보이거나 각도상 불명확하면 LABEL_NONE으로 저장해줘.
 - 결과는 02_AI_Work/PV02_MESH/TEST_RH_WOMEN_004/에 가이드 파일명 규칙으로 저장해줘.
 
@@ -166,10 +199,12 @@ Use this after attaching or naming the specific reference:
 
 로고:
 - AI 생성 단계에서는 로고/문자 없음
-- 생성 후 실제 Polvert 구형 로고를 후처리 합성
+- 생성 후 실제 Polvert 로고를 후처리 합성
 - 파란 패치는 흰 로고, 골프공은 검정 로고
+- 패치 위 로고는 패치 로컬 X/Y축에 맞춘 회전 직사각형 기준으로 중심을 맞춤
+- `Polvert` 글자의 가로축은 패치 X축과 평행해야 함
 
 저장:
 - 02_AI_Work/PV02_MESH/TEST_RH_WOMEN_004/
-- 파일명: PV_PV02_RH_WOMEN_[SCENE]_WHITE_LOGO_OLD_LABEL_[LABEL]_DRAFT_[NO].png
+- 파일명: PV_PV02_RH_WOMEN_[SCENE]_WHITE_[LOGO]_LABEL_[LABEL]_DRAFT_[NO].png
 ```
