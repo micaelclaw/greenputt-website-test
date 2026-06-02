@@ -25,6 +25,7 @@ Use these as the quality target before creating new images:
 - `PV_PV02_RH_WOMEN_WEAR_BALL_WHITE_LOGO_OLD_LABEL_NONE_DRAFT_001.png`
 - `PV_PV02_RH_WOMEN_WEAR_BALL_WHITE_LOGO_OLD_LABEL_NONE_DRAFT_002.png`
 - `PV_PV02_RH_WOMEN_WEAR_BALL_WHITE_LOGO_OLD_LABEL_DBK_DRAFT_036.png`
+- `PV_PV02_RH_WOMEN_WEAR_GRIP_WHITE_LOGO_OLD_LABEL_DBK_DRAFT_001.png`
 
 ## Reproduction Workflow
 
@@ -69,6 +70,16 @@ For AI work, use `DRAFT` until the user approves. Use `LABEL_NONE` when the wris
 - The thumb side should be very open, with much more natural skin visible than glove fabric.
 - Smooth white palm-side finger pockets and exposed fingertips should remain clean and simple.
 - If the wrist label is front-facing and readable, prefer `LABEL_DBK` with `Design by KOREA`.
+
+### `WEAR_GRIP` Palm-Side Diagonal Grip
+
+- For `PV_PV02_RH_WOMEN_WEAR_GRIP_WHITE_LOGO_OLD_LABEL_MIK_001.png`, the current anchor is `PV_PV02_RH_WOMEN_WEAR_GRIP_WHITE_LOGO_OLD_LABEL_DBK_DRAFT_001.png`.
+- Use the `MIK_001` reference for pose and product structure, but keep `LABEL_DBK` when following the newer `Design by KOREA` working standard.
+- The no-logo base is `02_NO_LOGO/PV_PV02_RH_WOMEN_WEAR_GRIP_WHITE_LOGO_NONE_LABEL_NONE_DRAFT_001.png`.
+- The with-logo version is `01_WITH_LOGO/PV_PV02_RH_WOMEN_WEAR_GRIP_WHITE_LOGO_OLD_LABEL_DBK_DRAFT_001.png`.
+- Forearm enters from the upper right, palm faces camera, and the black grip runs diagonally from lower left to upper right.
+- Preserve the large open palm/thenar area, exposed thumb, visible nails, and fingerless stalls wrapping around the grip.
+- The blue wrist label should follow the wrist angle. Do not force it to be front-facing or perfectly rectangular.
 
 ### `WEAR_BALL` Horizontal Palm Tray
 
