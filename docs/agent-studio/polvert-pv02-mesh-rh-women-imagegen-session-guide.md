@@ -14,6 +14,7 @@ Read these first:
 
 - `docs/agent-studio/polvert-file-organization-guide.md`
 - `docs/agent-studio/polvert-pv02-mesh-rh-women-reference-analysis.md`
+- `docs/agent-studio/polvert-pv02-mesh-rh-women-wear-ball-side-label-retrospective.md`
 
 ## Best Current Examples
 
@@ -23,6 +24,7 @@ Use these as the quality target before creating new images:
 - `PV_PV02_RH_WOMEN_PALM_WHITE_LOGO_OLD_LABEL_DBK_DRAFT_002.png`
 - `PV_PV02_RH_WOMEN_WEAR_BALL_WHITE_LOGO_OLD_LABEL_NONE_DRAFT_001.png`
 - `PV_PV02_RH_WOMEN_WEAR_BALL_WHITE_LOGO_OLD_LABEL_NONE_DRAFT_002.png`
+- `PV_PV02_RH_WOMEN_WEAR_BALL_WHITE_LOGO_OLD_LABEL_DBK_DRAFT_036.png`
 
 ## Reproduction Workflow
 
@@ -74,6 +76,9 @@ For AI work, use `DRAFT` until the user approves. Use `LABEL_NONE` when the wris
 - Golf ball sits on the open palm near the finger base.
 - Lower outer side should show a long fine-mesh strip.
 - Blue wrist patch may be partially visible; use `LABEL_NONE` if lower text is not readable.
+- If editing the side wrist label, use `PV_PV02_RH_WOMEN_WEAR_BALL_WHITE_LOGO_OLD_LABEL_DBK_DRAFT_036.png` as the current accepted anchor.
+- For side-view labels, do not shrink the full `Polvert / Design by KOREA` text to fit. Keep physical scale and let curvature hide parts naturally.
+- If the `P` start stroke is clipped, repair the local patch mask/stroke only; do not re-center or re-scale the full label.
 
 ### `WEAR_BALL` Hanging Back-Hand
 
@@ -82,6 +87,9 @@ For AI work, use `DRAFT` until the user approves. Use `LABEL_NONE` when the wris
 - Back-hand mesh texture is the main product feature.
 - The blue patch logo appears upside down if the physical wrist flap is upside down in the crop.
 - Ball logo should be small, dark, and placed on the visible face of the golf ball.
+- For `PV_PV02_RH_WOMEN_WEAR_BALL_WHITE_LOGO_OLD_LABEL_MIB_002.png`, the current anchor is `PV_PV02_RH_WOMEN_WEAR_BALL_WHITE_LOGO_OLD_LABEL_NONE_DRAFT_002.png`.
+- This anchor has stronger mesh detail and product clarity than a risky full regeneration pass. Prefer local logo/crop fixes only if a specific defect is found.
+- Keep `LABEL_NONE` for this scene unless a separate readable lower wrist label is intentionally introduced.
 
 ## New Session Prompt
 
