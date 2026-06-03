@@ -11,6 +11,7 @@
   --red: #d51325;
   --line: rgba(16, 18, 15, 0.14);
   --white-line: rgba(255, 255, 255, 0.2);
+  --layout-max: 1760px;
   --font-body: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
   --font-display: "Noto Serif KR", "Apple SD Gothic Neo", serif;
   --font-english: "Instrument Serif", Georgia, "Times New Roman", serif;
@@ -169,10 +170,10 @@ img {
   min-height: calc(var(--app-vh, 1vh) * 100);
   flex-direction: column;
   justify-content: center;
-  width: min(760px, 52vw);
+  width: min(100%, var(--layout-max));
   margin-right: auto;
-  margin-left: clamp(420px, 42vw, 800px);
-  padding: 108px clamp(24px, 5vw, 76px) 72px clamp(24px, 4vw, 56px);
+  margin-left: auto;
+  padding: 108px clamp(24px, 5vw, 76px) 72px clamp(420px, 46vw, 760px);
 }
 
 .eyebrow,
@@ -249,6 +250,10 @@ h1 {
   line-height: 1.08;
   overflow-wrap: break-word;
   word-break: keep-all;
+}
+
+.hero-copy h1 {
+  max-width: 640px;
 }
 
 h2 {
@@ -461,6 +466,9 @@ h3 {
 }
 
 .film-story-copy {
+  max-width: var(--layout-max);
+  margin-right: auto;
+  margin-left: auto;
   color: var(--ink);
 }
 
@@ -517,7 +525,10 @@ h3 {
   grid-template-columns: minmax(0, 0.54fr) minmax(320px, 0.46fr);
   align-items: start;
   gap: clamp(26px, 5vw, 72px);
+  max-width: var(--layout-max);
   margin-top: clamp(52px, 9vw, 118px);
+  margin-right: auto;
+  margin-left: auto;
   padding-top: clamp(42px, 7vw, 86px);
   color: white;
   background: #0d140f;
@@ -1236,6 +1247,9 @@ h3 {
   grid-template-columns: minmax(0, 0.36fr) minmax(0, 0.64fr);
   gap: 30px;
   align-items: start;
+  max-width: var(--layout-max);
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .system-copy .eyebrow {
@@ -1262,7 +1276,10 @@ h3 {
   grid-template-columns: minmax(0, 0.6fr) minmax(280px, 0.4fr);
   gap: clamp(26px, 5vw, 70px);
   align-items: center;
+  max-width: var(--layout-max);
   margin-top: clamp(42px, 7vw, 86px);
+  margin-right: auto;
+  margin-left: auto;
   border-top: 1px solid rgba(255, 255, 255, 0.16);
   border-bottom: 1px solid rgba(255, 255, 255, 0.16);
 }
@@ -1454,7 +1471,10 @@ h3 {
   grid-template-columns: 48px minmax(0, 1fr) 48px;
   gap: 14px;
   align-items: center;
+  max-width: var(--layout-max);
   margin-top: 54px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .lineup-control {
@@ -1573,7 +1593,10 @@ h3 {
   display: flex;
   justify-content: center;
   gap: 10px;
+  max-width: var(--layout-max);
   margin-top: 22px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .lineup-dot {
@@ -1595,9 +1618,14 @@ h3 {
 .cinema-band {
   display: grid;
   grid-template-columns: minmax(0, 0.58fr) minmax(320px, 0.42fr);
+  max-width: var(--layout-max);
   min-height: 720px;
+  margin-right: auto;
+  margin-left: auto;
   color: white;
   background: #080b09;
+  box-shadow: 0 0 0 100vmax #080b09;
+  clip-path: inset(0 -100vmax);
 }
 
 .cinema-band img {
@@ -1643,9 +1671,14 @@ h3 {
   grid-template-columns: minmax(280px, 0.42fr) minmax(0, 0.58fr);
   align-items: center;
   gap: clamp(24px, 6vw, 92px);
+  max-width: var(--layout-max);
+  margin-right: auto;
+  margin-left: auto;
   padding: clamp(74px, 11vw, 150px) clamp(20px, 5vw, 76px);
   background:
     linear-gradient(180deg, #f9f5ec, #efe7d8);
+  box-shadow: 0 0 0 100vmax #f4ecdf;
+  clip-path: inset(0 -100vmax);
 }
 
 .storepick-media {
@@ -1680,9 +1713,14 @@ h3 {
 }
 
 .bridge-section {
+  max-width: var(--layout-max);
+  margin-right: auto;
+  margin-left: auto;
   padding: clamp(72px, 10vw, 130px) clamp(20px, 5vw, 76px);
   background:
     linear-gradient(180deg, #fff, #f5f0e7);
+  box-shadow: 0 0 0 100vmax #faf7f0;
+  clip-path: inset(0 -100vmax);
 }
 
 .bridge-section h2 {
@@ -1718,7 +1756,10 @@ h3 {
 }
 
 .site-footer p {
+  max-width: var(--layout-max);
   margin: 0;
+  margin-right: auto;
+  margin-left: auto;
   color: rgba(255, 255, 255, 0.58);
   font-size: 13px;
 }
@@ -1758,7 +1799,7 @@ h3 {
     width: min(760px, 100%);
     margin-left: 0;
     justify-content: flex-end;
-    padding-top: 190px;
+    padding: 190px clamp(24px, 5vw, 76px) 72px clamp(24px, 4vw, 56px);
   }
 
   .hero-lower {
@@ -1855,6 +1896,10 @@ h3 {
     max-width: 100%;
     font-size: clamp(34px, 9.4vw, 40px);
     line-height: 1.12;
+  }
+
+  .hero-copy h1 {
+    max-width: 100%;
   }
 
   .hero-korean {
