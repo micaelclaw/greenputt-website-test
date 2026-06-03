@@ -98,10 +98,10 @@ function updateStage(product) {
   const stageMedia = document.querySelector(".system-stage-media");
 
   if (image) {
-    image.src = product.image;
-    image.alt = product.imageAlt;
-    image.style.objectFit = product.imageFit || "";
-    image.style.objectPosition = product.imagePosition || "";
+    image.src = product.stageImage || product.image;
+    image.alt = product.stageImageAlt || product.imageAlt;
+    image.style.objectFit = product.stageImageFit || product.imageFit || "";
+    image.style.objectPosition = product.stageImagePosition || product.imagePosition || "";
   }
 
   document.querySelector("#stage-label").textContent = product.label;
