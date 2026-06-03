@@ -170,6 +170,9 @@ Design specification:
 - Zero Head-Up principle demos should change phase only on hover, focus, or click, not while scrolling. The visual should keep the mat, putter, display box, and ball geometry consistent on mobile and desktop.
 - The hero should keep the golfer readable as a product-use scene: place copy on a calmer dark area of the image, avoid covering the putting posture, and let pointer-responsive signal motion imply repeated putts.
 - The lineup section should read as its own editorial/product chapter with restrained heading scale and a clear explanation of each product's role in one putting routine. Product changes should be controlled as a carousel/slider, not by hover-only stage changes.
+- Official GreenPutt favicon source: `GreenPutt Website/01_Brand/Favicons/그린펏_favicons_투명배경.png`. Use this transparent brand mark for favicon/browser icon exports; do not invent alternate favicon artwork.
+- The custom homepage should keep its composition inside a centered maximum layout width on large monitors. QHD and ultrawide screens should preserve the MacBook-approved hero rhythm instead of stretching section grids or carousel controls across the full viewport.
+- Product carousel cards may use commerce close-ups, but stage images should use stable wide-aspect product scenes so active slides preserve visual scale across QHD and ultrawide displays.
 
 ## Tooling Direction
 
