@@ -1800,7 +1800,7 @@ h3 {
   }
 
   .hero-image {
-    object-position: 50% 50%;
+    object-position: 42% 52%;
   }
 
   .hero-copy {
@@ -1896,7 +1896,7 @@ h3 {
 
   .hero-image {
     height: calc(var(--app-vh, 1vh) * 100);
-    object-position: 38% 52%;
+    object-position: 36% 52%;
     transform: scale(1);
   }
 
@@ -1925,8 +1925,9 @@ h3 {
 
   .hero-lower {
     grid-template-columns: 1fr;
-    gap: 70px;
+    gap: 24px;
     width: 100%;
+    margin-top: clamp(52px, 8vh, 70px);
   }
 
   .hero-actions {
