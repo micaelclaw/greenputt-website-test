@@ -190,6 +190,7 @@ Design specification:
 
 - Direction changed: use a custom GreenPutt front-end site with Imweb as the bridge/backend for commerce operations.
 - Updated direction: keep Imweb as the operational system for commerce and database-backed content, and use the custom homepage as an experimental premium front door and exportable content source.
+- Domain routing and rollback details are documented in `docs/operations/greenputt-domain-routing-guide.md`; use that guide before changing Gabia, GitHub Pages, or Imweb domain settings.
 - Imweb should remain the system of record for first-phase payment, order, member, shipping, cancellation/refund, and fulfillment workflows.
 - The custom site should own the premium brand experience:
   - Home, Zero Head-Up story, product storytelling, campaign imagery, and prototype product inquiry/reservation.
