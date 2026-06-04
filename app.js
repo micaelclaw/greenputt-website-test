@@ -387,10 +387,13 @@ function bindSignalCanvas() {
     }
     const pulse = reducedMotion ? 0.72 : (Math.sin(now * 0.003) + 1) / 2;
     const cycleProgress = reducedMotion ? 0.62 : ((now - puttStartedAt) % puttCycle) / puttCycle;
-    const rollProgress = Math.min(1, cycleProgress / 0.72);
+    const rollDuration = 0.72;
+    const cupInStart = 0.7;
+    const cupInEnd = 0.98;
+    const rollProgress = Math.min(1, cycleProgress / rollDuration);
     const easedRoll = easeOutCubic(rollProgress);
     const ballPoint = linePoint(easedRoll, originX, originY, targetX, targetY);
-    const cupIn = rollProgress >= 0.98 && cycleProgress < 0.9;
+    const cupIn = cycleProgress >= cupInStart && cycleProgress < cupInEnd;
     const puttDistance = clamp(
       1.2 + ((targetX - originX) / (width * (isNarrow ? 0.46 : 0.44))) * 4.2,
       1.0,
@@ -437,15 +440,38 @@ function bindSignalCanvas() {
     context.stroke();
 
     if (!reducedMotion) {
-      const trail = linePoint(Math.max(0, easedRoll - 0.08), originX, originY, targetX, targetY);
-      const ballOpacity = cycleProgress < 0.82 ? 1 : Math.max(0, 1 - (cycleProgress - 0.82) / 0.12);
+      const tailLength = isNarrow ? 0.18 : 0.14;
+      const tailSegments = 7;
+      const ballOpacity = cycleProgress < 0.88 ? 1 : Math.max(0, 1 - (cycleProgress - 0.88) / 0.1);
 
-      context.strokeStyle = `rgba(255, 255, 255, ${0.2 * ballOpacity})`;
-      context.lineWidth = 6;
-      context.beginPath();
-      context.moveTo(trail.x, trail.y);
-      context.lineTo(ballPoint.x, ballPoint.y);
-      context.stroke();
+      context.lineCap = "round";
+      context.shadowColor = "rgba(255, 255, 255, 0.32)";
+      context.shadowBlur = isNarrow ? 8 : 10;
+      for (let i = tailSegments; i > 0; i -= 1) {
+        const segmentEnd = Math.max(0, easedRoll - (tailLength * (i - 1)) / tailSegments);
+        const segmentStart = Math.max(0, easedRoll - (tailLength * i) / tailSegments);
+
+        if (segmentEnd <= 0 || segmentEnd <= segmentStart) {
+          continue;
+        }
+
+        const from = linePoint(segmentStart, originX, originY, targetX, targetY);
+        const to = linePoint(segmentEnd, originX, originY, targetX, targetY);
+        const segmentStrength = (tailSegments - i + 1) / tailSegments;
+        const trailGradient = context.createLinearGradient(from.x, from.y, to.x, to.y);
+        trailGradient.addColorStop(0, `rgba(255, 255, 255, ${0.01 * ballOpacity})`);
+        trailGradient.addColorStop(0.56, `rgba(184, 255, 61, ${0.08 * segmentStrength * ballOpacity})`);
+        trailGradient.addColorStop(1, `rgba(255, 255, 255, ${0.24 * segmentStrength * ballOpacity})`);
+
+        context.strokeStyle = trailGradient;
+        context.lineWidth = 1.2 + segmentStrength * (isNarrow ? 4.6 : 5.6);
+        context.beginPath();
+        context.moveTo(from.x, from.y);
+        context.lineTo(to.x, to.y);
+        context.stroke();
+      }
+      context.shadowBlur = 0;
+      context.lineCap = "butt";
 
       context.fillStyle = `rgba(255, 255, 255, ${0.95 * ballOpacity})`;
       context.shadowColor = "rgba(255, 255, 255, 0.72)";
