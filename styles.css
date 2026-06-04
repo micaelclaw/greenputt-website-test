@@ -2079,13 +2079,13 @@ h3 {
   }
 
   .demo-board {
-    grid-template-rows: auto 2px auto;
+    grid-template-rows: 124px 2px auto;
     width: 100%;
     gap: 12px;
   }
 
   .demo-copy {
-    min-height: auto;
+    min-height: 0;
     gap: 7px;
     padding-left: 12px;
   }
@@ -2164,7 +2164,7 @@ h3 {
   .demo-gaze::after {
     right: auto;
     left: 55%;
-    bottom: 17%;
+    bottom: 5%;
     padding-left: 13px;
     font-size: 10px;
   }
