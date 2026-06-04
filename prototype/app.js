@@ -282,7 +282,11 @@ function bindSignalCanvas() {
   };
 
   const easeOutCubic = (value) => 1 - (1 - value) ** 3;
+  const easeInOutCubic = (value) => value < 0.5
+    ? 4 * value ** 3
+    : 1 - ((-2 * value + 2) ** 3) / 2;
   const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+  const lerp = (from, to, progress) => from + (to - from) * progress;
   const parsePositionValue = (value) => {
     if (value === "left" || value === "top") {
       return 0;
@@ -394,6 +398,11 @@ function bindSignalCanvas() {
     const easedRoll = easeOutCubic(rollProgress);
     const ballPoint = linePoint(easedRoll, originX, originY, targetX, targetY);
     const cupIn = cycleProgress >= cupInStart && cycleProgress < cupInEnd;
+    const cupRadiusX = isNarrow ? 13 : 18;
+    const cupRadiusY = isNarrow ? 4.6 : 6.4;
+    const cupDropProgress = easeInOutCubic(clamp((cycleProgress - 0.66) / 0.2, 0, 1));
+    const cupFlashProgress = clamp((cycleProgress - cupInStart) / 0.24, 0, 1);
+    const cupFlashOpacity = cupIn ? Math.sin(cupFlashProgress * Math.PI) : 0;
     const puttDistance = clamp(
       1.2 + ((targetX - originX) / (width * (isNarrow ? 0.46 : 0.44))) * 4.2,
       1.0,
@@ -405,11 +414,27 @@ function bindSignalCanvas() {
     context.clearRect(0, 0, width, height);
 
     context.globalCompositeOperation = "source-over";
-    context.fillStyle = "rgba(1, 7, 4, 0.84)";
+    const cupShadow = context.createRadialGradient(
+      targetX - cupRadiusX * 0.16,
+      targetY + 1,
+      1,
+      targetX,
+      targetY + 2,
+      cupRadiusX * 1.34
+    );
+    cupShadow.addColorStop(0, "rgba(1, 7, 4, 0.94)");
+    cupShadow.addColorStop(0.62, "rgba(4, 18, 12, 0.86)");
+    cupShadow.addColorStop(1, "rgba(1, 7, 4, 0)");
+    context.fillStyle = cupShadow;
     context.beginPath();
-    context.ellipse(targetX, targetY + 3, isNarrow ? 12 : 17, isNarrow ? 4 : 6, 0, 0, Math.PI * 2);
+    context.ellipse(targetX, targetY + 3, cupRadiusX * 1.42, cupRadiusY * 1.55, 0, 0, Math.PI * 2);
     context.fill();
-    context.strokeStyle = "rgba(255, 255, 255, 0.36)";
+
+    context.fillStyle = "rgba(1, 7, 4, 0.9)";
+    context.beginPath();
+    context.ellipse(targetX, targetY + 1, cupRadiusX, cupRadiusY, 0, 0, Math.PI * 2);
+    context.fill();
+    context.strokeStyle = "rgba(255, 255, 255, 0.34)";
     context.lineWidth = 1.2;
     context.stroke();
 
@@ -473,31 +498,58 @@ function bindSignalCanvas() {
       context.shadowBlur = 0;
       context.lineCap = "butt";
 
+      const ballRadius = lerp(5.8, 2.2, cupDropProgress);
+      const ballY = ballPoint.y + lerp(0, cupRadiusY * 0.8, cupDropProgress);
+
       context.fillStyle = `rgba(255, 255, 255, ${0.95 * ballOpacity})`;
       context.shadowColor = "rgba(255, 255, 255, 0.72)";
-      context.shadowBlur = 18;
+      context.shadowBlur = lerp(18, 7, cupDropProgress);
       context.beginPath();
-      context.arc(ballPoint.x, ballPoint.y, cupIn ? 4.2 : 5.8, 0, Math.PI * 2);
+      context.arc(ballPoint.x, ballY, ballRadius, 0, Math.PI * 2);
       context.fill();
       context.shadowBlur = 0;
     }
 
-    if (!isNarrow) {
-      for (let i = 0; i < 3; i += 1) {
-        const arrivalGlow = cycleProgress > 0.48 && cycleProgress < 0.84 ? 0.16 : 0;
-        const radius = 20 + i * 34 + pulse * 24 + arrivalGlow * 80;
-        context.strokeStyle = `rgba(184, 255, 61, ${0.26 - i * 0.06 + arrivalGlow})`;
-        context.lineWidth = 1.2;
-        context.beginPath();
-        context.arc(targetX, targetY, radius, 0, Math.PI * 2);
-        context.stroke();
-      }
-    }
-
-    context.fillStyle = "rgba(184, 255, 61, 0.92)";
+    context.globalCompositeOperation = "source-over";
+    context.save();
     context.beginPath();
-    context.arc(targetX, targetY, 4.8, 0, Math.PI * 2);
+    context.rect(
+      targetX - cupRadiusX - 3,
+      targetY + 1,
+      (cupRadiusX + 3) * 2,
+      cupRadiusY + 9
+    );
+    context.clip();
+    context.fillStyle = "rgba(1, 7, 4, 0.96)";
+    context.beginPath();
+    context.ellipse(targetX, targetY + 1, cupRadiusX, cupRadiusY, 0, 0, Math.PI * 2);
     context.fill();
+    context.restore();
+
+    context.strokeStyle = "rgba(184, 255, 61, 0.52)";
+    context.lineWidth = 1;
+    context.beginPath();
+    context.ellipse(targetX, targetY + 1, cupRadiusX, cupRadiusY, 0, Math.PI * 1.04, Math.PI * 1.96);
+    context.stroke();
+
+    if (cupFlashOpacity > 0) {
+      context.globalCompositeOperation = "lighter";
+      context.strokeStyle = `rgba(184, 255, 61, ${0.46 * cupFlashOpacity})`;
+      context.lineWidth = isNarrow ? 1.4 : 1.7;
+      context.beginPath();
+      context.moveTo(targetX - cupRadiusX * 0.72, targetY - cupRadiusY * 0.9);
+      context.quadraticCurveTo(
+        targetX,
+        targetY - cupRadiusY * lerp(1.4, 2.3, cupFlashProgress),
+        targetX + cupRadiusX * 0.72,
+        targetY - cupRadiusY * 0.9
+      );
+      context.stroke();
+      context.fillStyle = `rgba(255, 255, 255, ${0.72 * cupFlashOpacity})`;
+      context.beginPath();
+      context.arc(targetX + cupRadiusX * 0.54, targetY - cupRadiusY * 1.12, isNarrow ? 1.6 : 2, 0, Math.PI * 2);
+      context.fill();
+    }
 
     if (cupIn) {
       const label = isNarrow ? "컵인" : "CUP-IN · NICE PUTT";
