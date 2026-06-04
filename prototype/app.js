@@ -403,6 +403,19 @@ function bindSignalCanvas() {
     const cupDropProgress = easeInOutCubic(clamp((cycleProgress - 0.66) / 0.2, 0, 1));
     const cupFlashProgress = clamp((cycleProgress - cupInStart) / 0.24, 0, 1);
     const cupFlashOpacity = cupIn ? Math.sin(cupFlashProgress * Math.PI) : 0;
+    const cupLineDistance = Math.hypot(targetX - originX, targetY - originY) || 1;
+    const cupApproachPoint = linePoint(
+      clamp(1 - (cupRadiusX * 0.72) / cupLineDistance, 0, 1),
+      originX,
+      originY,
+      targetX,
+      targetY
+    );
+    const ballOpacity = reducedMotion ? 0 : cycleProgress < 0.88
+      ? 1
+      : Math.max(0, 1 - (cycleProgress - 0.88) / 0.1);
+    const ballRadius = lerp(5.8, 2.2, cupDropProgress);
+    const ballY = ballPoint.y + lerp(0, cupRadiusY * 0.8, cupDropProgress);
     const puttDistance = clamp(
       1.2 + ((targetX - originX) / (width * (isNarrow ? 0.46 : 0.44))) * 4.2,
       1.0,
@@ -412,31 +425,6 @@ function bindSignalCanvas() {
     updatePuttReadout(`${puttDistance.toFixed(1)}m`, tempoText);
 
     context.clearRect(0, 0, width, height);
-
-    context.globalCompositeOperation = "source-over";
-    const cupShadow = context.createRadialGradient(
-      targetX - cupRadiusX * 0.16,
-      targetY + 1,
-      1,
-      targetX,
-      targetY + 2,
-      cupRadiusX * 1.34
-    );
-    cupShadow.addColorStop(0, "rgba(1, 7, 4, 0.94)");
-    cupShadow.addColorStop(0.62, "rgba(4, 18, 12, 0.86)");
-    cupShadow.addColorStop(1, "rgba(1, 7, 4, 0)");
-    context.fillStyle = cupShadow;
-    context.beginPath();
-    context.ellipse(targetX, targetY + 3, cupRadiusX * 1.42, cupRadiusY * 1.55, 0, 0, Math.PI * 2);
-    context.fill();
-
-    context.fillStyle = "rgba(1, 7, 4, 0.9)";
-    context.beginPath();
-    context.ellipse(targetX, targetY + 1, cupRadiusX, cupRadiusY, 0, 0, Math.PI * 2);
-    context.fill();
-    context.strokeStyle = "rgba(255, 255, 255, 0.34)";
-    context.lineWidth = 1.2;
-    context.stroke();
 
     context.globalCompositeOperation = "lighter";
 
@@ -453,21 +441,20 @@ function bindSignalCanvas() {
       }
     }
 
-    const gradient = context.createLinearGradient(originX, originY, targetX, targetY);
+    const gradient = context.createLinearGradient(originX, originY, cupApproachPoint.x, cupApproachPoint.y);
     gradient.addColorStop(0, "rgba(184, 255, 61, 0)");
     gradient.addColorStop(0.45, "rgba(184, 255, 61, 0.72)");
-    gradient.addColorStop(1, "rgba(255, 255, 255, 0.14)");
+    gradient.addColorStop(1, "rgba(255, 255, 255, 0.2)");
     context.strokeStyle = gradient;
     context.lineWidth = 2;
     context.beginPath();
     context.moveTo(originX, originY);
-    context.lineTo(targetX, targetY);
+    context.lineTo(cupApproachPoint.x, cupApproachPoint.y);
     context.stroke();
 
     if (!reducedMotion) {
       const tailLength = isNarrow ? 0.18 : 0.14;
       const tailSegments = 7;
-      const ballOpacity = cycleProgress < 0.88 ? 1 : Math.max(0, 1 - (cycleProgress - 0.88) / 0.1);
 
       context.lineCap = "round";
       context.shadowColor = "rgba(255, 255, 255, 0.32)";
@@ -497,10 +484,36 @@ function bindSignalCanvas() {
       }
       context.shadowBlur = 0;
       context.lineCap = "butt";
+    }
 
-      const ballRadius = lerp(5.8, 2.2, cupDropProgress);
-      const ballY = ballPoint.y + lerp(0, cupRadiusY * 0.8, cupDropProgress);
+    context.globalCompositeOperation = "source-over";
+    const cupShadow = context.createRadialGradient(
+      targetX - cupRadiusX * 0.16,
+      targetY + 1,
+      1,
+      targetX,
+      targetY + 2,
+      cupRadiusX * 1.34
+    );
+    cupShadow.addColorStop(0, "rgba(1, 7, 4, 0.94)");
+    cupShadow.addColorStop(0.62, "rgba(4, 18, 12, 0.86)");
+    cupShadow.addColorStop(1, "rgba(1, 7, 4, 0)");
+    context.fillStyle = cupShadow;
+    context.beginPath();
+    context.ellipse(targetX, targetY + 3, cupRadiusX * 1.42, cupRadiusY * 1.55, 0, 0, Math.PI * 2);
+    context.fill();
 
+    context.fillStyle = "rgba(1, 7, 4, 0.9)";
+    context.beginPath();
+    context.ellipse(targetX, targetY + 1, cupRadiusX, cupRadiusY, 0, 0, Math.PI * 2);
+    context.fill();
+    context.strokeStyle = "rgba(255, 255, 255, 0.28)";
+    context.lineWidth = 1;
+    context.beginPath();
+    context.ellipse(targetX, targetY + 1, cupRadiusX, cupRadiusY, 0, Math.PI * 1.05, Math.PI * 1.95);
+    context.stroke();
+
+    if (!reducedMotion && ballOpacity > 0.02) {
       context.fillStyle = `rgba(255, 255, 255, ${0.95 * ballOpacity})`;
       context.shadowColor = "rgba(255, 255, 255, 0.72)";
       context.shadowBlur = lerp(18, 7, cupDropProgress);
@@ -510,7 +523,6 @@ function bindSignalCanvas() {
       context.shadowBlur = 0;
     }
 
-    context.globalCompositeOperation = "source-over";
     context.save();
     context.beginPath();
     context.rect(
@@ -526,10 +538,10 @@ function bindSignalCanvas() {
     context.fill();
     context.restore();
 
-    context.strokeStyle = "rgba(184, 255, 61, 0.52)";
-    context.lineWidth = 1;
+    context.strokeStyle = "rgba(184, 255, 61, 0.58)";
+    context.lineWidth = 1.15;
     context.beginPath();
-    context.ellipse(targetX, targetY + 1, cupRadiusX, cupRadiusY, 0, Math.PI * 1.04, Math.PI * 1.96);
+    context.ellipse(targetX, targetY + 1, cupRadiusX, cupRadiusY, 0, Math.PI * 0.04, Math.PI * 0.96);
     context.stroke();
 
     if (cupFlashOpacity > 0) {
