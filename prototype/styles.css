@@ -537,10 +537,16 @@ h3 {
 }
 
 .film-visual {
+  --film-visual-height: clamp(500px, calc((var(--app-vh, 1vh) * 100) - 112px), 660px);
+  --film-visual-sticky-top: max(
+    92px,
+    calc(((var(--app-vh, 1vh) * 100) - var(--film-visual-height)) / 2)
+  );
+
   position: sticky;
-  top: 92px;
+  top: var(--film-visual-sticky-top);
   display: grid;
-  height: clamp(500px, calc((var(--app-vh, 1vh) * 100) - 112px), 660px);
+  height: var(--film-visual-height);
   min-height: 0;
   align-self: start;
   isolation: isolate;
