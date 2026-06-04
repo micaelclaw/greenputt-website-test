@@ -1419,6 +1419,7 @@ h3 {
 
 .system-stage-copy p:not(.eyebrow) {
   max-width: 560px;
+  min-height: calc(2 * 1.74em);
   color: rgba(255, 255, 255, 0.72);
   font-size: 18px;
   line-height: 1.74;
