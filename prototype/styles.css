@@ -1286,6 +1286,7 @@ h3 {
 
 .system-stage-media {
   position: relative;
+  align-self: start;
   height: clamp(440px, 42vw, 560px);
   min-height: 0;
   isolation: isolate;
