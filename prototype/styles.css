@@ -2057,17 +2057,20 @@ h3 {
   }
 
   .film-visual.is-demo {
-    --ball-size: 18px;
-    --ball-radius: 9px;
-    --gaze-size: 32px;
-    --putter-head-gap: 2px;
-    --putter-head-width: 22px;
-    --putter-head-origin-x: 11px;
-    --putter-head-height: 64px;
-    --putter-box-width: 82px;
-    --putter-box-height: 112px;
-    --putter-shaft-width: 7px;
-    --putter-shaft-height: 58px;
+    --cross-x: 86%;
+    --return-line-x: 12%;
+    --roll-end-x: 18%;
+    --ball-size: 15px;
+    --ball-radius: 7.5px;
+    --gaze-size: 24px;
+    --putter-head-gap: 1px;
+    --putter-head-width: 18px;
+    --putter-head-origin-x: 9px;
+    --putter-head-height: 52px;
+    --putter-box-width: 62px;
+    --putter-box-height: 92px;
+    --putter-shaft-width: 6px;
+    --putter-shaft-height: 48px;
     align-content: start;
     height: auto;
     min-height: 0;
@@ -2105,24 +2108,37 @@ h3 {
     aspect-ratio: 5 / 2.25;
   }
 
+  .demo-return {
+    border-width: 6px;
+  }
+
   .demo-device {
-    right: 8%;
-    min-width: 88px;
-    min-height: 34px;
+    right: 10%;
+    top: 7%;
+    width: clamp(74px, 24%, 88px);
+    min-width: 0;
+    min-height: 0;
+    height: 30px;
+    font-size: 10px;
   }
 
   .demo-display {
-    right: 23%;
-    top: 36%;
-    width: 118px;
-    height: 66px;
-    padding: 8px 10px;
+    right: 28%;
+    top: 34%;
+    width: clamp(92px, 30%, 108px);
+    height: clamp(52px, 35%, 60px);
+    padding: 7px 8px;
+    border-radius: 6px;
+  }
+
+  .demo-display small {
+    font-size: 9px;
   }
 
   .demo-display strong,
   .film-visual[data-phase="1"] .demo-display strong,
   .film-visual[data-phase="3"] .demo-display strong {
-    font-size: 22px;
+    font-size: clamp(19px, 5.2vw, 22px);
   }
 
   .demo-putter {
@@ -2146,10 +2162,17 @@ h3 {
   }
 
   .demo-gaze::after {
-    right: 22%;
-    left: auto;
-    bottom: 7%;
-    font-size: 11px;
+    right: auto;
+    left: 55%;
+    bottom: 17%;
+    padding-left: 13px;
+    font-size: 10px;
+  }
+
+  .demo-hole {
+    left: 16%;
+    bottom: 10%;
+    font-size: 10px;
   }
 
   .film-visual-caption {
