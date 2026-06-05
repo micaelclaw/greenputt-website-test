@@ -345,44 +345,11 @@ function bindSignalCanvas() {
     }
   };
 
-  const placeDistanceReadout = (originX, originY, targetX, width, height, isNarrow) => {
-    if (!dashboard) {
-      return;
+  const placeDistanceReadout = () => {
+    if (dashboard) {
+      dashboard.style.removeProperty("--hero-readout-x");
+      dashboard.style.removeProperty("--hero-readout-y");
     }
-
-    const readoutWidth = dashboard.offsetWidth || 150;
-    const readoutHeight = dashboard.offsetHeight || 58;
-    const horizontalGap = isNarrow ? 14 : 42;
-    const verticalGap = isNarrow ? 46 : 64;
-    const projectedX = originX + horizontalGap;
-    const projectedY = originY - verticalGap;
-    const minY = isNarrow ? 520 : 260;
-    const maxY = Math.max(minY, height - readoutHeight - 42);
-    const x = clamp(projectedX, 14, width - readoutWidth - 14);
-    let y = clamp(projectedY, minY, maxY);
-    const actions = hero.querySelector(".hero-actions");
-    const signalHint = hero.querySelector(".hero-signal-hint");
-
-    if (actions && signalHint) {
-      const heroRect = hero.getBoundingClientRect();
-      const actionsRect = actions.getBoundingClientRect();
-      const hintRect = signalHint.getBoundingClientRect();
-      const layoutGap = isNarrow ? 12 : 14;
-      const bandTop = actionsRect.bottom - heroRect.top + layoutGap;
-      const bandBottom = hintRect.top - heroRect.top - readoutHeight - layoutGap;
-
-      if (bandBottom >= bandTop) {
-        y = clamp(y, bandTop, bandBottom);
-      } else {
-        const bandCenter = ((actionsRect.bottom + hintRect.top) / 2) - heroRect.top - (readoutHeight / 2);
-        y = bandCenter;
-      }
-    }
-
-    y = clamp(y, 14, height - readoutHeight - 14);
-
-    dashboard.style.setProperty("--hero-readout-x", `${x}px`);
-    dashboard.style.setProperty("--hero-readout-y", `${y}px`);
   };
 
   const draw = (now = window.performance.now()) => {
