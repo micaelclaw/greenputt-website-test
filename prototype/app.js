@@ -258,6 +258,7 @@ function bindSignalCanvas() {
   const canvas = document.querySelector("#signal-canvas");
   const hero = document.querySelector(".hero");
   const heroImage = hero?.querySelector(".hero-image");
+  const heroLower = hero?.querySelector(".hero-lower");
   const dashboard = hero?.querySelector(".hero-dashboard");
 
   if (!canvas || !hero || !heroImage) {
@@ -365,6 +366,7 @@ function bindSignalCanvas() {
     const width = canvas.clientWidth;
     const height = canvas.clientHeight;
     const isNarrow = width < 700;
+    const lowerBounds = getElementBounds(heroLower);
     const dashboardBounds = getElementBounds(dashboard);
     const imageBallPoint = getImagePoint(heroBallSource);
     const originX = clamp(imageBallPoint.x, 0, width);
@@ -382,7 +384,7 @@ function bindSignalCanvas() {
 
     if (dashboardBounds) {
       if (isNarrow) {
-        const safeBottom = dashboardBounds.top - 18;
+        const safeBottom = (lowerBounds?.top ?? dashboardBounds.top) - 18;
         if (originY > safeBottom) {
           originY = safeBottom;
         }
