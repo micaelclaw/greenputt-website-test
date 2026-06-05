@@ -258,7 +258,6 @@ function bindSignalCanvas() {
   const canvas = document.querySelector("#signal-canvas");
   const hero = document.querySelector(".hero");
   const heroImage = hero?.querySelector(".hero-image");
-  const heroLower = hero?.querySelector(".hero-lower");
   const dashboard = hero?.querySelector(".hero-dashboard");
 
   if (!canvas || !hero || !heroImage) {
@@ -307,22 +306,6 @@ function bindSignalCanvas() {
     }
 
     return Number.parseFloat(value) / 100;
-  };
-
-  const getElementBounds = (element) => {
-    if (!element) {
-      return null;
-    }
-
-    const heroRect = hero.getBoundingClientRect();
-    const elementRect = element.getBoundingClientRect();
-
-    return {
-      top: elementRect.top - heroRect.top,
-      right: elementRect.right - heroRect.left,
-      bottom: elementRect.bottom - heroRect.top,
-      left: elementRect.left - heroRect.left
-    };
   };
 
   const linePoint = (progress, originX, originY, targetX, targetY) => {
@@ -386,12 +369,11 @@ function bindSignalCanvas() {
     const width = canvas.clientWidth;
     const height = canvas.clientHeight;
     const isNarrow = width < 700;
-    const lowerBounds = getElementBounds(heroLower);
     const imageBallPoint = getImagePoint(heroBallSource);
     const originX = clamp(imageBallPoint.x, 0, width);
-    let originY = clamp(imageBallPoint.y, 0, height);
+    const originY = clamp(imageBallPoint.y, 0, height);
     let targetX = width * pointer.x;
-    let targetY = originY;
+    const targetY = originY;
 
     if (isNarrow) {
       const minTargetX = originX + 48;
@@ -401,15 +383,6 @@ function bindSignalCanvas() {
       targetX = Math.max(targetX, originX + 90);
     }
 
-    if (isNarrow && lowerBounds) {
-      const safeBottom = lowerBounds.top - 18;
-      if (originY > safeBottom) {
-        originY = safeBottom;
-      }
-
-      targetY = originY;
-    }
-    const pulse = reducedMotion ? 0.72 : (Math.sin(now * 0.003) + 1) / 2;
     const cycleProgress = reducedMotion ? 0.62 : ((now - puttStartedAt) % puttCycle) / puttCycle;
     const rollDuration = 0.72;
     const cupInStart = 0.7;
@@ -449,22 +422,10 @@ function bindSignalCanvas() {
 
     context.globalCompositeOperation = "lighter";
 
-    if (!isNarrow) {
-      context.lineWidth = 1;
-      context.strokeStyle = "rgba(184, 255, 61, 0.12)";
-      for (let i = 0; i < 5; i += 1) {
-        const offset = i * 44 + pulse * 34;
-        const guideY = originY - 11 - i * 6;
-        context.beginPath();
-        context.moveTo(originX + offset * 0.14, guideY);
-        context.lineTo(Math.min(width * 0.92, targetX + 300), guideY - 1);
-        context.stroke();
-      }
-    }
-
     const gradient = context.createLinearGradient(originX, originY, cupApproachPoint.x, cupApproachPoint.y);
-    gradient.addColorStop(0, "rgba(184, 255, 61, 0)");
-    gradient.addColorStop(0.45, "rgba(184, 255, 61, 0.72)");
+    gradient.addColorStop(0, "rgba(184, 255, 61, 0.34)");
+    gradient.addColorStop(0.18, "rgba(184, 255, 61, 0.82)");
+    gradient.addColorStop(0.58, "rgba(184, 255, 61, 0.68)");
     gradient.addColorStop(1, "rgba(255, 255, 255, 0.2)");
     context.strokeStyle = gradient;
     context.lineWidth = 2;
@@ -472,6 +433,15 @@ function bindSignalCanvas() {
     context.moveTo(originX, originY);
     context.lineTo(cupApproachPoint.x, cupApproachPoint.y);
     context.stroke();
+
+    const originGlow = context.createRadialGradient(originX, originY, 0, originX, originY, ballRadius * 3.1);
+    originGlow.addColorStop(0, "rgba(255, 255, 255, 0.34)");
+    originGlow.addColorStop(0.42, "rgba(184, 255, 61, 0.2)");
+    originGlow.addColorStop(1, "rgba(184, 255, 61, 0)");
+    context.fillStyle = originGlow;
+    context.beginPath();
+    context.arc(originX, originY, ballRadius * 3.1, 0, Math.PI * 2);
+    context.fill();
 
     if (!reducedMotion) {
       const tailLength = isNarrow ? 0.18 : 0.14;
@@ -589,6 +559,11 @@ function bindSignalCanvas() {
       context.globalCompositeOperation = "source-over";
       context.font = `900 ${isNarrow ? 12 : 13}px ${getComputedStyle(document.documentElement).getPropertyValue("--font-body")}`;
       const labelWidth = context.measureText(label).width;
+      const dashboardBounds = !isNarrow && dashboard
+        ? {
+          left: dashboard.getBoundingClientRect().left - hero.getBoundingClientRect().left
+        }
+        : null;
       const maxLabelX = !isNarrow && dashboardBounds
         ? dashboardBounds.left - labelWidth - 20
         : width - labelWidth - 16;
