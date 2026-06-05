@@ -117,6 +117,7 @@ Design specification:
 - The updated premium visual direction is documented in `docs/superpowers/specs/2026-05-27-greenputt-premium-putting-film-design.md`.
 - The homepage should be treated as a custom prototype and content laboratory, while database-backed operational surfaces can remain in Imweb.
 - Every homepage section should have a clear export path so it can later become an Imweb content block, image, video, or reference for a production design.
+- Future change reports should name affected homepage sections in visual top-to-bottom order before describing file-level changes.
 
 ## Content And Assets
 
