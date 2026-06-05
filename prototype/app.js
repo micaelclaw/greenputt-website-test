@@ -559,6 +559,11 @@ function bindSignalCanvas() {
       context.globalCompositeOperation = "source-over";
       context.font = `900 ${isNarrow ? 12 : 13}px ${getComputedStyle(document.documentElement).getPropertyValue("--font-body")}`;
       const labelWidth = context.measureText(label).width;
+      const dashboardBounds = !isNarrow && dashboard
+        ? {
+          left: dashboard.getBoundingClientRect().left - hero.getBoundingClientRect().left
+        }
+        : null;
       const maxLabelX = !isNarrow && dashboardBounds
         ? dashboardBounds.left - labelWidth - 20
         : width - labelWidth - 16;
