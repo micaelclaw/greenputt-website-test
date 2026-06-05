@@ -362,12 +362,31 @@ function bindSignalCanvas() {
     }
   };
 
+  const placeDistanceReadout = (originX, originY, targetX, width, height, isNarrow) => {
+    if (!dashboard) {
+      return;
+    }
+
+    const readoutWidth = dashboard.offsetWidth || 150;
+    const readoutHeight = dashboard.offsetHeight || 58;
+    const horizontalGap = isNarrow ? 14 : 42;
+    const verticalGap = isNarrow ? 46 : 64;
+    const projectedX = originX + horizontalGap;
+    const projectedY = originY - verticalGap;
+    const minY = isNarrow ? 520 : 260;
+    const maxY = Math.max(minY, height - readoutHeight - 42);
+    const x = clamp(projectedX, 14, width - readoutWidth - 14);
+    const y = clamp(projectedY, minY, maxY);
+
+    dashboard.style.setProperty("--hero-readout-x", `${x}px`);
+    dashboard.style.setProperty("--hero-readout-y", `${y}px`);
+  };
+
   const draw = (now = window.performance.now()) => {
     const width = canvas.clientWidth;
     const height = canvas.clientHeight;
     const isNarrow = width < 700;
     const lowerBounds = getElementBounds(heroLower);
-    const dashboardBounds = getElementBounds(dashboard);
     const imageBallPoint = getImagePoint(heroBallSource);
     const originX = clamp(imageBallPoint.x, 0, width);
     let originY = clamp(imageBallPoint.y, 0, height);
@@ -382,19 +401,13 @@ function bindSignalCanvas() {
       targetX = Math.max(targetX, originX + 90);
     }
 
-    if (dashboardBounds) {
-      if (isNarrow) {
-        const safeBottom = (lowerBounds?.top ?? dashboardBounds.top) - 18;
-        if (originY > safeBottom) {
-          originY = safeBottom;
-        }
-
-        targetY = originY;
-      } else {
-        const minTargetX = originX + 90;
-        const maxTargetX = Math.max(minTargetX, dashboardBounds.left - 120);
-        targetX = Math.min(targetX, maxTargetX);
+    if (isNarrow && lowerBounds) {
+      const safeBottom = lowerBounds.top - 18;
+      if (originY > safeBottom) {
+        originY = safeBottom;
       }
+
+      targetY = originY;
     }
     const pulse = reducedMotion ? 0.72 : (Math.sin(now * 0.003) + 1) / 2;
     const cycleProgress = reducedMotion ? 0.62 : ((now - puttStartedAt) % puttCycle) / puttCycle;
@@ -429,7 +442,8 @@ function bindSignalCanvas() {
       6.8
     );
     const tempoText = cupIn ? "컵인 · 나이스 퍼트" : "라인 유지";
-    updatePuttReadout(`${puttDistance.toFixed(1)}m`, tempoText);
+    updatePuttReadout(`${puttDistance.toFixed(1)}M`, tempoText);
+    placeDistanceReadout(originX, originY, targetX, width, height, isNarrow);
 
     context.clearRect(0, 0, width, height);
 
