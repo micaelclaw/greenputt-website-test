@@ -296,6 +296,10 @@ h3 {
   line-height: 1.68;
 }
 
+.lead-line {
+  display: block;
+}
+
 .hero-lower {
   display: grid;
   grid-template-columns: minmax(250px, 1fr) minmax(190px, 232px);
