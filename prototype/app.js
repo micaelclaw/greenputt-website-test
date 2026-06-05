@@ -257,10 +257,11 @@ function bindScrollProgress() {
 function bindSignalCanvas() {
   const canvas = document.querySelector("#signal-canvas");
   const hero = document.querySelector(".hero");
+  const heroImage = hero?.querySelector(".hero-image");
   const motionSlot = hero?.querySelector(".hero-motion-slot");
   const dashboard = hero?.querySelector(".hero-dashboard");
 
-  if (!canvas || !hero || !motionSlot) {
+  if (!canvas || !hero || !heroImage || !motionSlot) {
     return;
   }
 
@@ -270,6 +271,7 @@ function bindSignalCanvas() {
   const tempoReadout = document.querySelector("#hero-tempo");
   const pointer = { track: 0.78 };
   const puttCycle = 3300;
+  const heroBallSource = { x: 1087, y: 940 };
   let lastDistanceText = "";
   let lastTempoText = "";
   let puttStartedAt = window.performance.now();
@@ -291,6 +293,22 @@ function bindSignalCanvas() {
     : 1 - ((-2 * value + 2) ** 3) / 2;
   const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
   const lerp = (from, to, progress) => from + (to - from) * progress;
+  const parsePositionValue = (value) => {
+    if (value === "left" || value === "top") {
+      return 0;
+    }
+
+    if (value === "right" || value === "bottom") {
+      return 1;
+    }
+
+    if (value === "center") {
+      return 0.5;
+    }
+
+    return Number.parseFloat(value) / 100;
+  };
+
   const linePoint = (progress, originX, originY, targetX, targetY) => {
     return {
       x: originX + (targetX - originX) * progress,
@@ -298,39 +316,65 @@ function bindSignalCanvas() {
     };
   };
 
-  const getMotionTrack = (width) => {
+  const getImagePoint = (sourcePoint) => {
+    const imageRect = heroImage.getBoundingClientRect();
+    const heroRect = hero.getBoundingClientRect();
+    const naturalWidth = heroImage.naturalWidth || 2600;
+    const naturalHeight = heroImage.naturalHeight || 1114;
+    const scale = Math.max(imageRect.width / naturalWidth, imageRect.height / naturalHeight);
+    const renderedWidth = naturalWidth * scale;
+    const renderedHeight = naturalHeight * scale;
+    const [positionX = "50%", positionY = "50%"] = getComputedStyle(heroImage).objectPosition.split(" ");
+    const offsetX = (imageRect.width - renderedWidth) * parsePositionValue(positionX);
+    const offsetY = (imageRect.height - renderedHeight) * parsePositionValue(positionY);
+
+    return {
+      x: imageRect.left - heroRect.left + offsetX + sourcePoint.x * scale,
+      y: imageRect.top - heroRect.top + offsetY + sourcePoint.y * scale
+    };
+  };
+
+  const getMotionTrack = (width, height) => {
     const heroRect = hero.getBoundingClientRect();
     const slotRect = motionSlot.getBoundingClientRect();
-    const dashboardRect = dashboard?.getBoundingClientRect();
     const isNarrowTrack = width < 700;
     const slotLeft = slotRect.left - heroRect.left;
     const slotTop = slotRect.top - heroRect.top;
     const slotWidth = slotRect.width || width;
     const slotHeight = slotRect.height || 64;
-    const dashboardLeft = dashboardRect
-      ? dashboardRect.left - heroRect.left
-      : slotLeft;
-    const dashboardWidth = dashboardRect?.width || Math.min(96, slotWidth * 0.18);
+    const imageBallPoint = getImagePoint(heroBallSource);
     const originX = clamp(
-      dashboardLeft + dashboardWidth * (isNarrowTrack ? 0.7 : 0.82),
-      slotLeft + 14,
-      slotLeft + slotWidth - 64
+      imageBallPoint.x,
+      16,
+      width - (isNarrowTrack ? 84 : 120)
     );
-    const originY = slotTop + slotHeight * (isNarrowTrack ? 0.72 : 0.76);
-    const minTargetX = originX + (isNarrowTrack ? 44 : 96);
-    const maxTargetX = slotLeft + slotWidth - (isNarrowTrack ? 22 : 30);
+    const fallbackOriginY = slotTop + slotHeight * (isNarrowTrack ? 0.72 : 0.76);
+    const originY = clamp(
+      imageBallPoint.y,
+      slotTop + slotHeight * 0.18,
+      Math.min(slotTop + slotHeight * 1.18, height - 48)
+    ) || fallbackOriginY;
+    const minTargetX = originX + (isNarrowTrack ? 48 : 112);
+    const maxTargetX = Math.min(
+      slotLeft + slotWidth - (isNarrowTrack ? 20 : 30),
+      width - (isNarrowTrack ? 24 : 48)
+    );
     const targetX = clamp(
       slotLeft + slotWidth * pointer.track,
       minTargetX,
       Math.max(minTargetX, maxTargetX)
     );
+    const targetY = originY - (isNarrowTrack ? 7 : 2);
+    const trackSpan = Math.max(120, Math.max(minTargetX, maxTargetX) - originX);
 
     return {
       originX,
       originY,
       targetX,
-      targetY: originY,
-      slotWidth
+      targetY,
+      slotLeft,
+      slotTop,
+      trackSpan
     };
   };
 
@@ -346,11 +390,20 @@ function bindSignalCanvas() {
     }
   };
 
-  const placeDistanceReadout = () => {
-    if (dashboard) {
-      dashboard.style.removeProperty("--hero-readout-x");
-      dashboard.style.removeProperty("--hero-readout-y");
+  const placeDistanceReadout = (originX, originY, slotLeft, slotTop, isNarrow) => {
+    if (!dashboard) {
+      return;
     }
+
+    const dashboardWidth = dashboard.offsetWidth || (isNarrow ? 76 : 96);
+    const readoutHeroX = clamp(
+      originX + (isNarrow ? 22 : 34),
+      16,
+      Math.max(16, canvas.clientWidth - dashboardWidth - 16)
+    );
+    const readoutHeroY = originY - (isNarrow ? 18 : 24);
+    dashboard.style.setProperty("--hero-readout-x", `${readoutHeroX - slotLeft}px`);
+    dashboard.style.setProperty("--hero-readout-y", `${readoutHeroY - slotTop}px`);
   };
 
   const draw = (now = window.performance.now()) => {
@@ -362,8 +415,10 @@ function bindSignalCanvas() {
       originY,
       targetX,
       targetY,
-      slotWidth
-    } = getMotionTrack(width);
+      slotLeft,
+      slotTop,
+      trackSpan
+    } = getMotionTrack(width, height);
 
     const cycleProgress = reducedMotion ? 0.62 : ((now - puttStartedAt) % puttCycle) / puttCycle;
     const rollDuration = 0.72;
@@ -392,13 +447,13 @@ function bindSignalCanvas() {
     const ballRadius = lerp(5.8, 2.2, cupDropProgress);
     const ballY = ballPoint.y + lerp(0, cupRadiusY * 0.8, cupDropProgress);
     const puttDistance = clamp(
-      1.2 + ((targetX - originX) / (slotWidth * (isNarrow ? 0.66 : 0.72))) * 4.2,
+      1.2 + ((targetX - originX) / trackSpan) * 4.2,
       1.0,
       6.8
     );
     const tempoText = cupIn ? "컵인 · 나이스 퍼트" : "라인 유지";
     updatePuttReadout(`${puttDistance.toFixed(1)}M`, tempoText);
-    placeDistanceReadout();
+    placeDistanceReadout(originX, originY, slotLeft, slotTop, isNarrow);
 
     context.clearRect(0, 0, width, height);
 
@@ -536,37 +591,27 @@ function bindSignalCanvas() {
       context.fill();
     }
 
-    if (cupIn && !isNarrow) {
-      const label = "CUP-IN · NICE PUTT";
+    if (cupIn) {
+      const label = isNarrow ? "CUP-IN" : "CUP-IN · NICE PUTT";
       context.globalCompositeOperation = "source-over";
-      context.font = `900 13px ${getComputedStyle(document.documentElement).getPropertyValue("--font-body")}`;
+      context.font = `900 ${isNarrow ? 11 : 13}px ${getComputedStyle(document.documentElement).getPropertyValue("--font-body")}`;
       const labelWidth = context.measureText(label).width;
-      const dashboardBounds = dashboard
-        ? {
-          left: dashboard.getBoundingClientRect().left - hero.getBoundingClientRect().left
-        }
-        : null;
-      const maxLabelX = dashboardBounds
-        ? dashboardBounds.left - labelWidth - 20
-        : width - labelWidth - 16;
-      if (maxLabelX >= 16) {
-        const labelX = clamp(targetX - labelWidth / 2, 16, maxLabelX);
-        const labelY = targetY - 34;
+      const labelX = clamp(targetX - labelWidth / 2, 16, width - labelWidth - 16);
+      const labelY = targetY - (isNarrow ? 24 : 34);
 
-        context.fillStyle = "rgba(7, 18, 13, 0.92)";
-        context.strokeStyle = "rgba(184, 255, 61, 0.62)";
-        context.lineWidth = 1;
-        context.beginPath();
-        if (typeof context.roundRect === "function") {
-          context.roundRect(labelX - 10, labelY - 18, labelWidth + 20, 28, 14);
-        } else {
-          context.rect(labelX - 10, labelY - 18, labelWidth + 20, 28);
-        }
-        context.fill();
-        context.stroke();
-        context.fillStyle = "rgba(184, 255, 61, 0.96)";
-        context.fillText(label, labelX, labelY + 2);
+      context.fillStyle = "rgba(7, 18, 13, 0.92)";
+      context.strokeStyle = "rgba(184, 255, 61, 0.62)";
+      context.lineWidth = 1;
+      context.beginPath();
+      if (typeof context.roundRect === "function") {
+        context.roundRect(labelX - 10, labelY - 18, labelWidth + 20, 28, 14);
+      } else {
+        context.rect(labelX - 10, labelY - 18, labelWidth + 20, 28);
       }
+      context.fill();
+      context.stroke();
+      context.fillStyle = "rgba(184, 255, 61, 0.96)";
+      context.fillText(label, labelX, labelY + 2);
     }
 
     context.globalCompositeOperation = "source-over";
