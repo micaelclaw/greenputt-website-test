@@ -1,11 +1,11 @@
 window.GREENPUTT_HOME_CONTENT = {
   products: [
     {
-      name: "제로 헤드업 어시스턴트",
+      name: "골든타임 시스템",
       label: "핵심 루틴",
-      description: "공 가까이에 거리 피드백을 남겨, 퍼팅 뒤에도 시선이 쉽게 흔들리지 않도록 돕습니다.",
+      description: "공이 있던 자리에 거리가 표시됩니다. 당신은 2초간 그곳에 시선을 고정합니다. 이 2초가 퍼팅의 모든 것을 결정하는 골든타임입니다.",
       state: "개발 중",
-      stage: "공 앞에 숫자가 남으면, 결과를 보려고 고개를 드는 움직임이 줄어듭니다.",
+      stage: "공이 있던 자리에 숫자가 남으면, 결과를 보려고 고개를 드는 움직임이 줄어듭니다.",
       image: "./assets/greenputt-system-closeup.jpg",
       imageAlt: "GreenPutt 퍼팅 어시스턴트와 매트 클로즈업",
       focus: "임팩트 라인",
@@ -15,9 +15,9 @@ window.GREENPUTT_HOME_CONTENT = {
       href: "#bridge"
     },
     {
-      name: "퍼팅 매트",
-      label: "연습 표면",
-      description: "거리 눈금과 피드백 장치를 한 흐름으로 묶어 주는 실내 퍼팅 베이스.",
+      name: "어떤 그린에서도 자신있게",
+      label: "그린스피드 4단계 조절",
+      description: "4단계로 구현되는 그린 환경을 미리 경험하며 거리감을 훈련합니다.",
       state: "개발 중",
       stage: "실내에서도 같은 시선, 같은 어드레스, 같은 거리 루틴을 반복하게 합니다.",
       image: "./assets/greenputt-lineup-showcase.jpg",
@@ -29,9 +29,9 @@ window.GREENPUTT_HOME_CONTENT = {
       href: "#bridge"
     },
     {
-      name: "거리 피드백",
-      label: "데이터 신호",
-      description: "초기 볼 스피드와 예상 거리를 읽어 공 가까이에서 확인하게 하는 피드백.",
+      name: "좁은 공간에서도 자유롭게",
+      label: "리턴볼 시스템",
+      description: "흐름을 끊지 않는 가장 완벽한 훈련. 펏트너는 1평의 공간에서도 끊이지 않는 반복 훈련이 가능합니다.",
       state: "준비 중",
       stage: "막연한 감각으로 남던 퍼팅 거리를 바로 확인할 수 있는 숫자로 바꿉니다.",
       image: "./assets/greenputt-putter-macro.jpg",
