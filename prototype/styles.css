@@ -256,6 +256,10 @@ h1 {
   max-width: 640px;
 }
 
+.hero-copy h1 span {
+  display: block;
+}
+
 h2 {
   margin: 0;
   font-family: var(--font-display);
@@ -1938,12 +1942,12 @@ h3 {
   }
 
   .lead {
-    max-width: min(310px, 100%);
+    max-width: min(350px, 100%);
     font-size: 15px;
     line-height: 1.62;
-    line-break: anywhere;
-    overflow-wrap: anywhere !important;
-    word-break: break-all !important;
+    line-break: strict;
+    overflow-wrap: break-word !important;
+    word-break: keep-all !important;
   }
 
   .hero-lower {
