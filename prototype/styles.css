@@ -91,7 +91,6 @@ img {
 .brand {
   width: clamp(138px, 16vw, 220px);
   flex: 0 0 auto;
-  filter: brightness(0) invert(1);
 }
 
 .primary-nav {
