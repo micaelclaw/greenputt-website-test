@@ -430,6 +430,34 @@ PV_PV01_PAIR_WOMEN_FLATLAY_WHITE_LOGO_OLD_LABEL_DBK_FINAL_001.jpg
 PV_PV04_PAIR_MEN_WINTER_GOLF_BLACK_LOGO_NEW_LABEL_DBK_FINAL_001.jpg
 ```
 
+로고 버전별로 함께 관리할 때는 아래 구조를 우선한다.
+
+```text
+03_Final_Exports/
+  PV02_MESH/
+    RH_WOMEN/
+      01_NO_LOGO/
+        PV_PV02_RH_WOMEN_BACK_PATCH_WHITE_LOGO_NONE_LABEL_NONE_FINAL_001.png
+
+      02_WITH_LOGO/
+        01_OLD_LOGO/
+          PV_PV02_RH_WOMEN_BACK_PATCH_WHITE_LOGO_OLD_LABEL_NONE_FINAL_001.png
+
+        02_NEW_LOGO/
+          PV_PV02_RH_WOMEN_BACK_PATCH_WHITE_LOGO_NEW_LABEL_NONE_FINAL_001.png
+
+      03_ALIGNMENT_CHECK/
+        PV_PV02_RH_WOMEN_ALIGNMENT_CHECK_WHITE_LOGO_NEW_LABEL_DBK_*.png
+```
+
+원칙:
+
+- `01_NO_LOGO`에는 AI 생성 또는 보정 단계에서 로고/문자가 없는 최종 베이스만 넣는다.
+- `02_WITH_LOGO/01_OLD_LOGO`에는 구형 Polvert 로고가 들어간 승인본을 넣는다.
+- `02_WITH_LOGO/02_NEW_LOGO`에는 신형 Polvert 로고로 교체한 승인본을 넣는다.
+- 같은 구도에서 OLD와 NEW를 모두 남길 때는 파일명에서 `LOGO_OLD`와 `LOGO_NEW`만 다르고 나머지 정보는 최대한 동일하게 유지한다.
+- 검수용 축/정렬 이미지는 제품 최종본과 섞지 않고 `03_ALIGNMENT_CHECK`에 둔다.
+
 ## 14. 로고 파일명 규칙
 
 로고 파일은 제품 사진과 분리해서 `00_Brand`에 관리한다.
@@ -473,7 +501,41 @@ POLVERT_LOGO_NEW_WHITE_BG_TRANSPARENT_PATCH_4X_001.png
     4X 업스케일 보관본
 ```
 
-## 15. 정리 체크리스트
+## 15. 로고 합성 회전축 / 중심 정렬 공통 규칙
+
+Polvert 로고는 AI가 직접 그리게 하지 않고 실제 로고 파일을 후처리로 합성한다. 이때 기준은 화면의 수평/수직 좌표가 아니라, 패치가 놓인 물리적인 면의 로컬 좌표다.
+
+공통 절차:
+
+```text
+1. 패치의 실제 면을 먼저 찾는다.
+2. 패치 기준 X축을 정한다. 보통 패치 상단 테두리 또는 패치의 물리적 가로 방향이다.
+3. 패치 기준 Y축은 X축에서 정확히 90도 회전한 축으로 둔다.
+4. 패치 픽셀을 이 X/Y축에 투영해 회전 직사각형을 만든다.
+5. 실제 로고/라벨 객체도 같은 X/Y축에 투영해 회전 직사각형을 만든다.
+6. 로고/라벨 객체의 회전 직사각형 중심을 패치 회전 직사각형 중심에 맞춘다.
+7. 최종 검수 이미지에는 패치 박스와 로고 박스가 같은 X/Y축을 공유하는 회전 직사각형으로 표시되어야 한다.
+```
+
+검수 색상 기준:
+
+```text
+빨간선 = 로고 객체의 X축, Polvert 글자 가로축
+초록선 = 로고 객체의 Y축, 빨간선에서 정확히 90도인 축
+노랑 박스 = 패치 영역을 빨간/초록 축에 투영한 회전 직사각형
+핑크 박스 = 로고/라벨 영역을 같은 축에 투영한 회전 직사각형
+하늘색 보조선 = Polvert 글자 가로축 검수선
+```
+
+중요한 실패 패턴:
+
+- 화면 기준 bbox로 노랑/핑크 박스를 그리면 안 된다. 패치가 기울어진 컷에서는 박스도 패치 X/Y축과 같은 방향으로 기울어져야 한다.
+- 로고 박스 중심만 맞고 `Polvert` 글자 가로축이 빨간 X축과 평행하지 않으면 실패다.
+- 패치가 곡면에 있더라도 먼저 보이는 패치 테두리와 손목 방향을 기준으로 로컬 X/Y축을 세운 뒤, 그 축에 맞춰 로고를 회전/중심 정렬한다.
+- PIL 같은 이미지 처리 도구는 회전 부호가 화면 좌표와 반대로 보일 수 있다. 최종 합성 전에 `Polvert` 글자 가로축이 빨간 X축과 평행한지 검수 이미지를 만들어 확인한다.
+- 정렬이 맞는지 애매하면 `ALIGNMENT_CHECK` 파일을 저장하고, 수치보다 시각적으로 패치 면에 붙어 보이는지를 우선 확인한다.
+
+## 16. 정리 체크리스트
 
 파일을 넣기 전에 아래 순서로 확인한다.
 
@@ -488,7 +550,7 @@ POLVERT_LOGO_NEW_WHITE_BG_TRANSPARENT_PATCH_4X_001.png
 8. 레퍼런스는 01_Reference_Source에, AI 작업물은 02_AI_Work에, 최종본은 03_Final_Exports에 넣었는가?
 ```
 
-## 16. 새 채팅에서 요청할 때 쓰는 예시
+## 17. 새 채팅에서 요청할 때 쓰는 예시
 
 아래처럼 말하면 바로 작업 기준을 잡기 쉽다.
 
