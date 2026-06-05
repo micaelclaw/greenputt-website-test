@@ -359,7 +359,27 @@ function bindSignalCanvas() {
     const minY = isNarrow ? 520 : 260;
     const maxY = Math.max(minY, height - readoutHeight - 42);
     const x = clamp(projectedX, 14, width - readoutWidth - 14);
-    const y = clamp(projectedY, minY, maxY);
+    let y = clamp(projectedY, minY, maxY);
+    const actions = hero.querySelector(".hero-actions");
+    const signalHint = hero.querySelector(".hero-signal-hint");
+
+    if (actions && signalHint) {
+      const heroRect = hero.getBoundingClientRect();
+      const actionsRect = actions.getBoundingClientRect();
+      const hintRect = signalHint.getBoundingClientRect();
+      const layoutGap = isNarrow ? 12 : 14;
+      const bandTop = actionsRect.bottom - heroRect.top + layoutGap;
+      const bandBottom = hintRect.top - heroRect.top - readoutHeight - layoutGap;
+
+      if (bandBottom >= bandTop) {
+        y = clamp(y, bandTop, bandBottom);
+      } else {
+        const bandCenter = ((actionsRect.bottom + hintRect.top) / 2) - heroRect.top - (readoutHeight / 2);
+        y = bandCenter;
+      }
+    }
+
+    y = clamp(y, 14, height - readoutHeight - 14);
 
     dashboard.style.setProperty("--hero-readout-x", `${x}px`);
     dashboard.style.setProperty("--hero-readout-y", `${y}px`);
