@@ -286,10 +286,19 @@ h3 {
   line-height: 1.28;
 }
 
+.hero-product-statement {
+  max-width: 660px;
+  margin: 18px 0 0;
+  color: rgba(255, 255, 255, 0.94);
+  font-size: clamp(17px, 1.45vw, 22px);
+  font-weight: 900;
+  line-height: 1.42;
+}
+
 .lead {
   width: 100%;
   max-width: 620px;
-  margin: 22px 0 0;
+  margin: 16px 0 0;
   color: rgba(255, 255, 255, 0.78);
   font-size: clamp(16px, 1.7vw, 22px);
   font-weight: 500;
@@ -1945,10 +1954,18 @@ h3 {
     font-size: clamp(18px, 5.2vw, 23px);
   }
 
+  .hero-product-statement {
+    max-width: min(350px, 100%);
+    margin-top: 14px;
+    font-size: clamp(15px, 4.2vw, 18px);
+    line-height: 1.42;
+  }
+
   .lead {
     max-width: min(350px, 100%);
+    margin-top: 12px;
     font-size: 15px;
-    line-height: 1.62;
+    line-height: 1.56;
     line-break: strict;
     overflow-wrap: break-word !important;
     word-break: keep-all !important;

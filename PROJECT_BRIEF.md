@@ -17,6 +17,7 @@ Plan a premium golf/putting brand website before implementation. The site should
 - Putter / smart putting assistant: prototype/concept materials exist. Core story is projection-based distance feedback that helps prevent head-up during putting practice.
 - Putting mat: concept/render materials exist. Should communicate indoor practice value, distance feedback, and putting improvement.
 - Rangefinder / distance-measurement device: prototype drawings and render materials exist. Should sit naturally within the same golf performance brand without making the website feel unfocused.
+- Product naming decision: `펏트너(PUTTNER)` refers to the GreenPutt putting system that combines the golf mat and distance-measurement feedback device. Use GreenPutt as the brand and 펏트너(PUTTNER) as the product/system name in hero and product copy.
 
 ## Audience
 
