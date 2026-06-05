@@ -2242,31 +2242,3 @@ h3 {
     min-height: 390px;
   }
 }
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.001ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.001ms !important;
-  }
-
-  .signal-sweep,
-  .demo-ball,
-  .demo-path,
-  .demo-putter,
-  .demo-display,
-  .demo-display strong,
-  .demo-gaze::before,
-  .demo-cycle i,
-  .stage-hotspot::before,
-  .stage-hotspot::after,
-  .stage-hotspot i {
-    animation: none !important;
-  }
-}

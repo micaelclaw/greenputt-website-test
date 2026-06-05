@@ -1,5 +1,10 @@
 const content = window.GREENPUTT_HOME_CONTENT;
 
+function shouldReduceMotion() {
+  // GreenPutt's product story depends on motion; keep site animations on regardless of OS settings.
+  return false;
+}
+
 function bindViewportUnit() {
   let viewportWidth = window.innerWidth;
 
@@ -128,7 +133,7 @@ function bindProductStage() {
   const carousel = document.querySelector(".product-carousel");
   const previousButton = document.querySelector("#lineup-prev");
   const nextButton = document.querySelector("#lineup-next");
-  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const reducedMotion = shouldReduceMotion();
   const autoplayDuration = 5200;
   let activeIndex = 0;
   let autoplayId = 0;
@@ -260,7 +265,7 @@ function bindSignalCanvas() {
   }
 
   const context = canvas.getContext("2d");
-  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const reducedMotion = shouldReduceMotion();
   const distanceReadout = document.querySelector("#hero-distance");
   const tempoReadout = document.querySelector("#hero-tempo");
   const pointer = { x: 0.64, y: 0.79 };
@@ -626,7 +631,7 @@ function bindFilmDemo() {
   const distance = document.querySelector("#film-distance");
   const state = document.querySelector("#film-state");
   const note = document.querySelector("#demo-note");
-  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const reducedMotion = shouldReduceMotion();
   const stepDuration = 3500;
   const cycleDuration = stepDuration * Math.max(steps.length, 1);
   let activeIndex = 0;
