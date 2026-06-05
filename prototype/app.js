@@ -257,10 +257,10 @@ function bindScrollProgress() {
 function bindSignalCanvas() {
   const canvas = document.querySelector("#signal-canvas");
   const hero = document.querySelector(".hero");
-  const heroImage = hero?.querySelector(".hero-image");
+  const motionSlot = hero?.querySelector(".hero-motion-slot");
   const dashboard = hero?.querySelector(".hero-dashboard");
 
-  if (!canvas || !hero || !heroImage) {
+  if (!canvas || !hero || !motionSlot) {
     return;
   }
 
@@ -268,9 +268,8 @@ function bindSignalCanvas() {
   const reducedMotion = shouldReduceMotion();
   const distanceReadout = document.querySelector("#hero-distance");
   const tempoReadout = document.querySelector("#hero-tempo");
-  const pointer = { x: 0.64, y: 0.79 };
+  const pointer = { track: 0.78 };
   const puttCycle = 3300;
-  const heroBallSource = { x: 1087, y: 940 };
   let lastDistanceText = "";
   let lastTempoText = "";
   let puttStartedAt = window.performance.now();
@@ -292,22 +291,6 @@ function bindSignalCanvas() {
     : 1 - ((-2 * value + 2) ** 3) / 2;
   const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
   const lerp = (from, to, progress) => from + (to - from) * progress;
-  const parsePositionValue = (value) => {
-    if (value === "left" || value === "top") {
-      return 0;
-    }
-
-    if (value === "right" || value === "bottom") {
-      return 1;
-    }
-
-    if (value === "center") {
-      return 0.5;
-    }
-
-    return Number.parseFloat(value) / 100;
-  };
-
   const linePoint = (progress, originX, originY, targetX, targetY) => {
     return {
       x: originX + (targetX - originX) * progress,
@@ -315,21 +298,39 @@ function bindSignalCanvas() {
     };
   };
 
-  const getImagePoint = (sourcePoint) => {
-    const imageRect = heroImage.getBoundingClientRect();
+  const getMotionTrack = (width) => {
     const heroRect = hero.getBoundingClientRect();
-    const naturalWidth = heroImage.naturalWidth || 2600;
-    const naturalHeight = heroImage.naturalHeight || 1114;
-    const scale = Math.max(imageRect.width / naturalWidth, imageRect.height / naturalHeight);
-    const renderedWidth = naturalWidth * scale;
-    const renderedHeight = naturalHeight * scale;
-    const [positionX = "50%", positionY = "50%"] = getComputedStyle(heroImage).objectPosition.split(" ");
-    const offsetX = (imageRect.width - renderedWidth) * parsePositionValue(positionX);
-    const offsetY = (imageRect.height - renderedHeight) * parsePositionValue(positionY);
+    const slotRect = motionSlot.getBoundingClientRect();
+    const dashboardRect = dashboard?.getBoundingClientRect();
+    const isNarrowTrack = width < 700;
+    const slotLeft = slotRect.left - heroRect.left;
+    const slotTop = slotRect.top - heroRect.top;
+    const slotWidth = slotRect.width || width;
+    const slotHeight = slotRect.height || 64;
+    const dashboardLeft = dashboardRect
+      ? dashboardRect.left - heroRect.left
+      : slotLeft;
+    const dashboardWidth = dashboardRect?.width || Math.min(96, slotWidth * 0.18);
+    const originX = clamp(
+      dashboardLeft + dashboardWidth * (isNarrowTrack ? 0.7 : 0.82),
+      slotLeft + 14,
+      slotLeft + slotWidth - 64
+    );
+    const originY = slotTop + slotHeight * (isNarrowTrack ? 0.72 : 0.76);
+    const minTargetX = originX + (isNarrowTrack ? 44 : 96);
+    const maxTargetX = slotLeft + slotWidth - (isNarrowTrack ? 22 : 30);
+    const targetX = clamp(
+      slotLeft + slotWidth * pointer.track,
+      minTargetX,
+      Math.max(minTargetX, maxTargetX)
+    );
 
     return {
-      x: imageRect.left - heroRect.left + offsetX + sourcePoint.x * scale,
-      y: imageRect.top - heroRect.top + offsetY + sourcePoint.y * scale
+      originX,
+      originY,
+      targetX,
+      targetY: originY,
+      slotWidth
     };
   };
 
@@ -356,19 +357,13 @@ function bindSignalCanvas() {
     const width = canvas.clientWidth;
     const height = canvas.clientHeight;
     const isNarrow = width < 700;
-    const imageBallPoint = getImagePoint(heroBallSource);
-    const originX = clamp(imageBallPoint.x, 0, width);
-    const originY = clamp(imageBallPoint.y, 0, height);
-    let targetX = width * pointer.x;
-    const targetY = originY;
-
-    if (isNarrow) {
-      const minTargetX = originX + 48;
-      const maxTargetX = Math.max(minTargetX, width - 70);
-      targetX = clamp(targetX, minTargetX, maxTargetX);
-    } else {
-      targetX = Math.max(targetX, originX + 90);
-    }
+    const {
+      originX,
+      originY,
+      targetX,
+      targetY,
+      slotWidth
+    } = getMotionTrack(width);
 
     const cycleProgress = reducedMotion ? 0.62 : ((now - puttStartedAt) % puttCycle) / puttCycle;
     const rollDuration = 0.72;
@@ -397,13 +392,13 @@ function bindSignalCanvas() {
     const ballRadius = lerp(5.8, 2.2, cupDropProgress);
     const ballY = ballPoint.y + lerp(0, cupRadiusY * 0.8, cupDropProgress);
     const puttDistance = clamp(
-      1.2 + ((targetX - originX) / (width * (isNarrow ? 0.46 : 0.44))) * 4.2,
+      1.2 + ((targetX - originX) / (slotWidth * (isNarrow ? 0.66 : 0.72))) * 4.2,
       1.0,
       6.8
     );
     const tempoText = cupIn ? "컵인 · 나이스 퍼트" : "라인 유지";
     updatePuttReadout(`${puttDistance.toFixed(1)}M`, tempoText);
-    placeDistanceReadout(originX, originY, targetX, width, height, isNarrow);
+    placeDistanceReadout();
 
     context.clearRect(0, 0, width, height);
 
@@ -541,37 +536,37 @@ function bindSignalCanvas() {
       context.fill();
     }
 
-    if (cupIn) {
-      const label = isNarrow ? "컵인" : "CUP-IN · NICE PUTT";
+    if (cupIn && !isNarrow) {
+      const label = "CUP-IN · NICE PUTT";
       context.globalCompositeOperation = "source-over";
-      context.font = `900 ${isNarrow ? 12 : 13}px ${getComputedStyle(document.documentElement).getPropertyValue("--font-body")}`;
+      context.font = `900 13px ${getComputedStyle(document.documentElement).getPropertyValue("--font-body")}`;
       const labelWidth = context.measureText(label).width;
-      const dashboardBounds = !isNarrow && dashboard
+      const dashboardBounds = dashboard
         ? {
           left: dashboard.getBoundingClientRect().left - hero.getBoundingClientRect().left
         }
         : null;
-      const maxLabelX = !isNarrow && dashboardBounds
+      const maxLabelX = dashboardBounds
         ? dashboardBounds.left - labelWidth - 20
         : width - labelWidth - 16;
-      const labelX = isNarrow
-        ? clamp(targetX + 16, 16, maxLabelX)
-        : clamp(targetX - labelWidth / 2, 16, maxLabelX);
-      const labelY = targetY - (isNarrow ? 26 : 34);
+      if (maxLabelX >= 16) {
+        const labelX = clamp(targetX - labelWidth / 2, 16, maxLabelX);
+        const labelY = targetY - 34;
 
-      context.fillStyle = "rgba(7, 18, 13, 0.92)";
-      context.strokeStyle = "rgba(184, 255, 61, 0.62)";
-      context.lineWidth = 1;
-      context.beginPath();
-      if (typeof context.roundRect === "function") {
-        context.roundRect(labelX - 10, labelY - 18, labelWidth + 20, 28, 14);
-      } else {
-        context.rect(labelX - 10, labelY - 18, labelWidth + 20, 28);
+        context.fillStyle = "rgba(7, 18, 13, 0.92)";
+        context.strokeStyle = "rgba(184, 255, 61, 0.62)";
+        context.lineWidth = 1;
+        context.beginPath();
+        if (typeof context.roundRect === "function") {
+          context.roundRect(labelX - 10, labelY - 18, labelWidth + 20, 28, 14);
+        } else {
+          context.rect(labelX - 10, labelY - 18, labelWidth + 20, 28);
+        }
+        context.fill();
+        context.stroke();
+        context.fillStyle = "rgba(184, 255, 61, 0.96)";
+        context.fillText(label, labelX, labelY + 2);
       }
-      context.fill();
-      context.stroke();
-      context.fillStyle = "rgba(184, 255, 61, 0.96)";
-      context.fillText(label, labelX, labelY + 2);
     }
 
     context.globalCompositeOperation = "source-over";
@@ -586,9 +581,8 @@ function bindSignalCanvas() {
   };
 
   hero.addEventListener("pointermove", (event) => {
-    const rect = hero.getBoundingClientRect();
-    pointer.x = Math.min(0.78, Math.max(0.28, (event.clientX - rect.left) / rect.width));
-    pointer.y = Math.min(0.86, Math.max(0.38, (event.clientY - rect.top) / rect.height));
+    const slotRect = motionSlot.getBoundingClientRect();
+    pointer.track = Math.min(0.92, Math.max(0.42, (event.clientX - slotRect.left) / slotRect.width));
     triggerPutt();
   });
   hero.addEventListener("pointerenter", triggerPutt);

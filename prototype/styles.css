@@ -382,10 +382,12 @@ h3 {
 }
 
 .hero-motion-slot {
+  position: relative;
   display: flex;
   min-height: clamp(54px, 7vh, 76px);
   align-items: center;
   width: 100%;
+  overflow: visible;
   pointer-events: none;
 }
 
@@ -413,7 +415,7 @@ h3 {
 @media (min-width: 1181px) and (max-height: 860px) {
   .hero-copy {
     --hero-action-gap: 24px;
-    --hero-control-gap: clamp(16px, 2.5vh, 24px);
+    --hero-control-gap: clamp(14px, 2.25vh, 22px);
     padding-top: 96px;
     padding-bottom: 132px;
   }
@@ -2114,6 +2116,49 @@ h3 {
 
   .hero-lower {
     margin-top: var(--hero-action-gap);
+  }
+}
+
+@media (min-width: 900px) and (max-width: 1180px) and (max-height: 820px) {
+  .hero-copy {
+    --hero-action-gap: 18px;
+    --hero-control-gap: 16px;
+    padding-top: 100px;
+    padding-bottom: 32px;
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(42px, 6vw, 60px);
+    line-height: 1.06;
+  }
+
+  .hero-korean {
+    margin-top: 12px;
+    font-size: clamp(18px, 2.6vw, 24px);
+  }
+
+  .hero-product-statement {
+    margin-top: 10px;
+    font-size: clamp(15px, 1.8vw, 18px);
+  }
+
+  .lead {
+    margin-top: 10px;
+    font-size: clamp(15px, 1.9vw, 17px);
+    line-height: 1.5;
+  }
+
+  .hero-lower {
+    margin-top: 0;
+  }
+
+  .hero-motion-slot {
+    min-height: 50px;
+  }
+
+  .hero-signal-hint {
+    padding: 6px 10px;
+    font-size: 12px;
   }
 }
 
