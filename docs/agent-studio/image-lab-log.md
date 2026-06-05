@@ -109,6 +109,9 @@ Premium golf glove product photograph, golfer gripping a club with a clean white
 - `prototype/assets/polvert/logo-locked-v10/polvert-storepick-logo-locked-10-homepage-hero.jpg`: StorePick 대표 이미지. AI에는 빈 검은 패치만 생성하게 하고, 05 폴더의 실제 `폴베르_로고.jpg`를 흰색 투명 로고로 변환해 실제 장갑처럼 회전 합성했다. v10은 가장 큰 검은 패치 컴포넌트를 분리한 뒤 최소 면적 회전 박스를 만들고, 그 회전 박스의 수직/수평 중앙 교차점에 로고를 맞췄다. 로고 각도는 회전 박스의 가로축을 따르며, 크기는 회전 박스의 긴 변 기준으로 산정한다.
 - `prototype/assets/polvert/logo-locked-v10/polvert-storepick-logo-locked-contact-sheet.jpg`: 실제 로고 회전 합성 후보 10장 검토용 시트.
 - `prototype/assets/polvert/logo-locked-v10/polvert-storepick-logo-locked-centerline-check.jpg`: 검은 패치 회전 박스와 회전된 중앙 십자선을 확인하기 위한 검수 이미지.
+- `prototype/assets/polvert/logo-locked-v11-new-logo/polvert-storepick-logo-locked-new-logo-homepage-hero.jpg`: StorePick 신형 로고 대표 이미지. 현재 홈페이지와 같은 1657x949 no-logo 원본은 Drive에 남아 있지 않아 v10 장면을 유지했다. old 로고의 흰 획만 좁게 제거하고 `05_Product_Polvert_Glove/00_Brand/02_Logo_Work/POLVERT_LOGO_NEW_BLACK_BG-TRANSPARENT_ORIGINAL.png`를 흰색 alpha 로고로 변환해 합성했다. 위치는 v10 homepage patch 기준 회전 박스 중심 `(1164.5, 376.5)`, 패치 가로축 `19.8deg`, 로고 각도 `160.2deg`, local width `185px`로 맞췄다.
+- `prototype/assets/polvert/logo-locked-v11-new-logo/polvert-storepick-new-logo-axis-check.jpg`: 신형 로고가 검은 패치의 회전된 수평/수직 축과 중앙 교차점에 맞는지 확인하기 위한 검수 이미지.
+- `prototype/assets/polvert/logo-locked-v11-new-logo/polvert-storepick-new-logo-contact-sheet.jpg`: 신형 로고 크기 후보와 최종 축 검수 crop을 모은 비교 시트.
 - Google Drive export: `GreenPutt Website/11_Final_Web_Exports/Polvert/StorePick_Logo_Locked`
 
 ### 2026-05-27 후보 1
