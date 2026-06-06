@@ -232,22 +232,11 @@ function bindProductStage() {
 
 function bindScrollProgress() {
   const progress = document.querySelector("#scroll-progress-bar");
-  const heroDistance = document.querySelector("#hero-distance");
-  const heroTempo = document.querySelector("#hero-tempo");
 
   const update = () => {
     const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
     const ratio = maxScroll > 0 ? window.scrollY / maxScroll : 0;
     progress.style.transform = `scaleX(${Math.min(1, Math.max(0, ratio))})`;
-
-    if (heroDistance) {
-      const distance = 2.3 + ratio * 5.4;
-      heroDistance.textContent = `${distance.toFixed(1)}m`;
-    }
-
-    if (heroTempo) {
-      heroTempo.textContent = ratio > 0.42 ? "루틴 반복 중" : "리듬 유지";
-    }
   };
 
   update();
@@ -270,8 +259,9 @@ function bindSignalCanvas() {
   const reducedMotion = shouldReduceMotion();
   const distanceReadout = document.querySelector("#hero-distance");
   const tempoReadout = document.querySelector("#hero-tempo");
-  const pointer = { track: 0.78 };
+  const pointer = { progress: 0 };
   const puttCycle = 3300;
+  const puttDistanceRange = { start: 2, end: 5 };
   const heroBallSource = { x: 1087, y: 940 };
   let lastDistanceText = "";
   let lastTempoText = "";
@@ -361,13 +351,9 @@ function bindSignalCanvas() {
       slotLeft + slotWidth - (isNarrowTrack ? 20 : 30),
       width - (isNarrowTrack ? 24 : 48)
     );
-    const targetX = clamp(
-      slotLeft + slotWidth * pointer.track,
-      minTargetX,
-      Math.max(minTargetX, maxTargetX)
-    );
+    const targetEndX = Math.max(minTargetX, maxTargetX);
+    const targetX = lerp(minTargetX, targetEndX, pointer.progress);
     const targetY = originY - (isNarrowTrack ? 7 : 2);
-    const trackSpan = Math.max(120, Math.max(minTargetX, maxTargetX) - originX);
 
     return {
       originX,
@@ -376,7 +362,7 @@ function bindSignalCanvas() {
       targetY,
       slotLeft,
       slotTop,
-      trackSpan
+      distanceProgress: pointer.progress
     };
   };
 
@@ -438,7 +424,7 @@ function bindSignalCanvas() {
       targetY,
       slotLeft,
       slotTop,
-      trackSpan
+      distanceProgress
     } = getMotionTrack(width, height);
 
     const cycleProgress = reducedMotion ? 0.62 : ((now - puttStartedAt) % puttCycle) / puttCycle;
@@ -467,11 +453,7 @@ function bindSignalCanvas() {
       : Math.max(0, 1 - (cycleProgress - 0.88) / 0.1);
     const ballRadius = lerp(5.8, 2.2, cupDropProgress);
     const ballY = ballPoint.y + lerp(0, cupRadiusY * 0.8, cupDropProgress);
-    const puttDistance = clamp(
-      1.2 + ((targetX - originX) / trackSpan) * 4.2,
-      1.0,
-      6.8
-    );
+    const puttDistance = lerp(puttDistanceRange.start, puttDistanceRange.end, distanceProgress);
     const tempoText = cupIn ? "컵인 · 나이스 퍼트" : "라인 유지";
     updatePuttReadout(`${puttDistance.toFixed(1)}M`, tempoText);
     placeDistanceReadout(originX, originY, slotLeft, slotTop, isNarrow);
@@ -649,7 +631,7 @@ function bindSignalCanvas() {
 
   hero.addEventListener("pointermove", (event) => {
     const slotRect = motionSlot.getBoundingClientRect();
-    pointer.track = Math.min(0.92, Math.max(0.42, (event.clientX - slotRect.left) / slotRect.width));
+    pointer.progress = clamp((event.clientX - slotRect.left) / slotRect.width, 0, 1);
     triggerPutt();
   });
   hero.addEventListener("pointerenter", triggerPutt);
