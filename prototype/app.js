@@ -350,10 +350,10 @@ function bindSignalCanvas() {
     );
     const fallbackOriginY = slotTop + slotHeight * (isNarrowTrack ? 0.72 : 0.76);
     const originY = clamp(
-      imageBallPoint.y,
-      slotTop + slotHeight * 0.18,
-      Math.min(slotTop + slotHeight * 1.18, height - 48)
-    ) || fallbackOriginY;
+      Number.isFinite(imageBallPoint.y) ? imageBallPoint.y : fallbackOriginY,
+      24,
+      height - (isNarrowTrack ? 34 : 40)
+    );
     const minTargetX = originX + (isNarrowTrack ? 48 : 112);
     const maxTargetX = Math.min(
       slotLeft + slotWidth - (isNarrowTrack ? 20 : 30),
