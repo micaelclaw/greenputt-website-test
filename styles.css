@@ -1670,7 +1670,7 @@ h3 {
   grid-template-columns: 48px minmax(0, 1fr) 48px;
   gap: 14px;
   align-items: center;
-  max-width: var(--layout-max);
+  max-width: calc((360px * 3) + (14px * 4) + (48px * 2));
   margin-top: 54px;
   margin-right: auto;
   margin-left: auto;
@@ -2019,6 +2019,10 @@ h3 {
 
   .hero-lower {
     grid-template-columns: minmax(250px, 1fr) auto;
+  }
+
+  .product-carousel {
+    max-width: calc((360px * 2) + (14px * 3) + (48px * 2));
   }
 
   .lineup-item {
