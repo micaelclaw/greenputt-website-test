@@ -260,6 +260,7 @@ function bindSignalCanvas() {
   const heroImage = hero?.querySelector(".hero-image");
   const motionSlot = hero?.querySelector(".hero-motion-slot");
   const dashboard = hero?.querySelector(".hero-dashboard");
+  const signalHint = hero?.querySelector(".hero-signal-hint");
 
   if (!canvas || !hero || !heroImage || !motionSlot) {
     return;
@@ -274,6 +275,7 @@ function bindSignalCanvas() {
   const heroBallSource = { x: 1087, y: 940 };
   let lastDistanceText = "";
   let lastTempoText = "";
+  let lastHintClearance = 0;
   let puttStartedAt = window.performance.now();
   let rafId = 0;
 
@@ -406,6 +408,25 @@ function bindSignalCanvas() {
     dashboard.style.setProperty("--hero-readout-y", `${readoutHeroY - slotTop}px`);
   };
 
+  const placeSignalHint = (originY, targetY, isNarrow) => {
+    if (!signalHint) {
+      return;
+    }
+
+    const hintRect = signalHint.getBoundingClientRect();
+    const heroRect = hero.getBoundingClientRect();
+    const hintTop = hintRect.top - heroRect.top;
+    const baseHintTop = hintTop - lastHintClearance;
+    const minGap = isNarrow ? 18 : 22;
+    const requiredClearance = Math.max(0, Math.max(originY, targetY) + minGap - baseHintTop);
+    const nextClearance = Math.round(requiredClearance);
+
+    if (Math.abs(nextClearance - lastHintClearance) >= 1) {
+      signalHint.style.setProperty("--hero-hint-clearance", `${nextClearance}px`);
+      lastHintClearance = nextClearance;
+    }
+  };
+
   const draw = (now = window.performance.now()) => {
     const width = canvas.clientWidth;
     const height = canvas.clientHeight;
@@ -454,6 +475,7 @@ function bindSignalCanvas() {
     const tempoText = cupIn ? "컵인 · 나이스 퍼트" : "라인 유지";
     updatePuttReadout(`${puttDistance.toFixed(1)}M`, tempoText);
     placeDistanceReadout(originX, originY, slotLeft, slotTop, isNarrow);
+    placeSignalHint(originY, targetY, isNarrow);
 
     context.clearRect(0, 0, width, height);
 
