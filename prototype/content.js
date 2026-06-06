@@ -41,24 +41,6 @@ window.GREENPUTT_HOME_CONTENT = {
       hotspot: { x: "52%", y: "56%" },
       cta: "출시 소식 보기",
       href: "#bridge"
-    },
-    {
-      name: "Polvert 골프 장갑",
-      label: "스토어 픽",
-      description: "지금 구매 가능한 첫 번째 골프 기어. 색상과 사이즈 선택 후 공식 스토어로 이어집니다.",
-      state: "구매 가능",
-      stage: "그립을 잡는 손의 감각부터 GreenPutt의 기준으로 고른 프리미엄 장갑입니다.",
-      image: "./assets/polvert/logo-locked-v11-new-logo/polvert-storepick-logo-locked-new-logo-homepage-hero.jpg",
-      imageAlt: "실제 Polvert 신형 로고를 회전 합성한 극세사 오른손 골프 장갑 착용샷",
-      imagePosition: "70% 50%",
-      stageImage: "./assets/polvert/logo-locked-v11-new-logo/polvert-storepick-logo-locked-new-logo-homepage-hero.jpg",
-      stageImageAlt: "실제 Polvert 신형 로고를 회전 합성한 극세사 오른손 골프 장갑 착용샷",
-      stageImagePosition: "70% 50%",
-      focus: "그립감",
-      signal: "구매 가능",
-      hotspot: { x: "76%", y: "34%" },
-      cta: "Polvert 상품 보기",
-      href: "https://greenputt.kr/all_products/?idx=77"
     }
   ],
   supportLinks: [
