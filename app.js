@@ -704,6 +704,47 @@ function bindFilmDemo() {
   let activeIndex = 0;
   let autoplayTimer = 0;
   let resumeTimer = 0;
+  let noteMeasure = null;
+  let noteResizeTimer = 0;
+
+  const syncDemoNoteHeight = () => {
+    if (!note || !steps.length) {
+      return;
+    }
+
+    if (!noteMeasure) {
+      noteMeasure = note.cloneNode(false);
+      noteMeasure.id = "";
+      noteMeasure.classList.add("demo-note-measure");
+      noteMeasure.setAttribute("aria-hidden", "true");
+      note.after(noteMeasure);
+    }
+
+    const noteWidth = note.getBoundingClientRect().width;
+
+    if (!noteWidth) {
+      return;
+    }
+
+    noteMeasure.style.width = `${noteWidth}px`;
+
+    const maxNoteHeight = steps.reduce((maxHeight, step) => {
+      noteMeasure.textContent = step.dataset.note || "";
+      return Math.max(maxHeight, noteMeasure.getBoundingClientRect().height);
+    }, 0);
+
+    note.style.setProperty("--demo-note-min-height", `${Math.ceil(maxNoteHeight)}px`);
+  };
+
+  const scheduleDemoNoteSync = () => {
+    if (noteResizeTimer) {
+      window.clearTimeout(noteResizeTimer);
+    }
+
+    noteResizeTimer = window.setTimeout(() => {
+      window.requestAnimationFrame(syncDemoNoteHeight);
+    }, 80);
+  };
 
   const activate = (step) => {
     if (!step) {
@@ -744,6 +785,11 @@ function bindFilmDemo() {
   if (visual) {
     visual.style.setProperty("--demo-cycle-duration", `${cycleDuration}ms`);
   }
+
+  syncDemoNoteHeight();
+  window.addEventListener("resize", scheduleDemoNoteSync);
+  window.addEventListener("orientationchange", scheduleDemoNoteSync);
+  document.fonts?.ready?.then(syncDemoNoteHeight);
 
   const clearAutoplayTimer = () => {
     if (autoplayTimer) {

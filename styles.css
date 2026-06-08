@@ -826,6 +826,7 @@ h3 {
 }
 
 .demo-copy {
+  position: relative;
   display: grid;
   align-content: start;
   gap: 12px;
@@ -846,11 +847,20 @@ h3 {
 .demo-copy strong {
   display: block;
   max-width: 520px;
-  min-height: 2.36em;
+  min-height: var(--demo-note-min-height, 3.54em);
   color: white;
   font-family: var(--font-display);
   font-size: clamp(22px, 2.5vw, 32px);
   line-height: 1.18;
+}
+
+.demo-note-measure {
+  position: absolute;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+  min-height: 0 !important;
+  pointer-events: none;
 }
 
 .demo-lineup-button {
@@ -883,7 +893,20 @@ h3 {
 }
 
 .demo-mat {
+  --ball-size: clamp(15px, 3.65cqw, 24px);
+  --ball-radius: calc(var(--ball-size) / 2);
+  --gaze-size: clamp(24px, 5.15cqw, 34px);
+  --putter-head-gap: clamp(1px, 0.3cqw, 2px);
+  --putter-head-width: clamp(18px, 4.25cqw, 28px);
+  --putter-head-origin-x: calc(var(--putter-head-width) / 2);
+  --putter-head-height: clamp(52px, 12.75cqw, 84px);
+  --putter-box-width: clamp(62px, 18.8cqw, 124px);
+  --putter-box-height: clamp(92px, 22.45cqw, 148px);
+  --putter-shaft-width: clamp(6px, 1.2cqw, 8px);
+  --putter-shaft-height: clamp(48px, 12.1cqw, 80px);
+
   position: relative;
+  container-type: inline-size;
   aspect-ratio: 5 / 2.25;
   overflow: hidden;
   border: 1px solid rgba(184, 255, 61, 0.55);
@@ -937,13 +960,13 @@ h3 {
   top: 5%;
   z-index: 4;
   display: grid;
-  min-width: 108px;
-  min-height: 42px;
+  width: clamp(74px, 16.4cqw, 108px);
+  height: clamp(30px, 6.4cqw, 42px);
   place-items: center;
   border-radius: 4px;
   color: rgba(255, 255, 255, 0.72);
   background: #222d27;
-  font-size: 11px;
+  font-size: clamp(10px, 1.7cqw, 11px);
   font-weight: 900;
   text-transform: uppercase;
   box-shadow: 0 14px 24px rgba(0, 0, 0, 0.24);
@@ -964,7 +987,7 @@ h3 {
 
 .demo-putter::before {
   position: absolute;
-  left: 7px;
+  left: clamp(5px, 1.1cqw, 7px);
   top: calc(50% + 2px);
   width: var(--putter-shaft-width);
   height: var(--putter-shaft-height);
@@ -1004,12 +1027,12 @@ h3 {
   z-index: 7;
   display: grid;
   grid-template-rows: auto 1fr;
-  width: clamp(138px, 12vw, 156px);
-  height: 78px;
+  width: clamp(92px, 23.65cqw, 156px);
+  height: clamp(52px, 11.8cqw, 78px);
   place-items: center;
-  padding: 10px 14px;
+  padding: clamp(7px, 1.5cqw, 10px) clamp(8px, 2.1cqw, 14px);
   border: 1px solid rgba(184, 255, 61, 0.7);
-  border-radius: 8px;
+  border-radius: clamp(6px, 1.2cqw, 8px);
   background: rgba(2, 12, 8, 0.82);
   box-shadow:
     0 0 calc(24px * var(--display-glow)) rgba(184, 255, 61, 0.75),
@@ -1018,7 +1041,7 @@ h3 {
 
 .demo-display small {
   color: rgba(255, 255, 255, 0.54);
-  font-size: 10px;
+  font-size: clamp(9px, 1.5cqw, 10px);
   font-weight: 900;
   text-transform: uppercase;
 }
@@ -1027,7 +1050,7 @@ h3 {
   width: 100%;
   color: var(--lime);
   font-family: var(--font-body);
-  font-size: clamp(24px, 2.3vw, 34px);
+  font-size: clamp(19px, 5.15cqw, 34px);
   font-weight: 900;
   line-height: 1;
   text-align: center;
@@ -1037,7 +1060,7 @@ h3 {
 
 .film-visual[data-phase="1"] .demo-display strong,
 .film-visual[data-phase="3"] .demo-display strong {
-  font-size: clamp(24px, 2.3vw, 34px);
+  font-size: clamp(19px, 5.15cqw, 34px);
 }
 
 .demo-ball {
@@ -2452,7 +2475,7 @@ h3 {
   }
 
   .demo-copy strong {
-    min-height: 2.28em;
+    min-height: 3.42em;
     font-size: clamp(19px, 5.7vw, 22px);
     line-height: 1.14;
   }
