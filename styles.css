@@ -193,6 +193,7 @@ img {
 .section-kicker,
 .lineup-label,
 .lineup-state,
+.film-note span,
 .hero-caption span,
 .hero-caption small {
   margin: 0;
@@ -664,7 +665,7 @@ h3 {
   grid-template-columns: minmax(0, 0.68fr) minmax(260px, 0.32fr);
   gap: clamp(28px, 6vw, 88px);
   align-items: end;
-  margin-top: 24px;
+  margin-top: 0;
 }
 
 .film-story-grid h2 {
@@ -687,9 +688,8 @@ h3 {
 }
 
 .film-note span {
-  color: rgba(255, 255, 255, 0.64);
-  font-size: 12px;
-  font-weight: 900;
+  display: block;
+  color: rgba(184, 255, 61, 0.78);
 }
 
 .film-note strong {
@@ -1458,7 +1458,6 @@ h3 {
 
 .system-copy .eyebrow {
   color: rgba(184, 255, 61, 0.88);
-  font-size: 14px;
 }
 
 .system-copy h2 {
@@ -1781,7 +1780,7 @@ h3 {
 
 .lineup-label {
   margin-top: 8px;
-  color: rgba(255, 255, 255, 0.56);
+  color: rgba(184, 255, 61, 0.72);
 }
 
 .lineup-item h3 {
@@ -1805,7 +1804,7 @@ h3 {
 .lineup-state {
   margin-top: auto;
   padding-top: 22px;
-  color: var(--lime);
+  color: rgba(184, 255, 61, 0.88);
 }
 
 .lineup-dots {
@@ -1873,7 +1872,7 @@ h3 {
 }
 
 .cinema-band p:not(.eyebrow),
-.storepick-copy p:not(.eyebrow),
+.storepick-copy p:not(.eyebrow):not(.section-kicker),
 .bridge-section p:not(.eyebrow),
 .site-footer p {
   color: var(--soft-ink);
@@ -1924,6 +1923,7 @@ h3 {
 }
 
 .storepick-section .eyebrow,
+.storepick-section .section-kicker,
 .bridge-section .eyebrow {
   color: var(--green);
 }
@@ -1939,7 +1939,7 @@ h3 {
   display: block;
 }
 
-.storepick-copy p:not(.eyebrow) {
+.storepick-copy p:not(.eyebrow):not(.section-kicker) {
   max-width: 42ch;
   overflow-wrap: normal;
   text-wrap: pretty;
@@ -2370,7 +2370,7 @@ h3 {
 
   .film-story-grid {
     gap: 22px;
-    margin-top: 16px;
+    margin-top: 0;
   }
 
   .film-story-grid h2 {
