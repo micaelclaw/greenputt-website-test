@@ -130,6 +130,7 @@ function updateStage(product) {
 function bindProductStage() {
   const items = Array.from(document.querySelectorAll(".lineup-item"));
   const dots = Array.from(document.querySelectorAll(".lineup-dot"));
+  const systemSection = document.querySelector("#system");
   const carousel = document.querySelector(".product-carousel");
   const previousButton = document.querySelector("#lineup-prev");
   const nextButton = document.querySelector("#lineup-next");
@@ -137,6 +138,7 @@ function bindProductStage() {
   const autoplayDuration = 5200;
   let activeIndex = 0;
   let autoplayId = 0;
+  let isAutoplayPaused = false;
 
   const scrollActiveItemIntoView = (index) => {
     const item = items[index];
@@ -182,17 +184,39 @@ function bindProductStage() {
     autoplayId = 0;
   };
 
+  const isInteractionPaused = () => (
+    isAutoplayPaused ||
+    Boolean(carousel?.matches(":hover")) ||
+    Boolean(systemSection?.matches(":hover")) ||
+    Boolean(carousel?.contains(document.activeElement)) ||
+    Boolean(systemSection?.contains(document.activeElement))
+  );
+
   const startAutoplay = () => {
-    if (reducedMotion || items.length < 2) {
+    if (reducedMotion || items.length < 2 || isInteractionPaused()) {
       return;
     }
 
     stopAutoplay();
-    autoplayId = window.setInterval(() => activate(activeIndex + 1), autoplayDuration);
+    autoplayId = window.setInterval(() => {
+      if (!isInteractionPaused()) {
+        activate(activeIndex + 1);
+      }
+    }, autoplayDuration);
   };
 
   const restartAutoplay = () => {
     stopAutoplay();
+    startAutoplay();
+  };
+
+  const pauseAutoplay = () => {
+    isAutoplayPaused = true;
+    stopAutoplay();
+  };
+
+  const resumeAutoplay = () => {
+    isAutoplayPaused = false;
     startAutoplay();
   };
 
@@ -222,6 +246,28 @@ function bindProductStage() {
   });
 
   carousel?.addEventListener("pointerdown", restartAutoplay);
+  carousel?.addEventListener("pointerenter", pauseAutoplay);
+  carousel?.addEventListener("pointermove", pauseAutoplay);
+  carousel?.addEventListener("pointerleave", resumeAutoplay);
+  carousel?.addEventListener("focusin", pauseAutoplay);
+  carousel?.addEventListener("focusout", () => {
+    window.setTimeout(() => {
+      if (!carousel.contains(document.activeElement)) {
+        resumeAutoplay();
+      }
+    }, 0);
+  });
+  systemSection?.addEventListener("pointerenter", pauseAutoplay);
+  systemSection?.addEventListener("pointermove", pauseAutoplay);
+  systemSection?.addEventListener("pointerleave", resumeAutoplay);
+  systemSection?.addEventListener("focusin", pauseAutoplay);
+  systemSection?.addEventListener("focusout", () => {
+    window.setTimeout(() => {
+      if (!systemSection.contains(document.activeElement)) {
+        resumeAutoplay();
+      }
+    }, 0);
+  });
 
   if (content.products[0]) {
     activate(0);

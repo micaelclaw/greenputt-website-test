@@ -644,8 +644,12 @@ h3 {
 
 .film-story-section {
   padding: clamp(78px, 12vw, 150px) clamp(20px, 5vw, 76px);
-  background:
-    linear-gradient(180deg, #f8f4ec, #ebe3d4 46%, #0d140f 46%, #0d140f);
+  background: linear-gradient(180deg, #f8f4ec, #ebe3d4);
+}
+
+.film-demo-section {
+  padding-top: 0;
+  background: #0d140f;
 }
 
 .film-story-copy {
@@ -661,6 +665,10 @@ h3 {
   gap: clamp(28px, 6vw, 88px);
   align-items: end;
   margin-top: 24px;
+}
+
+.film-story-grid h2 {
+  font-size: clamp(32px, 4.2vw, 60px);
 }
 
 .film-story-grid p {
@@ -689,7 +697,7 @@ h3 {
   margin-top: 12px;
   color: var(--lime);
   font-family: var(--font-display);
-  font-size: clamp(30px, 4.2vw, 52px);
+  font-size: clamp(28px, 3.2vw, 44px);
   font-weight: 900;
   line-height: 1.16;
   word-break: keep-all;
@@ -820,17 +828,19 @@ h3 {
 .demo-copy {
   display: grid;
   align-content: start;
-  gap: 10px;
+  gap: 12px;
   min-height: 112px;
-  padding-left: 18px;
-  border-left: 2px solid var(--lime);
+  padding-left: 0;
 }
 
-.demo-copy span {
+.demo-title {
+  margin: 0;
   color: var(--lime);
-  font-size: 13px;
+  font-family: var(--font-body);
+  font-size: clamp(17px, 1.4vw, 21px);
   font-weight: 900;
-  text-transform: uppercase;
+  line-height: 1.28;
+  text-transform: none;
 }
 
 .demo-copy strong {
@@ -843,10 +853,18 @@ h3 {
   line-height: 1.18;
 }
 
+.demo-lineup-button {
+  width: fit-content;
+  min-height: 42px;
+  padding-right: 18px;
+  padding-left: 18px;
+  font-size: 12px;
+}
+
 .demo-cycle {
   position: relative;
   overflow: hidden;
-  width: min(340px, 66%);
+  width: min(260px, 56%);
   height: 2px;
   background: rgba(255, 255, 255, 0.16);
 }
@@ -1363,24 +1381,21 @@ h3 {
   right: 24px;
   bottom: 24px;
   left: 24px;
-  display: flex;
-  align-items: end;
-  justify-content: space-between;
-  gap: 18px;
-  padding-top: 18px;
-  border-top: 1px solid var(--white-line);
+  display: grid;
+  gap: 8px;
+  justify-items: start;
 }
 
 .film-visual-caption span {
-  color: rgba(255, 255, 255, 0.62);
+  color: var(--lime);
   font-size: 12px;
   font-weight: 900;
 }
 
 .film-visual-caption strong {
   color: white;
-  font-size: clamp(20px, 3vw, 34px);
-  line-height: 1.2;
+  font-size: clamp(20px, 2.2vw, 28px);
+  line-height: 1.24;
 }
 
 .film-steps {
@@ -1411,7 +1426,7 @@ h3 {
 
 .film-step h3 {
   margin-top: 18px;
-  font-size: clamp(30px, 4.6vw, 54px);
+  font-size: clamp(30px, 3.4vw, 46px);
 }
 
 .film-step p {
@@ -1604,7 +1619,7 @@ h3 {
   max-width: 13ch;
   min-height: 2.24em;
   margin-top: 18px;
-  font-size: clamp(32px, 4vw, 58px);
+  font-size: clamp(30px, 3.4vw, 48px);
   line-height: 1.12;
   overflow-wrap: normal;
   text-wrap: balance;
@@ -1857,16 +1872,21 @@ h3 {
   color: var(--lime);
 }
 
-.cinema-band p,
-.storepick-copy p,
-.bridge-section p,
+.cinema-band p:not(.eyebrow),
+.storepick-copy p:not(.eyebrow),
+.bridge-section p:not(.eyebrow),
 .site-footer p {
   color: var(--soft-ink);
   font-size: 17px;
   line-height: 1.78;
 }
 
-.cinema-band p {
+.cinema-band h2,
+.storepick-copy h2 {
+  font-size: clamp(34px, 4vw, 60px);
+}
+
+.cinema-band p:not(.eyebrow) {
   color: rgba(255, 255, 255, 0.72);
 }
 
@@ -1919,7 +1939,7 @@ h3 {
   display: block;
 }
 
-.storepick-copy p {
+.storepick-copy p:not(.eyebrow) {
   max-width: 42ch;
   overflow-wrap: normal;
   text-wrap: pretty;
@@ -1938,7 +1958,8 @@ h3 {
 }
 
 .bridge-section h2 {
-  max-width: 920px;
+  max-width: 1040px;
+  font-size: clamp(34px, 3.9vw, 56px);
 }
 
 .support-links {
@@ -1962,6 +1983,12 @@ h3 {
 .support-link:hover {
   color: white;
   background: var(--green);
+}
+
+.bridge-store-button {
+  display: flex;
+  width: fit-content;
+  margin: 28px auto 0;
 }
 
 .site-footer {
@@ -2333,8 +2360,12 @@ h3 {
 
   .film-story-section {
     padding: 56px 16px 68px;
-    background:
-      linear-gradient(180deg, #f8f4ec 0, #ebe3d4 620px, #0d140f 620px, #0d140f);
+    background: linear-gradient(180deg, #f8f4ec, #ebe3d4);
+  }
+
+  .film-demo-section {
+    padding-top: 0;
+    background: #0d140f;
   }
 
   .film-story-grid {
@@ -2405,19 +2436,19 @@ h3 {
   }
 
   .demo-board {
-    grid-template-rows: 124px 2px auto;
+    grid-template-rows: minmax(148px, auto) 2px auto;
     width: 100%;
     gap: 12px;
   }
 
   .demo-copy {
     min-height: 0;
-    gap: 7px;
-    padding-left: 12px;
+    gap: 8px;
+    padding-left: 0;
   }
 
-  .demo-copy span {
-    font-size: 11px;
+  .demo-title {
+    font-size: 15px;
   }
 
   .demo-copy strong {
@@ -2427,7 +2458,7 @@ h3 {
   }
 
   .demo-cycle {
-    width: 58%;
+    width: 48%;
   }
 
   .demo-mat {
@@ -2506,11 +2537,9 @@ h3 {
     right: auto;
     bottom: auto;
     left: auto;
-    align-items: start;
-    flex-direction: column;
     gap: 8px;
     margin-top: 24px;
-    padding: 16px 10px 0;
+    padding: 0;
   }
 
   .film-visual-caption span {
@@ -2518,8 +2547,8 @@ h3 {
   }
 
   .film-visual-caption strong {
-    font-size: clamp(23px, 7.6vw, 30px);
-    line-height: 1.16;
+    font-size: clamp(20px, 6.2vw, 24px);
+    line-height: 1.24;
   }
 
   .film-steps {
