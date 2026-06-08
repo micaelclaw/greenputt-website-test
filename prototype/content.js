@@ -3,9 +3,9 @@ window.GREENPUTT_HOME_CONTENT = {
     {
       name: "골든타임 시스템",
       label: "핵심 루틴",
-      description: "공이 있던 자리에 거리가 표시됩니다. 당신은 2초간 그곳에 시선을 고정합니다. 이 2초가 퍼팅의 모든 것을 결정하는 골든타임입니다.",
+      description: "공이 떠난 자리에 거리가 표시됩니다. 당신은 2초간 그곳에 시선을 고정합니다. 이 2초가 퍼팅의 모든 것을 결정하는 골든타임입니다.",
       state: "개발 중",
-      stage: "공이 있던 자리에 숫자가 남으면, 결과를 보려고 고개를 드는 움직임이 줄어듭니다.",
+      stage: "공 앞에 숫자가 남으면, 결과를 보려고 고개를 드는 움직임이 줄어듭니다.",
       image: "./assets/greenputt-system-closeup.jpg",
       imageAlt: "GreenPutt 퍼팅 어시스턴트와 매트 클로즈업",
       focus: "임팩트 라인",
