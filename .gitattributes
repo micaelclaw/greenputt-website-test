@@ -1,0 +1,12 @@
+# Keep internal Codex/agent planning records out of GitHub source ZIP downloads.
+docs/agent-studio export-ignore
+docs/agent-studio/** export-ignore
+docs/brainstorms export-ignore
+docs/brainstorms/** export-ignore
+docs/plans export-ignore
+docs/plans/** export-ignore
+docs/superpowers export-ignore
+docs/superpowers/** export-ignore
+.compound-engineering export-ignore
+.compound-engineering/** export-ignore
+AGENTS.md export-ignore
