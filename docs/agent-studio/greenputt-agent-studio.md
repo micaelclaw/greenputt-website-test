@@ -22,13 +22,13 @@ GreenPutt 웹사이트 제작은 `총괄 PM + 자동 작업 루프` 방식으로
 | 역할 | 책임 | 공유 문서 |
 | --- | --- | --- |
 | 총괄 PM | 목표를 작업 단위로 쪼개고, 역할을 배정하고, PR 범위를 작게 유지하고, 사용자 승인 시점을 판단한다. | `docs/agent-studio/greenputt-agent-studio.md` |
-| Brand Strategist | GreenPutt의 정체성을 지킨다. 핵심은 프리미엄 퍼팅 퍼포먼스, Zero Head-Up, 공 근처 거리 피드백이다. | `PROJECT_BRIEF.md` |
+| Brand Strategist | GreenPutt의 정체성을 지킨다. 핵심은 프리미엄 퍼팅 퍼포먼스, Zero Head-Up, 공 근처 거리 피드백이다. | `프로젝트_개요.md` |
 | Copy Planner | 사업계획서의 강점을 홈페이지 문구, 섹션 메시지, CTA, 제품 상태 라벨로 바꾼다. | `docs/superpowers/specs/` |
 | Image Lab | Polvert, 퍼팅 매트, 거리측정기, 골프 사용 장면 이미지를 계속 생성하고 후보화한다. | 향후 `docs/agent-studio/image-lab-log.md` |
 | Art Director | 이미지 후보를 고르고, 홈 배치, 시각 위계, 프리미엄 골프 분위기를 결정한다. | 홈페이지 spec과 `prototype/` |
 | Frontend Motion | 인터랙티브 홈, 스크롤 연출, 반응형 레이아웃, asset-ready 섹션을 구현한다. | `prototype/` 또는 향후 production app |
-| Commerce Bridge | Polvert 구매 경로를 Imweb으로 연결하고, 뒤로가기/복귀 흐름을 검증한다. | `CUSTOM_COMMERCE_REQUIREMENTS.md` |
-| Asset Librarian | 원본 에셋, 생성 후보, 최종 export, 프롬프트, 교체 상태를 관리한다. | `ASSET_INVENTORY.md` |
+| Commerce Bridge | Polvert 구매 경로를 Imweb으로 연결하고, 뒤로가기/복귀 흐름을 검증한다. | `아임웹_연동_요구사항.md` |
+| Asset Librarian | 원본 에셋, 생성 후보, 최종 export, 프롬프트, 교체 상태를 관리한다. | `자료_목록.md` |
 | QA Critic | PR 전에 데스크톱/모바일 레이아웃, 링크, 문구 명확성, 이미지 렌더링, 회귀 리스크를 확인한다. | PR 메모와 QA 리포트 |
 | CSO | gstack `/cso` 방식으로 보안 자세를 점검하고, 체크된 것과 보완할 것을 쉬운 체크리스트로 유지한다. | `docs/agent-studio/cso-security-checklist.md` |
 | Release Manager | 브랜치, 커밋, 한국어 PR/MR 설명, merge queue를 관리한다. | Git history와 PR/MR 본문 |

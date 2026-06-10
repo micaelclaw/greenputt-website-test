@@ -1,4 +1,4 @@
-# GreenPutt Domain Routing Guide
+# GreenPutt 도메인/DNS 운영 가이드
 
 최종 확인일: 2026-06-05
 

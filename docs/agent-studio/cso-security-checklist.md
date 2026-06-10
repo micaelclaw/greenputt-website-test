@@ -83,7 +83,7 @@ CSO 역할은 이 Markdown 파일을 계속 갱신한다. 다른 에이전트는
 
 ### 5. Asset과 이미지 공급망
 
-- [x] public website asset folder 구조는 `ASSET_INVENTORY.md`에 정리되어 있다.
+- [x] public website asset folder 구조는 `자료_목록.md`에 정리되어 있다.
 - [x] private/admin 자료는 public website asset flow에서 제외한다고 명시되어 있다.
 - [~] AI-generated image는 prototype에 사용할 수 있지만, 최종 선택본은 provenance note가 필요하다.
 - [x] 새 생성 이미지를 PR에 사용하기 전에 Image Lab log를 만들거나 갱신한다.

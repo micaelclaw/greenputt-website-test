@@ -17,7 +17,7 @@
 - Create `prototype/content.js`: structured homepage content model for exportable sections.
 - Create `prototype/app.js`: render product cards, support links, and bridge CTA behavior from `content.js`.
 - Create `prototype/README.md`: how to preview, what is intentionally static, and what should later move to Imweb.
-- Modify `PROJECT_BRIEF.md`: add a short note that the first implementation artifact lives in `prototype/`.
+- Modify `프로젝트_개요.md`: add a short note that the first implementation artifact lives in `prototype/`.
 
 ## Scope Boundaries
 
@@ -729,7 +729,7 @@ Expected: commit succeeds with `prototype/styles.css`.
 
 **Files:**
 - Create: `prototype/README.md`
-- Modify: `PROJECT_BRIEF.md`
+- Modify: `프로젝트_개요.md`
 
 - [ ] **Step 1: Add prototype documentation**
 
@@ -768,7 +768,7 @@ Open:
 
 - [ ] **Step 2: Add a brief note**
 
-In `PROJECT_BRIEF.md`, under `## Maintenance Notes`, add:
+In `프로젝트_개요.md`, under `## Maintenance Notes`, add:
 
 ```markdown
 - The first custom homepage implementation artifact lives in `prototype/`. It is a static experimental prototype for campaign direction, section rhythm, and Imweb-exportable content structure.
@@ -779,7 +779,7 @@ In `PROJECT_BRIEF.md`, under `## Maintenance Notes`, add:
 Run:
 
 ```bash
-git add prototype/README.md PROJECT_BRIEF.md
+git add prototype/README.md 프로젝트_개요.md
 git commit -m "docs: document GreenPutt prototype workflow"
 ```
 

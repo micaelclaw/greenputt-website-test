@@ -10,7 +10,7 @@
 
 ## Website Planning
 
-- Keep product, audience, content, brand, and maintenance decisions in `PROJECT_BRIEF.md`.
+- Keep product, audience, content, brand, and maintenance decisions in `프로젝트_개요.md`.
 - Before adding new pages or sections, check the brief and existing patterns.
 - Favor maintainable structure over one-off page code.
 - Reuse existing components, layout conventions, colors, typography, and spacing once established.
@@ -30,5 +30,4 @@
 - Do not rewrite unrelated files.
 - Add or update tests when behavior changes and the project has a test setup.
 - After implementation, run the most relevant verification command available.
-- Record durable project decisions in `PROJECT_BRIEF.md` so future work starts with context.
-
+- Record durable project decisions in `프로젝트_개요.md` so future work starts with context.
